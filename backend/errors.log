@@ -1,0 +1,12 @@
+23:20:21 [31merror[39m: uncaughtException: option usefindandmodify is not supported
+MongoParseError: option usefindandmodify is not supported
+    at parseOptions (E:\mission-22\whata-hot-burger\backend\node_modules\mongodb\lib\connection_string.js:289:15)
+    at new MongoClient (E:\mission-22\whata-hot-burger\backend\node_modules\mongodb\lib\mongo_client.js:62:63)
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\connection.js:784:16
+    at new Promise (<anonymous>)
+    at NativeConnection.Connection.openUri (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\connection.js:781:19)
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:340:10
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:1174:10)

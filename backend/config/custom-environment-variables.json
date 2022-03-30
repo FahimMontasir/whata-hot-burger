@@ -1,0 +1,6 @@
+{
+  "jwtPrivateKey": "whb_jwtKey",
+  "db_name": "whb_dbName",
+  "db_user": "whb_dbUser",
+  "db_pass": "whb_dbPass"
+}

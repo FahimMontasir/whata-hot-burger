@@ -1,0 +1,6 @@
+{
+  "jwtPrivateKey": "abc*",
+  "db_name": "whata_db",
+  "db_user": "root",
+  "db_pass": "1234"
+}
