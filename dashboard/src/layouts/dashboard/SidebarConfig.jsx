@@ -54,7 +54,7 @@ const sidebarConfig = [
 
       // MANAGEMENT : E-COMMERCE
       {
-        title: "e-commerce",
+        title: "shop",
         path: PATH_DASHBOARD.eCommerce.root,
         icon: ICONS.cart,
         children: [

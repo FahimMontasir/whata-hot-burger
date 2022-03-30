@@ -1,6 +1,6 @@
 import { CircularProgress } from "@mui/material";
 import { Suspense, lazy } from "react";
-import { Navigate, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 // layouts
 import MainLayout from "../layout";
 
@@ -20,7 +20,7 @@ export default function Router() {
       path: "/",
       element: <MainLayout />,
       children: [
-        // { path: "/", element: <LandingPage /> },
+        { path: "/", element: <Home /> },
         // { path: "about-us", element: <About /> },
         // { path: "contact-us", element: <Contact /> },
         // { path: "faqs", element: <Faqs /> },
@@ -28,3 +28,5 @@ export default function Router() {
     },
   ]);
 }
+
+const Home = Loadable(lazy(() => import("../pages/home")));
