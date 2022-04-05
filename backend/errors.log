@@ -10,3 +10,15 @@ MongoParseError: option usefindandmodify is not supported
     at new Promise (<anonymous>)
     at promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
     at Mongoose._promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:1174:10)
+12:13:31 [31merror[39m: uncaughtException: connect ECONNREFUSED 127.0.0.1:27017
+MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at NativeConnection.Connection.openUri (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\connection.js:807:32)
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:340:10
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:1174:10)
+    at Mongoose.connect (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:339:20)
+    at module.exports (E:\mission-22\whata-hot-burger\backend\startup\db.js:6:6)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\index.js:9:24)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)

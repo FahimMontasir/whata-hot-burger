@@ -3,7 +3,7 @@ const logger = require("../logger");
 
 module.exports = function () {
   mongoose
-    .connect("mongodb://localhost/full-backend", {
+    .connect("mongodb://localhost/whb_db", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
