@@ -45,6 +45,7 @@ const Consumer = mongoose.model(
       type: Date,
       default: Date.now,
     },
+    updatedAt: Date,
   })
 );
 
@@ -69,4 +70,18 @@ const validateConsumerLogin = (consumer) => {
   return schema.validate(consumer);
 };
 
-module.exports = { Consumer, validateConsumer, validateConsumerLogin };
+const validateChangePass = (consumer) => {
+  const schema = Joi.object({
+    _id: Joi.objectId().required(),
+    oldPassword: Joi.string(),
+    newPassword: Joi.string().min(6).max(50).required(),
+  });
+  return schema.validate(consumer);
+};
+
+module.exports = {
+  Consumer,
+  validateConsumer,
+  validateConsumerLogin,
+  validateChangePass,
+};

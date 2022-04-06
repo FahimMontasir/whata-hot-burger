@@ -50,6 +50,7 @@ const AdminAndManager = mongoose.model(
       type: Date,
       default: Date.now,
     },
+    updatedAt: Date,
   })
 );
 
@@ -68,4 +69,16 @@ const validateAdminAndManager = (adminAndManager) => {
   return schema.validate(adminAndManager);
 };
 
-module.exports = { AdminAndManager, validateAdminAndManager };
+const validateAdminAndMLogin = (adminAndManager) => {
+  const schema = Joi.object({
+    email: Joi.string().email().max(75).required(),
+    password: Joi.string().min(6).max(50).required(),
+  });
+  return schema.validate(adminAndManager);
+};
+
+module.exports = {
+  AdminAndManager,
+  validateAdminAndManager,
+  validateAdminAndMLogin,
+};

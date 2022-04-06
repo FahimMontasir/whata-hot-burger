@@ -7,6 +7,7 @@ const app = express();
 require("./startup/logger")();
 require("./startup/config")();
 require("./startup/db")();
+require("./startup/validation")();
 require("./startup/routes")(app);
 
 const PORT = process.env.PORT || 5000;

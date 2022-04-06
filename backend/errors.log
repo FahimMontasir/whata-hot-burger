@@ -22,3 +22,83 @@ MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
     at module.exports (E:\mission-22\whata-hot-burger\backend\startup\db.js:6:6)
     at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\index.js:9:24)
     at Module._compile (node:internal/modules/cjs/loader:1109:14)
+13:06:24 [31merror[39m: Joi.objectId is not a function
+13:22:45 [31merror[39m: user is not defined
+13:23:57 [31merror[39m: Employee is not defined
+14:09:22 [31merror[39m: Unexpected token _ in JSON at position 4
+14:22:50 [31merror[39m: uncaughtException: marketer is not defined
+ReferenceError: marketer is not defined
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\routes\user\consumer.js:106:36)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:5:18)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+14:23:08 [31merror[39m: uncaughtException: marketer is not defined
+ReferenceError: marketer is not defined
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\routes\user\consumer.js:106:32)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:5:18)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+14:23:24 [31merror[39m: uncaughtException: marketer is not defined
+ReferenceError: marketer is not defined
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\routes\user\consumer.js:106:32)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:5:18)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+14:23:49 [31merror[39m: uncaughtException: marketer is not defined
+ReferenceError: marketer is not defined
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\routes\user\consumer.js:106:32)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:5:18)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+14:32:41 [31merror[39m: Cast to ObjectId failed for value "624be1a4032001c39ccd0ba" (type string) at path "_id" for model "Consumer"
+15:13:09 [31merror[39m: Consumer validation failed: email: Path `email` is required., dateOfBirth: Path `dateOfBirth` is required., gender: Path `gender` is required.
+15:25:44 [31merror[39m: Cast to ObjectId failed for value "624be1a4032001c39ccd0ba" (type string) at path "_id" for model "Consumer"
+11:50:02 [31merror[39m: uncaughtException: connect ECONNREFUSED 127.0.0.1:27017
+MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at NativeConnection.Connection.openUri (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\connection.js:807:32)
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:340:10
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:1174:10)
+    at Mongoose.connect (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:339:20)
+    at module.exports (E:\mission-22\whata-hot-burger\backend\startup\db.js:6:6)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\index.js:9:24)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+11:58:12 [31merror[39m: uncaughtException: connect ECONNREFUSED 127.0.0.1:27017
+MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at NativeConnection.Connection.openUri (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\connection.js:807:32)
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:340:10
+    at E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:1174:10)
+    at Mongoose.connect (E:\mission-22\whata-hot-burger\backend\node_modules\mongoose\lib\index.js:339:20)
+    at module.exports (E:\mission-22\whata-hot-burger\backend\startup\db.js:6:6)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\index.js:9:24)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+22:24:41 [31merror[39m: Cast to ObjectId failed for value "query" (type string) at path "_id" for model "AdminAndManager"
