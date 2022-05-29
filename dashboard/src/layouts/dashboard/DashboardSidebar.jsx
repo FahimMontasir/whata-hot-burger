@@ -24,7 +24,7 @@ import Scrollbar from "../../common/Scrollbar";
 import NavSection from "../../common/NavSection";
 import MHidden from "../../common/@mui-extend/MHidden";
 //
-import sidebarConfig from "./SidebarConfig";
+import sidebarConfig from "../../routes/config/SidebarConfig";
 import { USER } from "./AccountPopover";
 
 // ----------------------------------------------------------------------
@@ -165,7 +165,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           <Link
             underline="none"
             component={RouterLink}
-            to={PATH_DASHBOARD.user.account}
+            to={PATH_DASHBOARD.root}
           >
             <AccountStyle>
               <MyAvatar />

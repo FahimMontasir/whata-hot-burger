@@ -10,6 +10,8 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { CollapseDrawerProvider } from "./store/contexts/CollapseDrawerContext";
+import { Provider } from "react-redux";
+import { store } from "./store/redux/store";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +19,9 @@ ReactDOM.render(
       <SettingsProvider>
         <CollapseDrawerProvider>
           <BrowserRouter>
-            <App />
+            <Provider store={store}>
+              <App />
+            </Provider>
           </BrowserRouter>
         </CollapseDrawerProvider>
       </SettingsProvider>

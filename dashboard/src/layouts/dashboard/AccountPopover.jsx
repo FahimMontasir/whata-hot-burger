@@ -31,12 +31,12 @@ const MENU_OPTIONS = [
   {
     label: "Profile",
     icon: personFill,
-    linkTo: PATH_DASHBOARD.user.profile,
+    linkTo: PATH_DASHBOARD.root,
   },
   {
     label: "Settings",
     icon: settings2Fill,
-    linkTo: PATH_DASHBOARD.user.account,
+    linkTo: PATH_DASHBOARD.root,
   },
 ];
 

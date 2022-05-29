@@ -1,8 +1,8 @@
 // material
 import { styled } from "@mui/material";
 
-const RootStyle = styled("span")(({ theme, styleProps }) => {
-  const { size, status } = styleProps;
+const RootStyle = styled("span")(({ theme, styles }) => {
+  const { size, status } = styles;
 
   return {
     display: "flex",
@@ -66,5 +66,5 @@ export default function BadgeStatus({
   status = "offline",
   ...other
 }) {
-  return <RootStyle styleProps={{ status, size }} {...other} />;
+  return <RootStyle styles={{ status, size }} {...other} />;
 }

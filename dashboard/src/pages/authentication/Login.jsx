@@ -1,28 +1,11 @@
-import { Link as RouterLink } from "react-router-dom";
 // material
-import {
-  Box,
-  Card,
-  Stack,
-  Link,
-  Alert,
-  Tooltip,
-  Container,
-  Typography,
-  Button,
-  styled,
-} from "@mui/material";
-// routes
-import { PATH_AUTH } from "../../routes/paths";
-// layouts
-import AuthLayout from "../../layouts/AuthLayout";
+import { Box, Card, Stack, Container, Typography, styled } from "@mui/material";
 // components
 import Page from "../../common/Page";
 import MHidden from "../../common/@mui-extend/MHidden";
 import LoginForm from "./components/LoginForm";
 
-// ----------------------------------------------------------------------
-
+//styled components
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     display: "flex",
@@ -36,6 +19,9 @@ const SectionStyle = styled(Card)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "center",
   margin: theme.spacing(2, 0, 2, 2),
+  backgroundImage: `url(/static/illustrations/login.jpg)`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
 }));
 
 const ContentStyle = styled("div")(({ theme }) => ({
@@ -48,41 +34,18 @@ const ContentStyle = styled("div")(({ theme }) => ({
   padding: theme.spacing(12, 0),
 }));
 
-// ----------------------------------------------------------------------
-
+//main component
 export default function Login() {
-  //demo
-  const login = () => "login";
-  const method = "auth00";
-
-  const handleLoginAuth0 = async () => {
-    try {
-      await login();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <RootStyle title="Login To Whata Hot Burger">
-      <AuthLayout>
-        Don’t have an account? &nbsp;
-        <Link
-          underline="none"
-          variant="subtitle2"
-          component={RouterLink}
-          to={PATH_AUTH.register}
-        >
-          Get started
-        </Link>
-      </AuthLayout>
-
+    <RootStyle title="Login To WhataHotBurger Dashboard">
       <MHidden width="mdDown">
         <SectionStyle>
-          <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-            Hi, Welcome Back
+          <Typography
+            variant="h3"
+            sx={{ px: 5, mt: 10, mb: 5, color: "primary.light" }}
+          >
+            Hi, Welcome Back to WhataHotBurger
           </Typography>
-          <img src="/static/illustrations/illustration_login.png" alt="login" />
         </SectionStyle>
       </MHidden>
 
@@ -91,53 +54,15 @@ export default function Login() {
           <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
-                Sign in to Minimal
+                Sign in to WhataHotBurger Dashboard
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
                 Enter your details below.
               </Typography>
             </Box>
-
-            <Tooltip title={method}>
-              <Box
-                component="img"
-                src={`/static/auth/ic_${method}.png`}
-                sx={{ width: 32, height: 32 }}
-              />
-            </Tooltip>
           </Stack>
 
-          <Alert severity="info" sx={{ mb: 3 }}>
-            Use email : <strong>demo@minimals.cc</strong> / password :
-            <strong>&nbsp;demo1234</strong>
-          </Alert>
-
-          {method !== "auth0" ? (
-            <LoginForm />
-          ) : (
-            <Button
-              fullWidth
-              size="large"
-              type="submit"
-              variant="contained"
-              onClick={handleLoginAuth0}
-            >
-              Login
-            </Button>
-          )}
-
-          <MHidden width="smUp">
-            <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-              Don’t have an account?&nbsp;
-              <Link
-                variant="subtitle2"
-                component={RouterLink}
-                to={PATH_AUTH.register}
-              >
-                Get started
-              </Link>
-            </Typography>
-          </MHidden>
+          <LoginForm />
         </ContentStyle>
       </Container>
     </RootStyle>

@@ -58,7 +58,7 @@ const AVATARS = [null, "https", null, null, null];
 
 const UNREADS = [true, true, false, false, false];
 
-const MOCK_NOTIFICATIONS = [...Array(5)].map((_, index) => ({
+const MOCK_NOTIFICATIONS = [...Array(1)].map((_, index) => ({
   id: index,
   title: TITLES[index],
   description: DESCRIPTIONS[index],

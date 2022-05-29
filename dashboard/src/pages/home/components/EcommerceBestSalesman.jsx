@@ -57,7 +57,7 @@ export default function EcommerceBestSalesman() {
             </TableHead>
             <TableBody>
               {MOCK_SALES.map((row) => (
-                <TableRow key={row.name}>
+                <TableRow key={row.id}>
                   <TableCell>
                     <Box sx={{ display: "flex", alignItems: "center" }}>
                       <Avatar alt={row.name} src={row.avatar} />

@@ -10,22 +10,24 @@ import {
   Link,
   Stack,
   Alert,
-  Checkbox,
   TextField,
   IconButton,
   InputAdornment,
-  FormControlLabel,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 // routes
 import { PATH_AUTH } from "../../../routes/paths";
 // hooks
 import useIsMountedRef from "../../../hooks/useIsMountedRef";
+import { useLoginMutation } from "../../../store/redux/api/auth";
+import { useDispatch } from "react-redux";
+import { login } from "../../../store/redux/slices/localStorageAuth";
 
-// ----------------------------------------------------------------------
-
+//main component
 export default function LoginForm() {
-  const login = () => {};
+  const [validateLogin, { isError, error }] = useLoginMutation();
+  const dispatch = useDispatch();
+
   const isMountedRef = useIsMountedRef();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -41,29 +43,24 @@ export default function LoginForm() {
     initialValues: {
       email: "",
       password: "",
-      remember: true,
     },
     validationSchema: LoginSchema,
-    onSubmit: async (values, { setErrors, setSubmitting, resetForm }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       try {
-        await login(values.email, values.password);
-
+        const result = await validateLogin(values).unwrap();
+        dispatch(login({ token: result.text }));
         if (isMountedRef.current) {
           setSubmitting(false);
         }
       } catch (error) {
-        console.error(error);
-        resetForm();
         if (isMountedRef.current) {
           setSubmitting(false);
-          setErrors({ afterSubmit: error.message });
         }
       }
     },
   });
 
-  const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } =
-    formik;
+  const { errors, touched, isSubmitting, handleSubmit, getFieldProps } = formik;
 
   const handleShowPassword = () => {
     setShowPassword((show) => !show);
@@ -73,13 +70,11 @@ export default function LoginForm() {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
-          {errors.afterSubmit && (
-            <Alert severity="error">{errors.afterSubmit}</Alert>
-          )}
+          {isError && <Alert severity="error">{error.data.message}</Alert>}
 
           <TextField
             fullWidth
-            autoComplete="username"
+            autoComplete="email"
             type="email"
             label="Email address"
             {...getFieldProps("email")}
@@ -107,22 +102,7 @@ export default function LoginForm() {
           />
         </Stack>
 
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ my: 2 }}
-        >
-          <FormControlLabel
-            control={
-              <Checkbox
-                {...getFieldProps("remember")}
-                checked={values.remember}
-              />
-            }
-            label="Remember me"
-          />
-
+        <Stack sx={{ my: 2 }}>
           <Link
             component={RouterLink}
             variant="subtitle2"

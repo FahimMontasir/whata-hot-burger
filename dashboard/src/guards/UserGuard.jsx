@@ -4,11 +4,11 @@ import { Navigate } from "react-router-dom";
 // routes
 import { PATH_DASHBOARD } from "../routes/paths";
 
-GuestGuard.propTypes = {
+UserGuard.propTypes = {
   children: PropTypes.node,
 };
 
-export default function GuestGuard({ children }) {
+export default function UserGuard({ children }) {
   const isAuthenticated = false;
 
   if (isAuthenticated) {

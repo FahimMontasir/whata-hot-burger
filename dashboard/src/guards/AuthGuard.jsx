@@ -3,13 +3,16 @@ import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
 // pages
 import Login from "../pages/authentication/Login";
+// redux
+import { useSelector } from "react-redux";
+import { getToken } from "../store/redux/slices/localStorageAuth";
 
 AuthGuard.propTypes = {
   children: PropTypes.node,
 };
 
 export default function AuthGuard({ children }) {
-  const isAuthenticated = true;
+  const isAuthenticated = useSelector(getToken);
   const { pathname } = useLocation();
   const [requestedLocation, setRequestedLocation] = useState(null);
 

@@ -82,7 +82,7 @@ export default function ContactsPopover() {
           Contacts <Typography component="span">({contacts.length})</Typography>
         </Typography>
 
-        <Scrollbar sx={{ height: ITEM_HEIGHT * 8 }}>
+        <Scrollbar sx={{ height: ITEM_HEIGHT * 7 }}>
           {contacts.map((contact) => {
             const { id, name, avatar, status, lastActivity } = contact;
 
