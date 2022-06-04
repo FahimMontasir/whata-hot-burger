@@ -43,7 +43,7 @@ const authApi = mainApi.injectEndpoints({
     }),
 
     getAM: builder.query({
-      query: (_id) => `/am/:${_id}`,
+      query: (_id) => `/am/${_id}`,
     }),
 
     getAllAM: builder.query({

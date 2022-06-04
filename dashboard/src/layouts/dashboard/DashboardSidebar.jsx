@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
@@ -25,10 +26,11 @@ import NavSection from "../../common/NavSection";
 import MHidden from "../../common/@mui-extend/MHidden";
 //
 import sidebarConfig from "../../routes/config/SidebarConfig";
-import { USER } from "./AccountPopover";
+//api
+import { getUser } from "../../store/redux/slices/localStorageAuth";
+import { useGetAMQuery } from "../../store/redux/api/auth";
 
-// ----------------------------------------------------------------------
-
+//styled components
 const DRAWER_WIDTH = 280;
 const COLLAPSE_WIDTH = 102;
 
@@ -49,8 +51,7 @@ const AccountStyle = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.grey[500_12],
 }));
 
-// ----------------------------------------------------------------------
-
+//components
 IconCollapse.propTypes = {
   onToggleCollapse: PropTypes.func,
   collapseClick: PropTypes.bool,
@@ -93,7 +94,7 @@ function IconCollapse({ onToggleCollapse, collapseClick }) {
     </Tooltip>
   );
 }
-
+//main components
 DashboardSidebar.propTypes = {
   isOpenSidebar: PropTypes.bool,
   onCloseSidebar: PropTypes.func,
@@ -101,6 +102,8 @@ DashboardSidebar.propTypes = {
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
+  const { _id } = useSelector(getUser);
+  const { data } = useGetAMQuery(_id);
 
   const {
     isCollapse,
@@ -168,13 +171,13 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             to={PATH_DASHBOARD.root}
           >
             <AccountStyle>
-              <MyAvatar />
+              <MyAvatar USER={data?.object} />
               <Box sx={{ ml: 2 }}>
                 <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
-                  {USER?.displayName}
+                  {data?.object.name}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  {USER?.role}
+                  {data?.object.type}
                 </Typography>
               </Box>
             </AccountStyle>
@@ -194,7 +197,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         >
           <div>
             <Typography gutterBottom variant="subtitle1">
-              Hi, {USER?.displayName}
+              Hi, {data?.object.name}
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               Need help?

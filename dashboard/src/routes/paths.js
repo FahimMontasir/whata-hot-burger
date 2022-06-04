@@ -14,9 +14,12 @@ export const PATH_PAGE = {
 
 export const PATH_DASHBOARD = {
   root: "/dashboard",
-  user: {
-    root: "user",
-    am: "user/am",
-    consumer: "user/consumer",
+  am: {
+    root: "/am",
+    register: "/am/register",
+  },
+  consumer: {
+    root: "/consumer",
+    register: "/consumer/register",
   },
 };

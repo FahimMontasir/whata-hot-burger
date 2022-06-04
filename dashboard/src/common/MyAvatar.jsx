@@ -1,16 +1,15 @@
 import MAvatar from "./@mui-extend/MAvatar";
 import createAvatar from "../utils/createAvatar";
-import { USER } from "../layouts/dashboard/AccountPopover";
 
-export default function MyAvatar({ ...other }) {
+export default function MyAvatar({ USER, ...other }) {
   return (
     <MAvatar
-      src={USER.photoURL}
-      alt={USER.displayName}
-      color={USER.photoURL ? "default" : createAvatar(USER.displayName).color}
+      src={USER?.photoUrl}
+      alt={USER?.name}
+      color={USER?.photoUrl ? "default" : createAvatar(USER?.name).color}
       {...other}
     >
-      {createAvatar(USER.displayName).name}
+      {createAvatar(USER?.name).name}
     </MAvatar>
   );
 }

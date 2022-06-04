@@ -1,9 +1,10 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import homeFill from "@iconify/icons-eva/home-fill";
 import personFill from "@iconify/icons-eva/person-fill";
 import settings2Fill from "@iconify/icons-eva/settings-2-fill";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 // material
 import {
   Button,
@@ -15,12 +16,13 @@ import {
 } from "@mui/material";
 // routes
 import { PATH_DASHBOARD } from "../../routes/paths";
-// hooks
-import useIsMountedRef from "../../hooks/useIsMountedRef";
 // components
 import MIconButton from "../../common/@mui-extend/MIconButton";
 import MyAvatar from "../../common/MyAvatar";
 import MenuPopover from "../../common/MenuPopover";
+//api
+import { getUser, logout } from "../../store/redux/slices/localStorageAuth";
+import { useGetAMQuery } from "../../store/redux/api/auth";
 
 const MENU_OPTIONS = [
   {
@@ -40,18 +42,12 @@ const MENU_OPTIONS = [
   },
 ];
 
-export const USER = {
-  displayName: "fahim",
-  email: "@g.com",
-  photoURL: "http:random.com",
-};
-
 export default function AccountPopover() {
   const anchorRef = useRef(null);
-  const navigate = useNavigate();
-
-  const isMountedRef = useIsMountedRef();
   const [open, setOpen] = useState(false);
+
+  const { _id } = useSelector(getUser);
+  const { data } = useGetAMQuery(_id);
 
   const handleOpen = () => {
     setOpen(true);
@@ -61,19 +57,7 @@ export default function AccountPopover() {
     setOpen(false);
   };
 
-  const logout = () => "logout";
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/");
-      if (isMountedRef.current) {
-        handleClose();
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -97,7 +81,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <MyAvatar />
+        <MyAvatar USER={data?.object} />
       </MIconButton>
 
       <MenuPopover
@@ -108,10 +92,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {USER.displayName}
+            {data?.object.name}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {USER.email}
+            {data?.object.email}
           </Typography>
         </Box>
 
@@ -144,7 +128,7 @@ export default function AccountPopover() {
             fullWidth
             color="inherit"
             variant="outlined"
-            onClick={handleLogout}
+            onClick={() => dispatch(logout())}
           >
             Logout
           </Button>

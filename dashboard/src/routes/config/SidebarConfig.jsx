@@ -28,15 +28,20 @@ const sidebarConfig = [
   },
 
   {
-    subheader: "management",
+    subheader: "user management",
     items: [
       {
-        title: "user",
-        path: PATH_DASHBOARD.user.root,
+        title: "Admin & Manager",
+        path: PATH_DASHBOARD.am.root,
+        icon: ICONS.user,
+        children: [{ title: "Register", path: PATH_DASHBOARD.am.register }],
+      },
+      {
+        title: "Consumer",
+        path: PATH_DASHBOARD.consumer.root,
         icon: ICONS.user,
         children: [
-          { title: "Admin & Manager", path: PATH_DASHBOARD.user.am },
-          { title: "Consumer", path: PATH_DASHBOARD.user.consumer },
+          { title: "Register", path: PATH_DASHBOARD.consumer.register },
         ],
       },
     ],

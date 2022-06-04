@@ -45,14 +45,6 @@ export default function Router() {
             </UserGuard>
           ),
         },
-        {
-          path: "register",
-          element: (
-            <UserGuard>
-              <Register />
-            </UserGuard>
-          ),
-        },
         { path: "reset-password", element: <ResetPassword /> },
       ],
     },
@@ -69,11 +61,20 @@ export default function Router() {
         { path: "/", element: <Navigate to="/dashboard" replace /> },
         { path: "dashboard", element: <GeneralEcommerce /> },
         {
-          path: "user",
+          path: "am",
           children: [
-            { path: "/user", element: <Navigate to="/user/am" replace /> },
-            { path: "am", element: <Register /> },
-            { path: "consumer", element: <Register /> },
+            { path: "/am", element: <Navigate to="/am/register" replace /> },
+            { path: "register", element: <CreateAm /> },
+          ],
+        },
+        {
+          path: "consumer",
+          children: [
+            {
+              path: "/consumer",
+              element: <Navigate to="/consumer/register" replace />,
+            },
+            { path: "register", element: <Login /> },
           ],
         },
       ],
@@ -98,9 +99,7 @@ export default function Router() {
 
 // Authentication
 const Login = Loadable(lazy(() => import("../pages/authentication/Login")));
-const Register = Loadable(
-  lazy(() => import("../pages/authentication/Register"))
-);
+
 const ResetPassword = Loadable(
   lazy(() => import("../pages/authentication/ResetPassword"))
 );
@@ -113,3 +112,8 @@ const ComingSoon = Loadable(lazy(() => import("../pages/temp/ComingSoon")));
 const Maintenance = Loadable(lazy(() => import("../pages/temp/Maintenance")));
 const Page500 = Loadable(lazy(() => import("../pages/temp/Page500")));
 const NotFound = Loadable(lazy(() => import("../pages/temp/Page404")));
+
+//page --am
+const CreateAm = Loadable(
+  lazy(() => import("../pages/users/adminAndManager/createAM"))
+);
