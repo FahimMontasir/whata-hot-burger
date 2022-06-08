@@ -79,9 +79,16 @@ const validateChangePass = (consumer) => {
   return schema.validate(consumer);
 };
 
+const validateId = (id) => {
+  const schema = Joi.object({
+    _id: Joi.objectId().required().label("invalid id"),
+  });
+  return schema.validate(id);
+};
 module.exports = {
   Consumer,
   validateConsumer,
   validateConsumerLogin,
   validateChangePass,
+  validateId,
 };

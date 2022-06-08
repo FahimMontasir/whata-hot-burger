@@ -6,7 +6,10 @@ const {
   validateAdminAndManager,
   validateAdminAndMLogin,
 } = require("../../models/user/adminAndManager");
-const { validateChangePass } = require("../../models/user/consumer");
+const {
+  validateChangePass,
+  validateId,
+} = require("../../models/user/consumer");
 //utils
 const generateJwt = require("../../helper/generateJwt");
 const generateHash = require("../../helper/generateHash");
@@ -105,6 +108,9 @@ router.patch("/changePass", [auth, manager], async (req, res) => {
 
 // attention! get admin/manager by id
 router.get("/:_id", [auth, manager], async (req, res) => {
+  const { error } = validateId({ _id: req.params._id });
+  if (error) return res.status(400).json({ message: error.message });
+
   const user = await AdminAndManager.findById(req.params._id);
 
   if (!user) return res.status(404).json({ message: "User not found" });

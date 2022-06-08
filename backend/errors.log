@@ -115,3 +115,16 @@ MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
     at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\index.js:9:24)
     at Module._compile (node:internal/modules/cjs/loader:1109:14)
 20:37:30 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
+22:00:50 [31merror[39m: Cast to ObjectId failed for value ":undefined" (type string) at path "_id" for model "AdminAndManager"
+22:01:07 [31merror[39m: Cast to ObjectId failed for value ":undefined" (type string) at path "_id" for model "AdminAndManager"
+22:02:00 [31merror[39m: Cast to ObjectId failed for value ":undefined" (type string) at path "_id" for model "AdminAndManager"
+22:02:23 [31merror[39m: Cast to ObjectId failed for value ":undefined" (type string) at path "_id" for model "AdminAndManager"
+22:02:49 [31merror[39m: Cast to ObjectId failed for value ":624c614cd3e46c7de91e307f" (type string) at path "_id" for model "AdminAndManager"
+22:03:03 [31merror[39m: Cast to ObjectId failed for value ":624c614cd3e46c7de91e307f" (type string) at path "_id" for model "AdminAndManager"
+22:09:41 [31merror[39m: Cast to ObjectId failed for value ":624c614cd3e46c7de91e307f" (type string) at path "_id" for model "AdminAndManager"
+22:10:07 [31merror[39m: Cast to ObjectId failed for value ":624c614cd3e46c7de91e307f" (type string) at path "_id" for model "AdminAndManager"
+22:11:41 [31merror[39m: Cast to ObjectId failed for value "624c614cd3e46c7de91e307" (type string) at path "_id" for model "AdminAndManager"
+22:12:02 [31merror[39m: Cast to ObjectId failed for value "624c614cd3e46c7de91e307g" (type string) at path "_id" for model "AdminAndManager"
+22:13:01 [31merror[39m: Cast to ObjectId failed for value ":624c614cd3e46c7de91e307f" (type string) at path "_id" for model "AdminAndManager"
+21:55:25 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
+23:09:40 [31merror[39m: Joi.any(...).max is not a function

@@ -58,12 +58,14 @@ const validateAdminAndManager = (adminAndManager) => {
   const schema = Joi.object({
     token: Joi.string(),
     type: Joi.string().max(10).required(),
-    managerialPosition: Joi.string().max(50),
+    managerialPosition: Joi.any(),
     name: Joi.string().min(3).max(50).required(),
-    contactNo: Joi.string().length(11).required(),
+    contactNo: Joi.string()
+      .regex(/(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/)
+      .required(),
     email: Joi.string().email().max(75).required(),
     password: Joi.string().min(6).max(50).required(),
-    photoUrl: Joi.string().max(255),
+    photoUrl: Joi.any(),
     dateOfBirth: Joi.string().max(20).required(),
   });
   return schema.validate(adminAndManager);
