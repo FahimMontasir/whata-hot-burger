@@ -163,7 +163,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         </Stack>
 
         {isCollapse ? (
-          <MyAvatar sx={{ mx: "auto", mb: 2 }} />
+          <MyAvatar sx={{ mx: "auto", mb: 2 }} USER={data?.object} />
         ) : (
           <Link
             underline="none"
