@@ -34,7 +34,10 @@ const sidebarConfig = [
         title: "Admin & Manager",
         path: PATH_DASHBOARD.am.root,
         icon: ICONS.user,
-        children: [{ title: "Register", path: PATH_DASHBOARD.am.register }],
+        children: [
+          { title: "Explore", path: PATH_DASHBOARD.am.explore },
+          { title: "Register", path: PATH_DASHBOARD.am.register },
+        ],
       },
       {
         title: "Consumer",

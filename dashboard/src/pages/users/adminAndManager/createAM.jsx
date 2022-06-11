@@ -7,13 +7,13 @@ import useSettings from "../../../hooks/useSettings";
 // components
 import Page from "../../../common/Page";
 import HeaderBreadcrumbs from "../../../common/HeaderBreadcrumbs";
-import AMForm from "./components/AMForm";
+import AMForm from "./components/form/AMForm";
 
 export default function CreateAm() {
   const { themeStretch } = useSettings();
 
   return (
-    <Page title="User: Create a new user | Minimal-UI">
+    <Page title="AM: Create a new manager">
       <Container maxWidth={themeStretch ? false : "lg"}>
         <HeaderBreadcrumbs
           heading={"Create a new user"}

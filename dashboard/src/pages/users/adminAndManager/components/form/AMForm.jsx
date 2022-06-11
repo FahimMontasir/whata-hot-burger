@@ -13,15 +13,15 @@ import {
   Alert,
 } from "@mui/material";
 // utils
-import { fData } from "../../../../utils/formatNumber";
+import { fData } from "../../../../../utils/formatNumber";
 //components
-import UploadAvatar from "../../../../common/UploadAvatar";
+import UploadAvatar from "../../../../../common/UploadAvatar";
 //hooks
-import useUploadImage from "../../../../hooks/useUploadImage";
+import useUploadImage from "../../../../../hooks/useUploadImage";
 //config
 import { AMSchema, getAMInitialValues } from "./AMForm.config";
 //api
-import { useRegisterMutation } from "../../../../store/redux/api/auth";
+import { useRegisterMutation } from "../../../../../store/redux/api/auth";
 
 AMForm.propTypes = {
   isEdit: PropTypes.bool,

@@ -17,6 +17,7 @@ export const PATH_DASHBOARD = {
   am: {
     root: "/am",
     register: "/am/register",
+    explore: "/am/explore",
   },
   consumer: {
     root: "/consumer",
