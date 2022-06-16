@@ -51,11 +51,11 @@ const Consumer = mongoose.model(
 
 const validateConsumer = (consumer) => {
   const schema = Joi.object({
-    token: Joi.string(),
+    token: Joi.any(),
     name: Joi.string().min(3).max(50).required(),
     email: Joi.string().email().max(75).required(),
     password: Joi.string().min(6).max(50).required(),
-    photoUrl: Joi.string().max(255),
+    photoUrl: Joi.any(),
     dateOfBirth: Joi.string().max(20).required(),
     gender: Joi.string().max(10).required(),
   });
@@ -73,22 +73,15 @@ const validateConsumerLogin = (consumer) => {
 const validateChangePass = (consumer) => {
   const schema = Joi.object({
     _id: Joi.objectId().required(),
-    oldPassword: Joi.string(),
+    oldPassword: Joi.any(),
     newPassword: Joi.string().min(6).max(50).required(),
   });
   return schema.validate(consumer);
 };
 
-const validateId = (id) => {
-  const schema = Joi.object({
-    _id: Joi.objectId().required().label("invalid id"),
-  });
-  return schema.validate(id);
-};
 module.exports = {
   Consumer,
   validateConsumer,
   validateConsumerLogin,
   validateChangePass,
-  validateId,
 };

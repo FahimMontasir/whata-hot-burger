@@ -6,13 +6,11 @@ const {
   validateAdminAndManager,
   validateAdminAndMLogin,
 } = require("../../models/user/adminAndManager");
-const {
-  validateChangePass,
-  validateId,
-} = require("../../models/user/consumer");
+const { validateChangePass } = require("../../models/user/consumer");
 //utils
 const generateJwt = require("../../helper/generateJwt");
 const generateHash = require("../../helper/generateHash");
+const { validateId } = require("../../helper/validate");
 //middlewares
 const auth = require("../../middlewares/auth");
 const admin = require("../../middlewares/auth/admin");

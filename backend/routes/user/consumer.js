@@ -10,6 +10,7 @@ const {
 //utils
 const generateJwt = require("../../helper/generateJwt");
 const generateHash = require("../../helper/generateHash");
+const { validateId } = require("../../helper/validate");
 //middlewares
 const auth = require("../../middlewares/auth");
 const admin = require("../../middlewares/auth/admin");
@@ -101,6 +102,9 @@ router.patch("/changePass", [auth, consumer], async (req, res) => {
 
 // attention! get consumer by id
 router.get("/:_id", [auth, consumer], async (req, res) => {
+  const { error } = validateId({ _id: req.params._id });
+  if (error) return res.status(400).json({ message: error.message });
+
   const consumer = await Consumer.findById(req.params._id);
 
   if (!consumer) return res.status(404).json({ message: "User not found" });
@@ -115,13 +119,7 @@ router.patch("/update", [auth, consumer], async (req, res) => {
 
   if (req.user.type === "admin") {
     consumer.set({
-      ..._.omit(req.body, [
-        "_id",
-        "password",
-        "type",
-        "updatedAt",
-        "createdAt",
-      ]),
+      ..._.omit(req.body, ["_id", "password", "updatedAt", "createdAt"]),
       updatedAt: Date.now(),
     });
     await consumer.save();
@@ -156,6 +154,53 @@ router.delete("/delete", [auth, admin], async (req, res) => {
   await consumer.remove();
 
   res.status(200).json({ text: "User Deleted successfully" });
+});
+
+//attention! get all consumer at a time
+router.get("/", [auth, admin], async (req, res) => {
+  const { pageNumber, pageSize } = req.query;
+
+  const limit = parseInt(pageSize);
+  const offset = (parseInt(pageNumber) - 1) * limit;
+
+  const users = await Consumer.find()
+    .skip(offset)
+    .limit(limit)
+    .sort({ createdAt: "desc" });
+
+  if (users.length === 0)
+    return res.status(404).json({ message: "User not found" });
+
+  res.status(200).json({
+    array: _.map(
+      users,
+      _.partialRight(_.pick, [
+        "_id",
+        "type",
+        "name",
+        "email",
+        "photoUrl",
+        "dateOfBirth",
+        "gender",
+        "createdAt",
+        "updatedAt",
+      ])
+    ),
+  });
+});
+
+//attention! get consumers by name | email
+router.get("/search/query", [auth, admin], async (req, res) => {
+  const { name, email } = req.query;
+
+  const users = await Consumer.find()
+    .or([{ name: { $regex: name, $options: "/.*.*/i" } }, { email }])
+    .sort({ createdAt: "desc" });
+
+  if (users.length === 0)
+    return res.status(404).json({ message: "No result found" });
+
+  res.status(200).json({ array: users });
 });
 
 module.exports = router;
