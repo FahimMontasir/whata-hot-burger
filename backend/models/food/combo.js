@@ -29,7 +29,6 @@ const Combo = mongoose.model(
       default: 0,
       max: 100,
     },
-    numberInStock: { type: Number, required: true },
     updateAt: {
       type: Date,
       default: Date.now,
@@ -44,7 +43,6 @@ const validateCombo = (combo) => {
     description: Joi.string().max(500).required(),
     items: Joi.array().required(),
     extraDiscountRate: Joi.number().max(100),
-    numberInStock: Joi.number().required(),
   });
   return schema.validate(combo);
 };

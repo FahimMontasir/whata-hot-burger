@@ -23,10 +23,13 @@
 2. Terms & condition
 3. about us
 4. Nutrition information and blog
-5. mail
-6. feedback (through mail also appears on app)
-7. fcm notification system
-8. call and chat support
+
+## app (will be added later)
+
+1. mail
+2. feedback (through mail also appears on app)
+3. fcm notification system
+4. call and chat support
 
 ## accounting for manager/accountant
 
