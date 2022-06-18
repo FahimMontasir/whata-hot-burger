@@ -11,27 +11,45 @@
 2. manager
 3. user
 
-## features (all are not available right now)
+## `Features`
 
-1. create account (separate api for admin/manager and user)
-2. login (separate api for admin/manager and user)
+## authentication
+
+1. create account
+2. login
 3. change password
-4. food
-5. food category/type
-6. combo/menu pack
-7. exclusive offers
-8. add to cart
-9. book a dine
-10. payment system
-11. invoice
-12. self pick-up
-13. order history
-14. explore menu (showing all types of food)
-15. feedback (through mail also appears on app)
-16. faq
-17. Terms & condition
-18. about us
-19. fcm notification system
-20. Nutrition information and blog
-21. call and chat support
-22. mail and kanban
+
+## food
+
+1. food (category to explore)
+2. combo/menu pack (category:exclusive offers/special/spicy)
+
+## purchaseAndPayment
+
+1. add to cart
+2. invoice(include: order history, payment system(stripe))
+3. book a dine
+
+## additional
+
+1. faq
+2. Terms & condition
+3. about us
+4. Nutrition information and blog
+
+## `Planned to implement later`
+
+## app
+
+1. mail
+2. feedback (through mail also appears on app)
+3. fcm notification system
+4. call and chat support
+
+## accounting for manager/accountant
+
+1. financial statement
+
+## management
+
+1. kanban
