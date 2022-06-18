@@ -5,11 +5,11 @@ const Cart = mongoose.model(
   "Cart",
   new mongoose.Schema({
     userId: {
-      type: String,
+      type: mongoose.Types.ObjectId,
       required: true,
     },
     foodId: {
-      type: String,
+      type: mongoose.Types.ObjectId,
       required: true,
     },
     qty: {

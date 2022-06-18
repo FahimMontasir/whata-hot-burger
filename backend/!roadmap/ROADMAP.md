@@ -1,6 +1,6 @@
 # features
 
-## authentication done
+## authentication
 
 1. create account
 2. login
@@ -24,7 +24,9 @@
 3. about us
 4. Nutrition information and blog
 
-## app (will be added later)
+## `Planned to implement later`
+
+## app
 
 1. mail
 2. feedback (through mail also appears on app)
@@ -34,4 +36,7 @@
 ## accounting for manager/accountant
 
 1. financial statement
-2. kanban
+
+## management
+
+1. kanban

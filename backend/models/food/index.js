@@ -20,7 +20,7 @@ const Product = mongoose.model(
       required: true,
     },
     category: {
-      type: String, //pizza,drink,dessert
+      type: [String], //["pizza","drink","dessert"] Model.find({ category: { "$in" : ["pizza"]} });
       required: true,
     },
     price: {
@@ -47,7 +47,7 @@ const validateProduct = (product) => {
     name: Joi.string().max(100).min(2).required(),
     description: Joi.string().max(500).required(),
     photoUrl: Joi.string().required(),
-    category: Joi.string().required(),
+    category: Joi.array().items(Joi.string().required()).required(),
     price: Joi.number().max(100000).required(),
     discountRate: Joi.number().max(100),
     size: Joi.any(),

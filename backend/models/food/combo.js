@@ -21,7 +21,7 @@ const Combo = mongoose.model(
       maxlength: 500,
     },
     items: {
-      type: [String],
+      type: [mongoose.Types.ObjectId],
       required: true,
     },
     extraDiscountRate: {
@@ -41,7 +41,7 @@ const validateCombo = (combo) => {
     photoUrl: Joi.string().required(),
     category: Joi.string().min(2).max(50).required(),
     description: Joi.string().max(500).required(),
-    items: Joi.array().required(),
+    items: Joi.array().items(Joi.objectId().required()).required(),
     extraDiscountRate: Joi.number().max(100),
   });
   return schema.validate(combo);
