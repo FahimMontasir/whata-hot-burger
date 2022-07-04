@@ -29,7 +29,7 @@ const Combo = mongoose.model(
       default: 0,
       max: 100,
     },
-    updateAt: {
+    updatedAt: {
       type: Date,
       default: Date.now,
     },

@@ -24,6 +24,10 @@ const FAQ = mongoose.model(
       maxlength: 500,
       required: true,
     },
+    isAdded: {
+      type: Boolean,
+      default: false,
+    },
   })
 );
 

@@ -20,9 +20,8 @@
 ## additional
 
 1. faq
-2. Terms & condition
-3. about us
-4. Nutrition information and blog
+2. Nutrition information and blog
+3. Terms and condition
 
 ## `Planned to implement later`
 

@@ -35,7 +35,7 @@ const Product = mongoose.model(
     },
     size: String, //small:0,medium:34,name:price
     numberInStock: { type: Number, required: true },
-    updateAt: {
+    updatedAt: {
       type: Date,
       default: Date.now,
     },

@@ -128,3 +128,33 @@ MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
 22:13:01 [31merror[39m: Cast to ObjectId failed for value ":624c614cd3e46c7de91e307f" (type string) at path "_id" for model "AdminAndManager"
 21:55:25 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
 23:09:40 [31merror[39m: Joi.any(...).max is not a function
+15:44:14 [31merror[39m: Cannot read property 'message' of undefined
+19:28:55 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
+12:52:53 [31merror[39m: uncaughtException: beverage is not defined
+ReferenceError: beverage is not defined
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\routes\food\index.js:30:1)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:7:17)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+13:40:42 [31merror[39m: uncaughtException: Unexpected token '['
+E:\mission-22\whata-hot-burger\backend\routes\food\combo.js:53
+    category[0]: "desc",
+            ^
+
+SyntaxError: Unexpected token '['
+    at Object.compileFunction (node:vm:353:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1039:15)
+    at Module._compile (node:internal/modules/cjs/loader:1073:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:8:15)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
