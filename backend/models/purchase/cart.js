@@ -14,8 +14,11 @@ const Cart = mongoose.model(
     },
     qty: {
       type: Number,
+      default: 1,
       required: true,
     },
+    size: { type: String, default: "standard:0" },
+    comboId: { type: String, default: "notACombo" },
     updatedAt: {
       type: Date,
       default: Date.now,
@@ -24,12 +27,27 @@ const Cart = mongoose.model(
 );
 
 const validateCart = (cart) => {
+  const schema = Joi.array().items(
+    Joi.object({
+      userId: Joi.objectId().required(),
+      foodId: Joi.objectId().required(),
+      qty: Joi.number().required(),
+      size: Joi.any(),
+      comboId: Joi.objectId().required(),
+    })
+  );
+  return schema.validate(cart);
+};
+
+const validateSingleCart = (cart) => {
   const schema = Joi.object({
     userId: Joi.objectId().required(),
     foodId: Joi.objectId().required(),
     qty: Joi.number().required(),
+    size: Joi.any(),
   });
+
   return schema.validate(cart);
 };
 
-module.exports = { Cart, validateCart };
+module.exports = { Cart, validateCart, validateSingleCart };

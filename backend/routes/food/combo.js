@@ -49,7 +49,10 @@ router.get("/:_id", async (req, res) => {
   const data = await Combo.findById(req.params._id);
   if (!data) return res.status(400).json({ message: "combo not found" });
 
-  const allFood = await Product.find({ _id: { $in: data.items } }).sort({
+  const allFood = await Product.find({
+    _id: { $in: data.items },
+    numberInStock: { $gt: 0 },
+  }).sort({
     category: "asc",
   });
   if (!allFood.length)

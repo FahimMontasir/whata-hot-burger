@@ -33,7 +33,7 @@ const Product = mongoose.model(
       default: 0,
       max: 100,
     },
-    size: String, //small:0,medium:34,name:price
+    size: { type: String, default: "standard:0" }, //small:0,medium:34,name:price
     numberInStock: { type: Number, required: true },
     updatedAt: {
       type: Date,

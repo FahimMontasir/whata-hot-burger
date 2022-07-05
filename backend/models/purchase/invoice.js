@@ -13,17 +13,7 @@ const Invoice = mongoose.model(
       required: true,
     },
     items: {
-      type: [
-        {
-          _id: mongoose.Types.ObjectId,
-          name: String,
-          photoUrl: String,
-          qty: Number,
-          price: Number,
-          discount: Number,
-          total: Number,
-        },
-      ],
+      type: Object,
       required: true,
     },
     paidAmount: {
@@ -44,19 +34,7 @@ const validateInvoice = (invoice) => {
   const schema = Joi.object({
     userId: Joi.objectId().required(),
     address: Joi.string().required(),
-    items: Joi.array()
-      .items(
-        Joi.object({
-          _id: Joi.objectId().required(),
-          name: Joi.string().required(),
-          photoUrl: Joi.string().required(),
-          qty: Joi.number().required(),
-          price: Joi.number().required(),
-          discount: Joi.number().required(),
-          total: Joi.number().required(),
-        })
-      )
-      .required(),
+    items: Joi.object().required(),
     paidAmount: Joi.number().required(),
     paymentStatus: Joi.object({
       Method: Joi.string().required(),

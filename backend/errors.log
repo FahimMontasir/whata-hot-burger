@@ -158,3 +158,13 @@ SyntaxError: Unexpected token '['
     at require (node:internal/modules/cjs/helpers:93:18)
     at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:8:15)
     at Module._compile (node:internal/modules/cjs/loader:1109:14)
+20:51:04 [31merror[39m: validateId is not defined
+20:53:13 [31merror[39m: Cannot read property 'length' of null
+21:36:47 [31merror[39m: foodId is not defined
+00:48:21 [31merror[39m: _.groupBy is not a function or its return value is not iterable
+00:55:48 [31merror[39m: _.groupBy is not a function or its return value is not iterable
+01:33:35 [31merror[39m: validateSingleCart is not defined
+11:15:06 [31merror[39m: Cart validation failed: comboId: Cast to ObjectId failed for value "notACombo" (type string) at path "comboId"
+12:13:03 [31merror[39m: Cart.set is not a function
+13:10:57 [31merror[39m: Cast to ObjectId failed for value "624c0d0ec3be358ffc87c23" (type string) at path "userId" for model "Invoice"
+13:23:28 [31merror[39m: validateId is not defined

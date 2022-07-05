@@ -32,11 +32,28 @@ router.get("/:_id", async (req, res) => {
 router.get("/", async (req, res) => {
   const category = req.query.category;
 
-  const data = await Product.find({ category: { $in: [category] } }).sort({
+  const data = await Product.find({
+    category: { $in: [category] },
+    numberInStock: { $gt: 0 },
+  }).sort({
     updatedAt: "desc",
   });
 
   if (!data.length) return res.status(400).json({ message: "Food not found" });
+
+  res.status(200).json({ array: data });
+});
+
+//attention! get out of stock food
+router.get("/out/ofStock", [auth, manager], async (req, res) => {
+  const data = await Product.find({
+    numberInStock: { $eq: 0 },
+  }).sort({
+    updatedAt: "desc",
+  });
+
+  if (!data.length)
+    return res.status(400).json({ message: "No out of stock food" });
 
   res.status(200).json({ array: data });
 });

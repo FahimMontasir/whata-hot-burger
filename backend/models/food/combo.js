@@ -24,7 +24,8 @@ const Combo = mongoose.model(
       type: [mongoose.Types.ObjectId],
       required: true,
     },
-    extraDiscountRate: {
+    uptoDiscountRate: {
+      // its just to show the upto discount of food
       type: Number,
       default: 0,
       max: 100,
@@ -42,7 +43,7 @@ const validateCombo = (combo) => {
     category: Joi.string().min(2).max(50).required(),
     description: Joi.string().max(500).required(),
     items: Joi.array().items(Joi.objectId().required()).required(),
-    extraDiscountRate: Joi.number().max(100),
+    uptoDiscountRate: Joi.number().max(100),
   });
   return schema.validate(combo);
 };
