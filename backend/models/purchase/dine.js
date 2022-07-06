@@ -23,6 +23,10 @@ const Dine = mongoose.model(
       type: Boolean,
       default: true,
     },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
+    },
   })
 );
 

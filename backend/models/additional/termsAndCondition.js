@@ -17,7 +17,7 @@ const TermsCondition = mongoose.model(
 
 const validateTermsCondition = (termsCondition) => {
   const schema = Joi.object({
-    content: Joi.string().min(5).max(50).required(),
+    content: Joi.string().required(),
   });
   return schema.validate(termsCondition);
 };

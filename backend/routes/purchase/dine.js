@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
   const dines = await Dine.find()
     .skip(offset)
     .limit(limit)
-    .sort({ createdAt: "desc" });
+    .sort({ updatedAt: "desc" });
 
   if (dines.length === 0)
     return res.status(404).json({ message: "dine not found" });
