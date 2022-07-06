@@ -8,6 +8,7 @@ const product = require("../routes/food");
 const combo = require("../routes/food/combo");
 const cart = require("../routes/purchase/cart");
 const invoice = require("../routes/purchase/invoice");
+const blog = require("../routes/additional/blog");
 //error handling
 const error = require("../middlewares/error");
 
@@ -21,6 +22,7 @@ module.exports = function (app) {
   app.use("/combo", combo);
   app.use("/cart", cart);
   app.use("/invoice", invoice);
+  app.use("/blog", blog);
 
   //positioned last
   app.use(error);

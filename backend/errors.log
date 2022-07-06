@@ -168,3 +168,59 @@ SyntaxError: Unexpected token '['
 12:13:03 [31merror[39m: Cart.set is not a function
 13:10:57 [31merror[39m: Cast to ObjectId failed for value "624c0d0ec3be358ffc87c23" (type string) at path "userId" for model "Invoice"
 13:23:28 [31merror[39m: validateId is not defined
+16:14:40 [31merror[39m: uncaughtException: Unexpected token ','
+E:\mission-22\whata-hot-burger\backend\routes\additional\blog.js:56
+    ),,
+      ^
+
+SyntaxError: Unexpected token ','
+    at Object.compileFunction (node:vm:353:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1039:15)
+    at Module._compile (node:internal/modules/cjs/loader:1073:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\startup\routes.js:11:14)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+16:31:38 [31merror[39m: Unexpected token } in JSON at position 96
+16:42:58 [31merror[39m: Cannot read property 'push' of undefined
+16:44:32 [31merror[39m: Cannot read property 'push' of undefined
+16:45:21 [31merror[39m: The field 'react' must be an array but is of type int in document {_id: ObjectId('62c55dc5854fd279fe7e2695')}
+16:47:06 [31merror[39m: Blog validation failed: react: Parameter "obj" to Document() must be an object, got 0
+16:48:09 [31merror[39m: Blog validation failed: react: Parameter "obj" to Document() must be an object, got 0
+16:49:21 [31merror[39m: Blog validation failed: react: Parameter "obj" to Document() must be an object, got 0
+16:51:17 [31merror[39m: Cannot read property 'push' of undefined
+16:52:13 [31merror[39m: The field 'react' must be an array but is of type int in document {_id: ObjectId('62c55dc5854fd279fe7e2695')}
+16:53:10 [31merror[39m: The field 'react' must be an array but is of type int in document {_id: ObjectId('62c55dc5854fd279fe7e2695')}
+16:54:27 [31merror[39m: Blog validation failed: react: Parameter "obj" to Document() must be an object, got 0
+16:55:09 [31merror[39m: Blog validation failed: react: Parameter "obj" to Document() must be an object, got 0
+16:58:15 [31merror[39m: Blog validation failed: react: Parameter "obj" to Document() must be an object, got 0
+17:00:00 [31merror[39m: Blog validation failed: react: Parameter "obj" to Document() must be an object, got 0
+17:02:06 [31merror[39m: Cannot read property 'push' of undefined
+17:03:09 [31merror[39m: uncaughtException: Unexpected token ','
+E:\mission-22\whata-hot-burger\backend\models\additional\blog.js:49
+    react: {[mongoose.Types.ObjectId], default: []},
+                                     ^
+
+SyntaxError: Unexpected token ','
+    at Object.compileFunction (node:vm:353:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1039:15)
+    at Module._compile (node:internal/modules/cjs/loader:1073:27)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)
+    at Module.load (node:internal/modules/cjs/loader:989:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:829:14)
+    at Module.require (node:internal/modules/cjs/loader:1013:19)
+    at require (node:internal/modules/cjs/helpers:93:18)
+    at Object.<anonymous> (E:\mission-22\whata-hot-burger\backend\routes\additional\blog.js:10:5)
+    at Module._compile (node:internal/modules/cjs/loader:1109:14)
+17:04:01 [31merror[39m: blog.react is not iterable
+17:06:46 [31merror[39m: Blog validation failed: react.0: Cast to [ObjectId] failed for value "[ 0 ]" (type string) at path "react.0"
+17:07:13 [31merror[39m: Unexpected token } in JSON at position 685
+17:07:19 [31merror[39m: Blog validation failed: react.0: Cast to [ObjectId] failed for value "[ 0 ]" (type string) at path "react.0"
+17:07:34 [31merror[39m: Blog validation failed: react.0: Cast to [ObjectId] failed for value "[ 0 ]" (type string) at path "react.0"
+17:08:54 [31merror[39m: Blog validation failed: react.0: Cast to [ObjectId] failed for value "[ 0 ]" (type string) at path "react.0"
+17:09:54 [31merror[39m: Blog validation failed: react.0: Cast to [ObjectId] failed for value "[ 0 ]" (type string) at path "react.0"
+17:25:25 [31merror[39m: The field 'react' must be an array but is of type int in document {_id: ObjectId('62c55f8b367f1f14c92d126f')}
+17:26:08 [31merror[39m: The field 'react' must be an array but is of type int in document {_id: ObjectId('62c55f8b367f1f14c92d126f')}

@@ -46,7 +46,10 @@ const Blog = mongoose.model(
         },
       ],
     },
-    react: Number,
+    react: {
+      type: [String],
+    },
+    reactLength: { type: Number, default: 0 },
     metaTitle: {
       type: String,
       minlength: 5,
@@ -62,6 +65,10 @@ const Blog = mongoose.model(
     metaKeywords: {
       type: [String],
       required: true,
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
     },
   })
 );
@@ -81,5 +88,14 @@ const validateBlog = (blog) => {
   });
   return schema.validate(blog);
 };
+const validateComment = (comment) => {
+  const schema = Joi.object({
+    _id: Joi.objectId().required(),
+    name: Joi.string().required(),
+    email: Joi.string().email().required(),
+    message: Joi.string().required(),
+  });
+  return schema.validate(comment);
+};
 
-module.exports = { Blog, validateBlog };
+module.exports = { Blog, validateBlog, validateComment };

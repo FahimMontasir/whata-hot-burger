@@ -14,19 +14,22 @@ const FAQ = mongoose.model(
       type: String,
       required: true,
     },
-    subject: {
+    question: {
       type: String,
       maxlength: 100,
       required: true,
     },
-    message: {
+    answer: {
       type: String,
       maxlength: 500,
-      required: true,
     },
     isAdded: {
       type: Boolean,
       default: false,
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
     },
   })
 );
@@ -35,8 +38,7 @@ const validateFAQ = (faq) => {
   const schema = Joi.object({
     name: Joi.string().min(5).max(50).required(),
     email: Joi.string().email().required(),
-    subject: Joi.string().max(100).required(),
-    message: Joi.string().max(500).required(),
+    question: Joi.string().max(100).required(),
   });
   return schema.validate(faq);
 };
