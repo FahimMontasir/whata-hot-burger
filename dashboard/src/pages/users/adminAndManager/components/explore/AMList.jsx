@@ -1,149 +1,169 @@
-import { useState } from "react";
-//mui
+import { useNavigate } from "react-router-dom";
 import {
-  Card,
-  Table,
-  Stack,
   Avatar,
-  TableRow,
+  Card,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  Table,
   TableBody,
   TableCell,
-  Typography,
   TableContainer,
-  TablePagination,
-  useTheme,
+  TableRow,
+  Typography,
 } from "@mui/material";
-
-import Scrollbar from "../../../../../common/Scrollbar";
-import Label from "../../../../../common/Label";
-import SearchNotFound from "../../../../../common/SearchNotFound";
-
+import { LoadingButton } from "@mui/lab";
+import { toast } from "react-toastify";
+//utils
+import { fDateTimeSuffix, fDate } from "../../../../../utils/formatTime";
+//api
 import {
+  useGetAllAMQuery,
+  useDeleteAMMutation,
+} from "../../../../../store/redux/api/am";
+//custom hook
+import useChangeList from "../../../../../hooks/useChangeList";
+// routes
+import { PATH_DASHBOARD } from "../../../../../routes/paths";
+//component
+import Scrollbar from "../../../../../common/Scrollbar";
+import {
+  NotFound,
   UserListHead,
-  UserListToolbar,
   UserMoreMenu,
 } from "../../../../../common/list";
+import ListSkeleton from "../../../../../common/skeleton/List";
+//config
+import { AM_TABLE_HEAD } from "./amList.config";
 
-const TABLE_HEAD = [
-  { id: "kd" },
-  { id: "name", label: "Name", alignRight: false },
-  { id: "company", label: "Company", alignRight: false },
-  { id: "role", label: "Role", alignRight: false },
-  { id: "isVerified", label: "Verified", alignRight: false },
-  { id: "status", label: "Status", alignRight: false },
-  { id: "time", label: "Time", alignRight: false },
-];
+const AmList = () => {
+  const { size, page, handleNext, handlePrevious, handleSize } =
+    useChangeList();
 
-export default function AMList() {
-  const theme = useTheme();
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [filterName, setFilterName] = useState("");
+  const { isSuccess, isFetching, data, isError, error } = useGetAllAMQuery({
+    pageNumber: page,
+    pageSize: size,
+  });
+  const [deleteAm] = useDeleteAMMutation();
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+  const navigate = useNavigate();
+
+  const handleAmDelete = (_id) => {
+    deleteAm({ _id: _id })
+      .unwrap()
+      .then((data) => toast.success(data.text))
+      .catch(() => toast.error("Delete failed"));
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const handleFilterByName = (event) => {
-    setFilterName(event.target.value);
-  };
-
-  const handleDeleteUser = () => {};
-
-  const emptyRows = true;
-
-  const isUserNotFound = [].length === 0;
   return (
-    <Card>
-      <UserListToolbar
-        numSelected={[].length}
-        filterName={filterName}
-        onFilterName={handleFilterByName}
-      />
+    <Card sx={{ p: 2 }}>
+      <Typography variant="h6" align="center">
+        Manager List
+      </Typography>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Stack direction="row" alignItems="center">
+          <LoadingButton onClick={handlePrevious} loading={isFetching}>
+            Previous
+          </LoadingButton>
+          <LoadingButton onClick={handleNext} loading={isFetching}>
+            Next
+          </LoadingButton>
 
+          <Typography variant="caption" sx={{ px: 1, color: "GrayText" }}>
+            Page No. {page}
+          </Typography>
+        </Stack>
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="size-select-am">Number of List</InputLabel>
+          <Select
+            labelId="size-select-am"
+            id="size-select-am"
+            value={size}
+            label="Number of List"
+            onChange={handleSize}
+          >
+            <MenuItem value={5}>05</MenuItem>
+            <MenuItem value={10}>10</MenuItem>
+            <MenuItem value={30}>30</MenuItem>
+            <MenuItem value={50}>50</MenuItem>
+          </Select>
+        </FormControl>
+      </Stack>
+      {isFetching && (
+        <Stack alignItems="center">
+          <ListSkeleton size={{ sm: 310, md: 950, arr: size, skh: 55 }} />
+        </Stack>
+      )}
       <Scrollbar>
-        <TableContainer sx={{ minWidth: 800 }}>
+        <TableContainer sx={{ mt: 2 }}>
           <Table>
-            <UserListHead headLabel={TABLE_HEAD} />
-            <TableBody>
-              {[{}].map((row) => {
-                const {
-                  id,
-                  name,
-                  role,
-                  status,
-                  company,
-                  avatarUrl,
-                  isVerified,
-                } = row;
+            {isSuccess && !isFetching && (
+              <>
+                <UserListHead headLabel={AM_TABLE_HEAD} />
 
-                return (
-                  <TableRow hover key={id} tabIndex={-1} role="checkbox">
-                    <TableCell component="th" scope="row" padding="none">
-                      <Stack direction="row" alignItems="center" spacing={2}>
-                        <Avatar alt={name} src={avatarUrl} />
-                        <Typography variant="subtitle2" noWrap>
-                          {name}
-                        </Typography>
-                      </Stack>
-                    </TableCell>
-                    <TableCell align="left">{company}</TableCell>
-                    <TableCell align="left">{role}</TableCell>
-                    <TableCell align="left">
-                      {isVerified ? "Yes" : "No"}
-                    </TableCell>
-                    <TableCell align="left">
-                      <Label
-                        variant={
-                          theme.palette.mode === "light" ? "ghost" : "filled"
-                        }
-                        color={(status === "banned" && "error") || "success"}
-                      >
-                        {status}
-                      </Label>
-                    </TableCell>
+                <TableBody>
+                  {data.array.map((row) => {
+                    const {
+                      _id,
+                      name,
+                      photoUrl,
+                      email,
+                      contactNo,
+                      type,
+                      managerialPosition,
+                      dateOfBirth,
+                      createdAt,
+                      updatedAt,
+                    } = row;
 
-                    <TableCell align="right">
-                      <UserMoreMenu
-                        onDelete={() => handleDeleteUser(id)}
-                        userName={name}
-                      />
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-            {isUserNotFound && (
-              <TableBody>
-                <TableRow>
-                  <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                    <SearchNotFound searchQuery={filterName} />
-                  </TableCell>
-                </TableRow>
-              </TableBody>
+                    return (
+                      <TableRow hover key={_id}>
+                        <TableCell align="center">
+                          <UserMoreMenu
+                            onDelete={() => handleAmDelete(_id)}
+                            navigateWithData={() =>
+                              navigate(PATH_DASHBOARD.am.register, {
+                                state: row,
+                              })
+                            }
+                          />
+                        </TableCell>
+                        <TableCell component="th" scope="row" padding="none">
+                          <Stack
+                            direction="row"
+                            alignItems="center"
+                            spacing={2}
+                          >
+                            <Avatar alt={name} src={photoUrl} />
+                            <Typography variant="subtitle2" noWrap>
+                              {name}
+                            </Typography>
+                          </Stack>
+                        </TableCell>
+                        <TableCell align="left">{email}</TableCell>
+                        <TableCell align="left">{contactNo}</TableCell>
+                        <TableCell align="left">{type}</TableCell>
+                        <TableCell align="left">{managerialPosition}</TableCell>
+                        <TableCell align="left">{fDate(dateOfBirth)}</TableCell>
+                        <TableCell align="left">
+                          {fDateTimeSuffix(createdAt)}
+                        </TableCell>
+                        <TableCell align="left">
+                          {fDateTimeSuffix(updatedAt)}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </>
             )}
           </Table>
+          {isError && <NotFound message={error.data.message} />}
         </TableContainer>
       </Scrollbar>
-
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
     </Card>
   );
-}
+};
+export default AmList;

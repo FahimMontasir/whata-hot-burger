@@ -13,11 +13,12 @@ export const AMSchema = Yup.object().shape({
     .required("Phone number is required"),
   type: Yup.string("type is invalid").max(10).required("Type is required"),
   managerialPosition: Yup.string("Invalid managerial position").max(50),
-  dateOfBirth: Yup.string().max(20).required("Date of birth is required"),
+  dateOfBirth: Yup.date().required("Date of birth is required"),
 });
 
 export const getAMInitialValues = (currentUser) => {
   return {
+    _id: currentUser?._id,
     photoUrl: currentUser?.photoUrl || "",
     name: currentUser?.name || "",
     email: currentUser?.email || "",
@@ -25,6 +26,6 @@ export const getAMInitialValues = (currentUser) => {
     contactNo: currentUser?.contactNo || "",
     type: currentUser?.type || "",
     managerialPosition: currentUser?.managerialPosition || "",
-    dateOfBirth: currentUser?.dateOfBirth || "",
+    dateOfBirth: currentUser?.dateOfBirth || null,
   };
 };

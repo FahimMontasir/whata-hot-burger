@@ -22,7 +22,7 @@ import MyAvatar from "../../common/MyAvatar";
 import MenuPopover from "../../common/MenuPopover";
 //api
 import { getUser, logout } from "../../store/redux/slices/localStorageAuth";
-import { useGetAMQuery } from "../../store/redux/api/auth";
+import { useGetAMQuery } from "../../store/redux/api/am";
 
 const MENU_OPTIONS = [
   {

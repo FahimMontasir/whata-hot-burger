@@ -1,23 +1,27 @@
 import { format, getTime, formatDistanceToNow } from "date-fns";
 
 export function fDate(date) {
-  return format(new Date(date), "dd MMMM yyyy");
+  return date ? format(new Date(date), "dd MMM yyyy") : "no date found";
 }
 
 export function fDateTime(date) {
-  return format(new Date(date), "dd MMM yyyy HH:mm");
+  return date ? format(new Date(date), "dd MMM yyyy HH:mm") : "no date found";
 }
 
 export function fTimestamp(date) {
-  return getTime(new Date(date));
+  return date ? getTime(new Date(date)) : "no date found";
 }
 
 export function fDateTimeSuffix(date) {
-  return format(new Date(date), "dd/MM/yyyy hh:mm p");
+  return date
+    ? format(new Date(date), "dd/MM/yyyy hh:mm aaaa")
+    : "no date found";
 }
 
 export function fToNow(date) {
-  return formatDistanceToNow(new Date(date), {
-    addSuffix: true,
-  });
+  return date
+    ? formatDistanceToNow(new Date(date), {
+        addSuffix: true,
+      })
+    : "no date found";
 }

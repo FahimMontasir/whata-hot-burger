@@ -1,6 +1,6 @@
 import { mainApi } from "./index";
 
-const authApi = mainApi.injectEndpoints({
+const amApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (data) => ({
@@ -8,6 +8,7 @@ const authApi = mainApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: (result) => (result ? ["am"] : null),
     }),
 
     login: builder.mutation({
@@ -32,6 +33,7 @@ const authApi = mainApi.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: (result) => (result ? ["am"] : null),
     }),
 
     deleteAM: builder.mutation({
@@ -40,6 +42,7 @@ const authApi = mainApi.injectEndpoints({
         method: "DELETE",
         body: data,
       }),
+      invalidatesTags: (result) => (result ? ["am"] : null),
     }),
 
     getAM: builder.query({
@@ -49,6 +52,7 @@ const authApi = mainApi.injectEndpoints({
     getAllAM: builder.query({
       query: ({ pageNumber, pageSize }) =>
         `/am?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+      providesTags: ["am"],
     }),
 
     searchAM: builder.query({
@@ -68,4 +72,4 @@ export const {
   useGetAMQuery,
   useGetAllAMQuery,
   useSearchAMQuery,
-} = authApi;
+} = amApi;

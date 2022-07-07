@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 // material
 import { Container } from "@mui/material";
 // routes
@@ -10,21 +11,32 @@ import HeaderBreadcrumbs from "../../../common/HeaderBreadcrumbs";
 import AMForm from "./components/form/AMForm";
 
 export default function CreateAm() {
+  const { state } = useLocation();
+
   const { themeStretch } = useSettings();
 
   return (
-    <Page title="AM: Create a new manager">
+    <Page
+      title={state ? `AM: Update ${state.name}` : "AM: Create a new manager"}
+    >
       <Container maxWidth={themeStretch ? false : "lg"}>
         <HeaderBreadcrumbs
-          heading={"Create a new user"}
+          heading={
+            state
+              ? `Update user by this email:${state?.email}`
+              : "Create a new user"
+          }
           links={[
             { name: "Dashboard", href: PATH_DASHBOARD.root },
             { name: "Admin & Manager", href: PATH_DASHBOARD.am.root },
-            { name: "Register" },
+            { name: state ? "Update" : "Register" },
           ]}
         />
 
-        <AMForm />
+        <AMForm
+          currentUser={state ? { ...state, password: "bypassPass" } : undefined}
+          isEdit={state ? true : false}
+        />
       </Container>
     </Page>
   );

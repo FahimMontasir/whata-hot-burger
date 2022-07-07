@@ -12,6 +12,8 @@ import {
   FormHelperText,
   Alert,
 } from "@mui/material";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { toast } from "react-toastify";
 // utils
 import { fData } from "../../../../../utils/formatNumber";
 //components
@@ -21,7 +23,10 @@ import useUploadImage from "../../../../../hooks/useUploadImage";
 //config
 import { AMSchema, getAMInitialValues } from "./AMForm.config";
 //api
-import { useRegisterMutation } from "../../../../../store/redux/api/auth";
+import {
+  useRegisterMutation,
+  useUpdateAMMutation,
+} from "../../../../../store/redux/api/am";
 
 AMForm.propTypes = {
   isEdit: PropTypes.bool,
@@ -30,18 +35,48 @@ AMForm.propTypes = {
 
 export default function AMForm({ isEdit, currentUser }) {
   const { uploading, uploadImage } = useUploadImage();
+
   const [register, { isError, error, isSuccess, isLoading }] =
     useRegisterMutation();
+
+  const [
+    updateAM,
+    {
+      isError: isErrorU,
+      error: errorU,
+      isSuccess: isSuccessU,
+      isLoading: isLoadingU,
+    },
+  ] = useUpdateAMMutation();
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: getAMInitialValues(currentUser),
     validationSchema: AMSchema,
     onSubmit: (values, { resetForm, setErrors }) => {
-      register(values)
-        .unwrap()
-        .then(() => resetForm())
-        .catch((error) => setErrors(error));
+      if (isEdit) {
+        updateAM(values)
+          .unwrap()
+          .then(() => {
+            resetForm();
+            toast.success("User updated successfully!");
+          })
+          .catch((error) => {
+            setErrors(error);
+            toast.error("Some error occurred!");
+          });
+      } else {
+        register(values)
+          .unwrap()
+          .then(() => {
+            resetForm();
+            toast.success("User registered successfully!");
+          })
+          .catch((error) => {
+            setErrors(error);
+            toast.error("Some error occurred!");
+          });
+      }
     },
   });
 
@@ -124,13 +159,15 @@ export default function AMForm({ isEdit, currentUser }) {
                   />
                 </Stack>
 
-                <TextField
-                  fullWidth
-                  label="Password"
-                  {...getFieldProps("password")}
-                  error={Boolean(touched.password && errors.password)}
-                  helperText={touched.password && errors.password}
-                />
+                {!isEdit && (
+                  <TextField
+                    fullWidth
+                    label="Password"
+                    {...getFieldProps("password")}
+                    error={Boolean(touched.password && errors.password)}
+                    helperText={touched.password && errors.password}
+                  />
+                )}
 
                 <TextField
                   fullWidth
@@ -165,12 +202,20 @@ export default function AMForm({ isEdit, currentUser }) {
                   />
                 </Stack>
 
-                <TextField
-                  fullWidth
+                <DesktopDatePicker
                   label="Date of Birth"
-                  {...getFieldProps("dateOfBirth")}
-                  error={Boolean(touched.dateOfBirth && errors.dateOfBirth)}
-                  helperText={touched.dateOfBirth && errors.dateOfBirth}
+                  inputFormat="dd/MM/yyyy"
+                  value={values.dateOfBirth}
+                  onChange={(newValue) =>
+                    setFieldValue("dateOfBirth", newValue)
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      error={Boolean(touched.dateOfBirth && errors.dateOfBirth)}
+                      helperText={touched.dateOfBirth && errors.dateOfBirth}
+                    />
+                  )}
                 />
 
                 <Box
@@ -179,7 +224,7 @@ export default function AMForm({ isEdit, currentUser }) {
                   <LoadingButton
                     type="submit"
                     variant="contained"
-                    loading={isLoading}
+                    loading={isLoading || isLoadingU}
                   >
                     {!isEdit ? "Register Admin or Manager" : "Save Changes"}
                   </LoadingButton>
@@ -191,7 +236,15 @@ export default function AMForm({ isEdit, currentUser }) {
                   </Alert>
                 )}
                 {isSuccess && (
-                  <Alert severity="success">User created Successfully</Alert>
+                  <Alert severity="success">User created successfully!</Alert>
+                )}
+                {isErrorU && (
+                  <Alert severity="error">
+                    An error occurred: {errorU.data?.message}
+                  </Alert>
+                )}
+                {isSuccessU && (
+                  <Alert severity="success">User updated successfully!</Alert>
                 )}
               </Stack>
             </Card>

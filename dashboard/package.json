@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@date-io/date-fns": "^2.14.0",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@iconify/icons-ant-design": "^1.2.2",
@@ -12,6 +13,7 @@
     "@mui/icons-material": "^5.5.0",
     "@mui/lab": "^5.0.0-alpha.73",
     "@mui/material": "^5.5.0",
+    "@mui/x-date-pickers": "^5.0.0-beta.0",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -35,6 +37,7 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-scroll": "^1.8.6",
+    "react-toastify": "^9.0.5",
     "simplebar-react": "^2.3.6",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.3",

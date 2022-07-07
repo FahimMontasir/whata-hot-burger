@@ -1,4 +1,6 @@
 import React from "react";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import ThemeConfig from "./theme";
 import ThemePrimaryColor from "./common/ThemePrimaryColor";
 //
@@ -11,7 +13,9 @@ function App() {
     <ThemeConfig>
       <ThemePrimaryColor>
         <Settings />
-        <Router />
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <Router />
+        </LocalizationProvider>
       </ThemePrimaryColor>
     </ThemeConfig>
   );

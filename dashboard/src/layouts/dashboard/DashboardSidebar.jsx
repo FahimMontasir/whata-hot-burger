@@ -28,7 +28,7 @@ import MHidden from "../../common/@mui-extend/MHidden";
 import sidebarConfig from "../../routes/config/SidebarConfig";
 //api
 import { getUser } from "../../store/redux/slices/localStorageAuth";
-import { useGetAMQuery } from "../../store/redux/api/auth";
+import { useGetAMQuery } from "../../store/redux/api/am";
 
 //styled components
 const DRAWER_WIDTH = 280;

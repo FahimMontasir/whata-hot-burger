@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import editFill from "@iconify/icons-eva/edit-fill";
-import { Link as RouterLink } from "react-router-dom";
 import trash2Outline from "@iconify/icons-eva/trash-2-outline";
 import moreVerticalFill from "@iconify/icons-eva/more-vertical-fill";
 // material
@@ -13,15 +12,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-// routes
-import { PATH_DASHBOARD } from "../../routes/paths";
 
 UserMoreMenu.propTypes = {
-  onDelete: PropTypes.func,
-  userName: PropTypes.string,
+  onDelete: PropTypes.func.isRequired,
+  navigateWithData: PropTypes.func.isRequired,
 };
 
-export default function UserMoreMenu({ onDelete, userName }) {
+export default function UserMoreMenu({ onDelete, navigateWithData }) {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -38,10 +35,10 @@ export default function UserMoreMenu({ onDelete, userName }) {
         PaperProps={{
           sx: { width: 200, maxWidth: "100%" },
         }}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
       >
-        <MenuItem onClick={onDelete} sx={{ color: "text.secondary" }}>
+        <MenuItem onClick={onDelete} sx={{ color: "error.light" }}>
           <ListItemIcon>
             <Icon icon={trash2Outline} width={24} height={24} />
           </ListItemIcon>
@@ -51,11 +48,7 @@ export default function UserMoreMenu({ onDelete, userName }) {
           />
         </MenuItem>
 
-        <MenuItem
-          component={RouterLink}
-          to={`${PATH_DASHBOARD.root}/am`}
-          sx={{ color: "text.secondary" }}
-        >
+        <MenuItem onClick={navigateWithData} sx={{ color: "success.main" }}>
           <ListItemIcon>
             <Icon icon={editFill} width={24} height={24} />
           </ListItemIcon>
