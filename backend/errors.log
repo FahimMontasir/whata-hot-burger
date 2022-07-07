@@ -224,3 +224,7 @@ SyntaxError: Unexpected token ','
 17:09:54 [31merror[39m: Blog validation failed: react.0: Cast to [ObjectId] failed for value "[ 0 ]" (type string) at path "react.0"
 17:25:25 [31merror[39m: The field 'react' must be an array but is of type int in document {_id: ObjectId('62c55f8b367f1f14c92d126f')}
 17:26:08 [31merror[39m: The field 'react' must be an array but is of type int in document {_id: ObjectId('62c55f8b367f1f14c92d126f')}
+16:40:38 [31merror[39m: Cast to ObjectId failed for value "slkfjalkdsj" (type string) at path "_id" for model "AdminAndManager"
+16:41:06 [31merror[39m: Cast to ObjectId failed for value "slkfjalkdsj" (type string) at path "_id" for model "AdminAndManager"
+16:42:07 [31merror[39m: Cast to ObjectId failed for value "slkfjalkdsj" (type string) at path "_id" for model "AdminAndManager"
+16:55:55 [31merror[39m: Cast to ObjectId failed for value "_id" (type string) at path "_id" for model "AdminAndManager"

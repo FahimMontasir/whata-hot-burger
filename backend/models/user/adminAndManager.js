@@ -42,8 +42,7 @@ const AdminAndManager = mongoose.model(
       maxlength: 255,
     },
     dateOfBirth: {
-      type: String,
-      maxlength: 20,
+      type: Date,
       required: true,
     },
     createdAt: {
@@ -66,7 +65,7 @@ const validateAdminAndManager = (adminAndManager) => {
     email: Joi.string().email().max(75).required(),
     password: Joi.string().min(6).max(50).required(),
     photoUrl: Joi.any(),
-    dateOfBirth: Joi.string().max(20).required(),
+    dateOfBirth: Joi.date().required(),
   });
   return schema.validate(adminAndManager);
 };
