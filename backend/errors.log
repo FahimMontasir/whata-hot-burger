@@ -228,3 +228,4 @@ SyntaxError: Unexpected token ','
 16:41:06 [31merror[39m: Cast to ObjectId failed for value "slkfjalkdsj" (type string) at path "_id" for model "AdminAndManager"
 16:42:07 [31merror[39m: Cast to ObjectId failed for value "slkfjalkdsj" (type string) at path "_id" for model "AdminAndManager"
 16:55:55 [31merror[39m: Cast to ObjectId failed for value "_id" (type string) at path "_id" for model "AdminAndManager"
+17:03:07 [31merror[39m: $regex has to be a string

@@ -199,7 +199,7 @@ router.get("/search/query", [auth, admin], async (req, res) => {
   const users = await AdminAndManager.find()
     .or([
       { contactNo },
-      { name: { $regex: name, $options: "/.*.*/i" } },
+      { name: { $regex: name || "121lkdjf2424lk", $options: "/.*.*/i" } },
       { email },
     ])
     .sort({ createdAt: "desc" });

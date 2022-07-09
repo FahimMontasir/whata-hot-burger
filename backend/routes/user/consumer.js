@@ -194,7 +194,10 @@ router.get("/search/query", [auth, admin], async (req, res) => {
   const { name, email } = req.query;
 
   const users = await Consumer.find()
-    .or([{ name: { $regex: name, $options: "/.*.*/i" } }, { email }])
+    .or([
+      { name: { $regex: name || "121lkdjf2424lk", $options: "/.*.*/i" } },
+      { email },
+    ])
     .sort({ createdAt: "desc" });
 
   if (users.length === 0)
