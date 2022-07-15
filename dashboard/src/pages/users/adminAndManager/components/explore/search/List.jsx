@@ -1,11 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   Avatar,
-  Card,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   Stack,
   Table,
   TableBody,
@@ -14,38 +10,20 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 import { toast } from "react-toastify";
-//utils
-import { fDateTimeSuffix, fDate } from "../../../../../utils/formatTime";
 //api
-import {
-  useGetAllAMQuery,
-  useDeleteAMMutation,
-} from "../../../../../store/redux/api/am";
-//custom hook
-import useChangeList from "../../../../../hooks/useChangeList";
-// routes
-import { PATH_DASHBOARD } from "../../../../../routes/paths";
+import { useDeleteAMMutation } from "../../../../../../store/redux/api/am";
 //component
-import Scrollbar from "../../../../../common/Scrollbar";
-import {
-  NotFound,
-  UserListHead,
-  UserMoreMenu,
-} from "../../../../../common/list";
-import ListSkeleton from "../../../../../common/skeleton/List";
+import ListSkeleton from "../../../../../../common/skeleton/List";
+import Scrollbar from "../../../../../../common/Scrollbar";
+import { UserListHead, UserMoreMenu } from "../../../../../../common/list";
 //config
-import { AM_TABLE_HEAD } from "./amList.config";
+import { AM_TABLE_HEAD } from "../amList.config";
+import { PATH_DASHBOARD } from "../../../../../../routes/paths";
+//utils
+import { fDate, fDateTimeSuffix } from "../../../../../../utils/formatTime";
 
-const AmList = () => {
-  const { size, page, handleNext, handlePrevious, handleSize } =
-    useChangeList();
-
-  const { isSuccess, isFetching, data, isError, error } = useGetAllAMQuery({
-    pageNumber: page,
-    pageSize: size,
-  });
+const List = ({ data, isFetching, isSuccess }) => {
   const [deleteAm] = useDeleteAMMutation();
 
   const navigate = useNavigate();
@@ -53,51 +31,19 @@ const AmList = () => {
   const handleAmDelete = (_id) => {
     deleteAm({ _id: _id })
       .unwrap()
-      .then((data) => toast.success(data.text))
+      .then((e) => toast.success(e.text))
       .catch(() => toast.error("Delete failed"));
   };
 
   return (
-    <Card sx={{ p: 2 }}>
-      <Typography variant="h6" align="center">
-        Manager List
-      </Typography>
-      <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Stack direction="row" alignItems="center">
-          <LoadingButton onClick={handlePrevious} loading={isFetching}>
-            Previous
-          </LoadingButton>
-          <LoadingButton onClick={handleNext} loading={isFetching}>
-            Next
-          </LoadingButton>
-
-          <Typography variant="caption" sx={{ px: 1, color: "GrayText" }}>
-            Page No. {page}
-          </Typography>
-        </Stack>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="size-select-am">Number of List</InputLabel>
-          <Select
-            labelId="size-select-am"
-            id="size-select-am"
-            value={size}
-            label="Number of List"
-            onChange={handleSize}
-          >
-            <MenuItem value={5}>05</MenuItem>
-            <MenuItem value={10}>10</MenuItem>
-            <MenuItem value={30}>30</MenuItem>
-            <MenuItem value={50}>50</MenuItem>
-          </Select>
-        </FormControl>
-      </Stack>
+    <>
       {isFetching && (
         <Stack alignItems="center">
-          <ListSkeleton size={{ sm: 310, md: 950, arr: size, skh: 55 }} />
+          <ListSkeleton size={{ sm: 310, md: 950, arr: 2, skh: 55 }} />
         </Stack>
       )}
       <Scrollbar>
-        <TableContainer sx={{ mt: 2 }}>
+        <TableContainer>
           <Table>
             {isSuccess && !isFetching && (
               <>
@@ -175,10 +121,15 @@ const AmList = () => {
               </>
             )}
           </Table>
-          {isError && <NotFound message={error.data.message} />}
         </TableContainer>
       </Scrollbar>
-    </Card>
+    </>
   );
 };
-export default AmList;
+export default List;
+
+List.propTypes = {
+  data: PropTypes.object,
+  isFetching: PropTypes.bool,
+  isSuccess: PropTypes.bool,
+};

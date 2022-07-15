@@ -58,6 +58,7 @@ const amApi = mainApi.injectEndpoints({
     searchAM: builder.query({
       query: ({ contactNo, name, email }) =>
         `/am/search/query?contactNo=${contactNo}&name=${name}&email=${email}`,
+      providesTags: ["am"],
     }),
   }),
   overrideExisting: false,

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import editFill from "@iconify/icons-eva/edit-fill";
+import openIcon from "@iconify/icons-eva/eye-outline";
 import trash2Outline from "@iconify/icons-eva/trash-2-outline";
 import moreVerticalFill from "@iconify/icons-eva/more-vertical-fill";
 // material
@@ -16,9 +17,14 @@ import {
 UserMoreMenu.propTypes = {
   onDelete: PropTypes.func.isRequired,
   navigateWithData: PropTypes.func.isRequired,
+  navigateOpen: PropTypes.func,
 };
 
-export default function UserMoreMenu({ onDelete, navigateWithData }) {
+export default function UserMoreMenu({
+  onDelete,
+  navigateWithData,
+  navigateOpen,
+}) {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,6 +63,17 @@ export default function UserMoreMenu({ onDelete, navigateWithData }) {
             primaryTypographyProps={{ variant: "body2" }}
           />
         </MenuItem>
+        {navigateOpen && (
+          <MenuItem onClick={navigateOpen} sx={{ color: "info.main" }}>
+            <ListItemIcon>
+              <Icon icon={openIcon} width={24} height={24} />
+            </ListItemIcon>
+            <ListItemText
+              primary="Open"
+              primaryTypographyProps={{ variant: "body2" }}
+            />
+          </MenuItem>
+        )}
       </Menu>
     </>
   );

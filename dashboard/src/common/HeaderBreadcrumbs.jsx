@@ -8,7 +8,7 @@ import MBreadcrumbs from "./@mui-extend/MBreadcrumbs";
 HeaderBreadcrumbs.propTypes = {
   links: PropTypes.array,
   action: PropTypes.node,
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   moreLink: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   sx: PropTypes.object,
 };
@@ -25,9 +25,11 @@ export default function HeaderBreadcrumbs({
     <Box sx={{ mb: 5, ...sx }}>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Box sx={{ flexGrow: 1 }}>
-          <Typography variant="h4" gutterBottom>
-            {heading}
-          </Typography>
+          {heading && (
+            <Typography variant="h4" gutterBottom>
+              {heading}
+            </Typography>
+          )}
           <MBreadcrumbs links={links} {...other} />
         </Box>
 

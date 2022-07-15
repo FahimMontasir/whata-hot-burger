@@ -66,6 +66,7 @@ export default function Router() {
             { path: "/am", element: <Navigate to="/am/explore" replace /> },
             { path: "explore", element: <ExploreAmPage /> },
             { path: "register", element: <CreateAm /> },
+            { path: "open", element: <OpenAm /> },
           ],
         },
         {
@@ -120,4 +121,7 @@ const CreateAm = Loadable(
 );
 const ExploreAmPage = Loadable(
   lazy(() => import("../pages/users/adminAndManager/exploreAM"))
+);
+const OpenAm = Loadable(
+  lazy(() => import("../pages/users/adminAndManager/openAm"))
 );

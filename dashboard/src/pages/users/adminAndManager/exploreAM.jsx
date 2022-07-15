@@ -11,6 +11,7 @@ import useSettings from "../../../hooks/useSettings";
 import Page from "../../../common/Page";
 import HeaderBreadcrumbs from "../../../common/HeaderBreadcrumbs";
 import AMList from "./components/explore/AMList";
+import SearchAM from "./components/explore/search/Box";
 
 export default function ExploreAmPage() {
   const { themeStretch } = useSettings();
@@ -36,6 +37,7 @@ export default function ExploreAmPage() {
             </Button>
           }
         />
+        <SearchAM />
         <AMList />
       </Container>
     </Page>
