@@ -44,6 +44,7 @@ const sidebarConfig = [
         path: PATH_DASHBOARD.consumer.root,
         icon: ICONS.user,
         children: [
+          { title: "Explore", path: PATH_DASHBOARD.consumer.explore },
           { title: "Register", path: PATH_DASHBOARD.consumer.register },
         ],
       },

@@ -74,9 +74,11 @@ export default function Router() {
           children: [
             {
               path: "/consumer",
-              element: <Navigate to="/consumer/register" replace />,
+              element: <Navigate to="/consumer/explore" replace />,
             },
-            { path: "register", element: <Login /> },
+            { path: "explore", element: <Explore /> },
+            { path: "register", element: <Create /> },
+            { path: "open", element: <OpenConsumer /> },
           ],
         },
       ],
@@ -124,4 +126,11 @@ const ExploreAmPage = Loadable(
 );
 const OpenAm = Loadable(
   lazy(() => import("../pages/users/adminAndManager/openAm"))
+);
+
+//page --conumer
+const Create = Loadable(lazy(() => import("../pages/users/consumer/create")));
+const Explore = Loadable(lazy(() => import("../pages/users/consumer/explore")));
+const OpenConsumer = Loadable(
+  lazy(() => import("../pages/users/consumer/openConsumer"))
 );

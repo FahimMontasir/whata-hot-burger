@@ -22,6 +22,8 @@ export const PATH_DASHBOARD = {
   },
   consumer: {
     root: "/consumer",
+    explore: "/consumer/explore",
     register: "/consumer/register",
+    open: "/consumer/open",
   },
 };

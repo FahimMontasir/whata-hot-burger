@@ -15,7 +15,7 @@ export const mainApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["am"],
+  tagTypes: ["am", "consumer"],
   keepUnusedDataFor: 1200,
   endpoints: () => ({}),
 });
