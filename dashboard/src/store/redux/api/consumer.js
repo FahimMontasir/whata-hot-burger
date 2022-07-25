@@ -2,7 +2,7 @@ import { mainApi } from "./index";
 
 const consumerApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
-    register: builder.mutation({
+    conRegister: builder.mutation({
       query: (data) => ({
         url: "/consumer/register",
         method: "POST",
@@ -19,7 +19,7 @@ const consumerApi = mainApi.injectEndpoints({
       }),
     }),
 
-    changePassword: builder.mutation({
+    conChangePassword: builder.mutation({
       query: (data) => ({
         url: "/consumer/changePass",
         method: "PATCH",
@@ -65,9 +65,9 @@ const consumerApi = mainApi.injectEndpoints({
 });
 
 export const {
-  useRegisterMutation,
+  useConRegisterMutation,
   useLoginMutation,
-  useChangePasswordMutation,
+  useConChangePasswordMutation,
   useUpdateConsumerMutation,
   useDeleteConsumerMutation,
   useGetConsumerQuery,

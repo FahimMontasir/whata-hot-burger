@@ -48,8 +48,8 @@ export default function OpenConsumer() {
           <HeaderBreadcrumbs
             links={[
               { name: "Dashboard", href: PATH_DASHBOARD.root },
-              { name: "Admin & Manager", href: PATH_DASHBOARD.am.root },
-              { name: state ? state.name : "Manager Account" },
+              { name: "Consumer", href: PATH_DASHBOARD.consumer.root },
+              { name: state ? state.name : "Consumer Account" },
             ]}
           />
           <Card

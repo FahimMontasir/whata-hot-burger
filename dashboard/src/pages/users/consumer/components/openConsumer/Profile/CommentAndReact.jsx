@@ -4,11 +4,11 @@ import { Card, Stack, Typography, Divider } from "@mui/material";
 //util
 import { fNumber } from "../../../../../../utils/formatNumber";
 
-FollowerReact.propTypes = {
+CommentReact.propTypes = {
   profile: PropTypes.object,
 };
 
-export default function FollowerReact({ profile = {} }) {
+export default function CommentReact({ profile = {} }) {
   const { follower = 1900, react = 10203 } = profile;
 
   return (
@@ -20,7 +20,7 @@ export default function FollowerReact({ profile = {} }) {
         <Stack width={1} textAlign="center">
           <Typography variant="h4">{fNumber(follower)}</Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            Follower
+            Comment
           </Typography>
         </Stack>
 

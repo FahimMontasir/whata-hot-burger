@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 // material
 import { Typography, Grid, Stack } from "@mui/material";
 //components
-import FollowerReact from "./FollowerAndReact";
+import CommentReact from "./CommentAndReact";
 import About from "./About";
 
 export default function Profile() {
@@ -12,13 +12,13 @@ export default function Profile() {
     <Grid container spacing={3}>
       <Grid item xs={12} md={4}>
         <Stack spacing={3}>
-          <FollowerReact />
+          <CommentReact />
           <About profile={state} />
         </Stack>
       </Grid>
 
       <Grid item xs={12} md={8}>
-        <Typography variant="h2">Personal blog will be here!</Typography>
+        <Typography variant="h2">Others will be here!</Typography>
       </Grid>
     </Grid>
   );

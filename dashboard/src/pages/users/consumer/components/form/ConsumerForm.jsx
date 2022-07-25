@@ -24,9 +24,9 @@ import useUploadImage from "../../../../../hooks/useUploadImage";
 import { AMSchema, getAMInitialValues } from "./consumerForm.config";
 //api
 import {
-  useRegisterMutation,
-  useUpdateAMMutation,
-} from "../../../../../store/redux/api/am";
+  useConRegisterMutation,
+  useUpdateConsumerMutation,
+} from "../../../../../store/redux/api/consumer";
 
 ConsumerForm.propTypes = {
   isEdit: PropTypes.bool,
@@ -37,17 +37,17 @@ export default function ConsumerForm({ isEdit, currentUser }) {
   const { uploading, uploadImage } = useUploadImage();
 
   const [register, { isError, error, isSuccess, isLoading }] =
-    useRegisterMutation();
+    useConRegisterMutation();
 
   const [
-    updateAM,
+    updateConsumer,
     {
       isError: isErrorU,
       error: errorU,
       isSuccess: isSuccessU,
       isLoading: isLoadingU,
     },
-  ] = useUpdateAMMutation();
+  ] = useUpdateConsumerMutation();
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -55,7 +55,7 @@ export default function ConsumerForm({ isEdit, currentUser }) {
     validationSchema: AMSchema,
     onSubmit: (values, { resetForm, setErrors }) => {
       if (isEdit) {
-        updateAM(values)
+        updateConsumer(values)
           .unwrap()
           .then(() => {
             resetForm();
@@ -169,54 +169,35 @@ export default function ConsumerForm({ isEdit, currentUser }) {
                   />
                 )}
 
-                <TextField
-                  fullWidth
-                  label="Contact Number"
-                  {...getFieldProps("contactNo")}
-                  error={Boolean(touched.contactNo && errors.contactNo)}
-                  helperText={touched.contactNo && errors.contactNo}
-                />
-
                 <Stack
                   direction={{ xs: "column", sm: "row" }}
                   spacing={{ xs: 3, sm: 2 }}
                 >
                   <TextField
                     fullWidth
-                    label="Type"
-                    {...getFieldProps("type")}
-                    error={Boolean(touched.type && errors.type)}
-                    helperText={touched.type && errors.type}
+                    label="Gender"
+                    {...getFieldProps("gender")}
+                    error={Boolean(touched.gender && errors.gender)}
+                    helperText={touched.gender && errors.gender}
                   />
-
-                  <TextField
-                    fullWidth
-                    label="Managerial Position"
-                    {...getFieldProps("managerialPosition")}
-                    error={Boolean(
-                      touched.managerialPosition && errors.managerialPosition
-                    )}
-                    helperText={
-                      touched.managerialPosition && errors.managerialPosition
+                  <DesktopDatePicker
+                    label="Date of Birth"
+                    inputFormat="dd/MM/yyyy"
+                    value={values.dateOfBirth}
+                    onChange={(newValue) =>
+                      setFieldValue("dateOfBirth", newValue)
                     }
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        error={Boolean(
+                          touched.dateOfBirth && errors.dateOfBirth
+                        )}
+                        helperText={touched.dateOfBirth && errors.dateOfBirth}
+                      />
+                    )}
                   />
                 </Stack>
-
-                <DesktopDatePicker
-                  label="Date of Birth"
-                  inputFormat="dd/MM/yyyy"
-                  value={values.dateOfBirth}
-                  onChange={(newValue) =>
-                    setFieldValue("dateOfBirth", newValue)
-                  }
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      error={Boolean(touched.dateOfBirth && errors.dateOfBirth)}
-                      helperText={touched.dateOfBirth && errors.dateOfBirth}
-                    />
-                  )}
-                />
 
                 <Box
                   sx={{ mt: 3, display: "flex", justifyContent: "flex-end" }}
@@ -226,7 +207,7 @@ export default function ConsumerForm({ isEdit, currentUser }) {
                     variant="contained"
                     loading={isLoading || isLoadingU}
                   >
-                    {!isEdit ? "Register Admin or Manager" : "Save Changes"}
+                    {!isEdit ? "Register Consumer" : "Save Changes"}
                   </LoadingButton>
                 </Box>
 

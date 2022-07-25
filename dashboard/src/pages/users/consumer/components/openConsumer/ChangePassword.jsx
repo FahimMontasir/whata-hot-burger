@@ -6,7 +6,7 @@ import { Stack, Card, TextField, Alert } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useSelector } from "react-redux";
 import { getUser } from "../../../../../store/redux/slices/localStorageAuth";
-import { useChangePasswordMutation } from "../../../../../store/redux/api/am";
+import { useConChangePasswordMutation } from "../../../../../store/redux/api/consumer";
 import { useLocation } from "react-router-dom";
 
 export default function ChangePassword() {
@@ -14,7 +14,7 @@ export default function ChangePassword() {
   const { state } = useLocation();
 
   const [changePass, { isError, error, isSuccess, isLoading }] =
-    useChangePasswordMutation();
+    useConChangePasswordMutation();
 
   let ChangePassWordSchema;
   if (type === "admin") {

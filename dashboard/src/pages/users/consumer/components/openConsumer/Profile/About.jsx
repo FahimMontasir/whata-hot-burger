@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import emailFill from "@iconify/icons-eva/email-fill";
-import roundBusinessCenter from "@iconify/icons-ic/round-business-center";
 // material
 import { Card, Typography, CardHeader, Stack, styled } from "@mui/material";
 //utils
@@ -20,8 +19,7 @@ About.propTypes = {
 };
 
 export default function About({ profile }) {
-  const { email, type, contactNo, dateOfBirth, managerialPosition, updatedAt } =
-    profile;
+  const { email, type, gender, dateOfBirth, updatedAt } = profile;
 
   return (
     <Card>
@@ -34,19 +32,12 @@ export default function About({ profile }) {
         </Stack>
 
         <Stack direction="row">
-          <IconStyle icon={roundBusinessCenter} />
-          <Typography variant="body2">
-            {managerialPosition} at WhataHotBurger
-          </Typography>
-        </Stack>
-
-        <Stack direction="row">
           <IconStyle icon={emailFill} />
           <Typography variant="body2">{email}</Typography>
         </Stack>
         <Stack direction="row">
           <IconStyle icon={emailFill} />
-          <Typography variant="body2">{contactNo}</Typography>
+          <Typography variant="body2">{gender}</Typography>
         </Stack>
         <Stack direction="row">
           <IconStyle icon={emailFill} />

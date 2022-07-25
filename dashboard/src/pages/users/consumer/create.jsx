@@ -8,7 +8,7 @@ import useSettings from "../../../hooks/useSettings";
 // components
 import Page from "../../../common/Page";
 import HeaderBreadcrumbs from "../../../common/HeaderBreadcrumbs";
-import AMForm from "./components/form/AMForm";
+import ConsumerForm from "./components/form/ConsumerForm";
 
 export default function Create() {
   const { state } = useLocation();
@@ -37,7 +37,7 @@ export default function Create() {
           ]}
         />
 
-        <AMForm
+        <ConsumerForm
           currentUser={state ? { ...state, password: "bypassPass" } : undefined}
           isEdit={state ? true : false}
         />
