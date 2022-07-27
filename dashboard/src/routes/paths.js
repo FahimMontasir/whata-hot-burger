@@ -26,4 +26,14 @@ export const PATH_DASHBOARD = {
     register: "/consumer/register",
     open: "/consumer/open",
   },
+  food: {
+    root: "/food",
+    explore: "/food/explore",
+    combo: "/food/combo",
+    cart: "/food/cart",
+    invoice: "/food/invoice",
+  },
+  dine: {
+    root: "/dine",
+  },
 };
