@@ -13,6 +13,8 @@ const getIcon = (name) => (
 const ICONS = {
   user: getIcon("ic_user"),
   ecommerce: getIcon("ic_ecommerce"),
+  food: getIcon("ic_food"),
+  dine: getIcon("ic_dine"),
 };
 
 const sidebarConfig = [
@@ -47,6 +49,28 @@ const sidebarConfig = [
           { title: "Explore", path: PATH_DASHBOARD.consumer.explore },
           { title: "Register", path: PATH_DASHBOARD.consumer.register },
         ],
+      },
+    ],
+  },
+
+  {
+    subheader: "food & dine management",
+    items: [
+      {
+        title: "Food",
+        path: PATH_DASHBOARD.food.root,
+        icon: ICONS.food,
+        children: [
+          { title: "Explore", path: PATH_DASHBOARD.food.explore },
+          { title: "Combo", path: PATH_DASHBOARD.food.combo },
+          { title: "Cart", path: PATH_DASHBOARD.food.cart },
+          { title: "Invoice", path: PATH_DASHBOARD.food.invoice },
+        ],
+      },
+      {
+        title: "Dine",
+        path: PATH_DASHBOARD.dine.root,
+        icon: ICONS.dine,
       },
     ],
   },
