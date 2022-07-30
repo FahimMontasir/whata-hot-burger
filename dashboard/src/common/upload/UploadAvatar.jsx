@@ -6,7 +6,7 @@ import roundAddAPhoto from "@iconify/icons-ic/round-add-a-photo";
 // material
 import { Box, Typography, Paper, alpha, styled } from "@mui/material";
 // utils
-import { fData } from "../utils/formatNumber";
+import { fData } from "../../utils/formatNumber";
 
 const RootStyle = styled("div")(({ theme }) => ({
   width: 144,

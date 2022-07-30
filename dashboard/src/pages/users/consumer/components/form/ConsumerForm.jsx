@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 // utils
 import { fData } from "../../../../../utils/formatNumber";
 //components
-import UploadAvatar from "../../../../../common/UploadAvatar";
+import UploadAvatar from "../../../../../common/upload/UploadAvatar";
 //hooks
 import useUploadImage from "../../../../../hooks/useUploadImage";
 //config
