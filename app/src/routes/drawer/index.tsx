@@ -14,7 +14,7 @@ import HomeStack from '../homeStack';
 import NotificationScreen from '../../screens/notification';
 import SettingScreen from '../../screens/settings';
 import PrivacyPolicyScreen from '../../screens/privacyPolicy';
-import AboutProttashaScreen from '../../screens/aboutProttasha';
+import AboutScreen from '../../screens/about';
 
 const Drawer = createDrawerNavigator();
 
@@ -57,8 +57,8 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
-        name="About Prottasha "
-        component={AboutProttashaScreen}
+        name="About"
+        component={AboutScreen}
         options={{
           drawerIcon: ({color}) => (
             <Ionicons name="information-circle" size={30} color={color} />

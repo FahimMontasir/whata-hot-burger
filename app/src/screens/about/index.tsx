@@ -1,11 +1,11 @@
 import React from 'react';
 import {Container, Typography} from '../../common';
 
-const AboutProttashaScreen = () => {
+const AboutScreen = () => {
   return (
     <Container>
-      <Typography h1>AboutProttashaScreen</Typography>
+      <Typography h1>AboutScreen</Typography>
     </Container>
   );
 };
-export default AboutProttashaScreen;
+export default AboutScreen;
