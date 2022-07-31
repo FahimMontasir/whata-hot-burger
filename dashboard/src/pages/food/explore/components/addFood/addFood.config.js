@@ -25,22 +25,17 @@ export const getFoodInitialValues = (currentUser) => {
     price: currentUser?.price || 0,
     discountRate: currentUser?.discountRate || 0,
     size: currentUser?.size || "",
-    numberInStock: currentUser?.number || 0,
+    numberInStock: currentUser?.numberInStock || 0,
   };
 };
 
 export const CATEGORY_OPTION = [
-  "Toy Story 3",
-  "Logan",
-  "Full Metal Jacket",
-  "Dangal",
-  "The Sting",
-  "2001: A Space Odyssey",
-  "Singin' in the Rain",
-  "Toy Story",
-  "Bicycle Thieves",
-  "The Kid",
-  "Inglourious Basterds",
-  "Snatch",
-  "3 Idiots",
+  "burgers",
+  "pizza",
+  "salads",
+  "sandwiches",
+  "sides",
+  "beverages",
 ];
+
+// more https://www.researchgate.net/figure/Fast-food-categorization-system-Fast-food-category-Description_tbl1_272751243

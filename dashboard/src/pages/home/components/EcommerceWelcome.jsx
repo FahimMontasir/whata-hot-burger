@@ -3,8 +3,6 @@ import { Typography, Button, Card, CardContent, styled } from "@mui/material";
 //
 import { MotivationIllustration } from "../../../assets/image";
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Card)(({ theme }) => ({
   boxShadow: "none",
   textAlign: "center",
@@ -18,8 +16,6 @@ const RootStyle = styled(Card)(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
-
 export default function EcommerceWelcome() {
   return (
     <RootStyle>
@@ -32,17 +28,23 @@ export default function EcommerceWelcome() {
       >
         <Typography gutterBottom variant="h4">
           Congratulations,
-          <br /> Fabiana Capmany!
+          <br /> Whata Hot Burger Company!
         </Typography>
 
         <Typography
           variant="body2"
           sx={{ pb: { xs: 3, xl: 5 }, maxWidth: 480, mx: "auto" }}
         >
-          Best seller of the month You have done 57.6% more sales today.
+          Contact with the owner of this company.
         </Typography>
 
-        <Button variant="contained">Go Now</Button>
+        <Button
+          variant="contained"
+          href="https://drive.google.com/file/d/1tcZ9B4RG2ApNT-t9ScFB1i-_5dRf-Iju/view?usp=sharing"
+          target="_blank"
+        >
+          Details
+        </Button>
       </CardContent>
 
       <MotivationIllustration

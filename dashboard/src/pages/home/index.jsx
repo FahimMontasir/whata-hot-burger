@@ -8,16 +8,8 @@ import {
   EcommerceWelcome,
   EcommerceProductSold,
   EcommerceSalesProfit,
-  EcommerceYearlySales,
-  EcommerceBestSalesman,
   EcommerceTotalBalance,
-  EcommerceSaleByGender,
-  EcommerceSalesOverview,
-  EcommerceLatestProducts,
-  EcommerceCurrentBalance,
 } from "./components";
-
-// ----------------------------------------------------------------------
 
 export default function GeneralEcommerce() {
   const { themeStretch } = useSettings();
@@ -38,30 +30,6 @@ export default function GeneralEcommerce() {
           </Grid>
           <Grid item xs={12} md={4}>
             <EcommerceSalesProfit />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <EcommerceSaleByGender />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <EcommerceYearlySales />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <EcommerceSalesOverview />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <EcommerceCurrentBalance />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <EcommerceBestSalesman />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <EcommerceLatestProducts />
           </Grid>
         </Grid>
       </Container>

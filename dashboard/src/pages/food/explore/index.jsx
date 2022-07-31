@@ -9,6 +9,7 @@ import Page from "../../../common/Page";
 import HeaderBreadcrumbs from "../../../common/HeaderBreadcrumbs";
 import DialogModal from "../../../common/DialogModal";
 import AddFood from "./components/addFood";
+import FoodList from "./components/explore/FoodLIst";
 
 export default function ExploreFood() {
   const { themeStretch } = useSettings();
@@ -29,7 +30,7 @@ export default function ExploreFood() {
             </DialogModal>
           }
         />
-        <h1>hello</h1>
+        <FoodList />
       </Container>
     </Page>
   );
