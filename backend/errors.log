@@ -229,3 +229,4 @@ SyntaxError: Unexpected token ','
 16:42:07 [31merror[39m: Cast to ObjectId failed for value "slkfjalkdsj" (type string) at path "_id" for model "AdminAndManager"
 16:55:55 [31merror[39m: Cast to ObjectId failed for value "_id" (type string) at path "_id" for model "AdminAndManager"
 17:03:07 [31merror[39m: $regex has to be a string
+12:44:17 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017

@@ -4,8 +4,8 @@ const Joi = require("joi");
 const Combo = mongoose.model(
   "Combo",
   new mongoose.Schema({
-    photoUrl: {
-      type: String,
+    photoUrls: {
+      type: [String],
       required: true,
     },
     category: {
@@ -39,7 +39,7 @@ const Combo = mongoose.model(
 
 const validateCombo = (combo) => {
   const schema = Joi.object({
-    photoUrl: Joi.string().required(),
+    photoUrls: Joi.array().items(Joi.string().required()).required(),
     category: Joi.string().min(2).max(50).required(),
     description: Joi.string().max(500).required(),
     items: Joi.array().items(Joi.objectId().required()).required(),
