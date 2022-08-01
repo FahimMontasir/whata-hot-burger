@@ -8,29 +8,29 @@ import useSettings from "../../../hooks/useSettings";
 import Page from "../../../common/Page";
 import HeaderBreadcrumbs from "../../../common/HeaderBreadcrumbs";
 import DialogModal from "../../../common/DialogModal";
-import AddFood from "./components/addFood";
-import FoodList from "./components/explore/FoodLIst";
+import AddCombo from "./components/addCombo";
+import ComboList from "./components/ComboList/ComboLIst";
 
-export default function ExploreFood() {
+export default function ComboPage() {
   const { themeStretch } = useSettings();
 
   return (
-    <Page title="Food">
+    <Page title="Combo">
       <Container maxWidth={themeStretch ? false : "lg"}>
         <HeaderBreadcrumbs
-          heading="Explore Food"
+          heading="Combo"
           links={[
             { name: "Dashboard", href: PATH_DASHBOARD.root },
             { name: "Food", href: PATH_DASHBOARD.food.root },
-            { name: "Explore Food" },
+            { name: "Combo" },
           ]}
           action={
-            <DialogModal title="Add Food" fullScreen>
-              <AddFood />
+            <DialogModal title="Add Combo" fullScreen>
+              <AddCombo />
             </DialogModal>
           }
         />
-        <FoodList />
+        <ComboList />
       </Container>
     </Page>
   );

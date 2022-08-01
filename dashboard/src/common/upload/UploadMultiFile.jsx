@@ -1,4 +1,3 @@
-import { isString } from "lodash";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import { useDropzone } from "react-dropzone";
@@ -143,8 +142,7 @@ export default function UploadMultiFile({
       <List disablePadding sx={{ ...(hasFile && { my: 3 }) }}>
         <AnimatePresence>
           {files.map((file) => {
-            const { name, size, preview } = file;
-            const key = isString(file) ? file : name;
+            const key = file;
 
             if (showPreview) {
               return (
@@ -166,7 +164,7 @@ export default function UploadMultiFile({
                   <Paper
                     variant="outlined"
                     component="img"
-                    src={isString(file) ? file : preview}
+                    src={file}
                     sx={{
                       width: "100%",
                       height: "100%",
@@ -214,8 +212,7 @@ export default function UploadMultiFile({
                   <Icon icon={fileFill} width={28} height={28} />
                 </ListItemIcon>
                 <ListItemText
-                  primary={isString(file) ? file : name}
-                  secondary={isString(file) ? "" : fData(size)}
+                  primary={file}
                   primaryTypographyProps={{ variant: "subtitle2" }}
                   secondaryTypographyProps={{ variant: "caption" }}
                 />
@@ -239,7 +236,6 @@ export default function UploadMultiFile({
           <Button onClick={onRemoveAll} sx={{ mr: 1.5 }}>
             Remove all
           </Button>
-          <Button variant="contained">Upload files</Button>
         </Stack>
       )}
     </Box>
