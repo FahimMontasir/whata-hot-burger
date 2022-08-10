@@ -230,3 +230,16 @@ SyntaxError: Unexpected token ','
 16:55:55 [31merror[39m: Cast to ObjectId failed for value "_id" (type string) at path "_id" for model "AdminAndManager"
 17:03:07 [31merror[39m: $regex has to be a string
 12:44:17 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
+15:08:43 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
+15:10:08 [31merror[39m: uncaughtException: EIO: i/o error, write
+Error: EIO: i/o error, write
+    at writeSync (node:fs:884:3)
+    at SyncWriteStream._write (node:internal/fs/sync_write_stream:25:3)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at SyncWriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/mnt/coding/whata-hot-burger/backend/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/mnt/coding/whata-hot-burger/backend/node_modules/winston-transport/index.js:82:19)
+    at doWrite (/mnt/coding/whata-hot-burger/backend/node_modules/readable-stream/lib/_stream_writable.js:409:139)
+    at writeOrBuffer (/mnt/coding/whata-hot-burger/backend/node_modules/readable-stream/lib/_stream_writable.js:398:5)
+    at Console.Writable.write (/mnt/coding/whata-hot-burger/backend/node_modules/readable-stream/lib/_stream_writable.js:307:11)
