@@ -11,10 +11,11 @@ require("./startup/validation")();
 require("./startup/routes")(app);
 
 const PORT = process.env.PORT || 5000;
-mongoose
-  .connect("mongodb://localhost/whb_db", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => app.listen(PORT, logger.info("Listening port " + PORT)))
-  .catch((err) => logger.error(err));
+// mongoose
+//   .connect("mongodb://localhost/whb_db", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => app.listen(PORT, logger.info("Listening port " + PORT)))
+//   .catch((err) => logger.error(err));
+app.listen(PORT, logger.info("Listening port " + PORT));
