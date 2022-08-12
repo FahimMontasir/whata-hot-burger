@@ -1,6 +1,10 @@
 version: "3.8"
 services:
   backend-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: production
     env_file:
       - ./.env
     command: npm start

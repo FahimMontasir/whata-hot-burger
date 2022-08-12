@@ -243,3 +243,5 @@ Error: EIO: i/o error, write
     at doWrite (/mnt/coding/whata-hot-burger/backend/node_modules/readable-stream/lib/_stream_writable.js:409:139)
     at writeOrBuffer (/mnt/coding/whata-hot-burger/backend/node_modules/readable-stream/lib/_stream_writable.js:398:5)
     at Console.Writable.write (/mnt/coding/whata-hot-burger/backend/node_modules/readable-stream/lib/_stream_writable.js:307:11)
+10:25:34 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
+10:37:29 [31merror[39m: connect ECONNREFUSED 172.29.0.2:2701

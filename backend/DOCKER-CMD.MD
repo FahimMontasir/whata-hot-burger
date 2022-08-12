@@ -46,7 +46,7 @@
 volume is used for data persistence
 
 1. docker volume ls
-2. docker volume prune
+2. docker volume prune //don't use it otherwise lose db data
 3. docker rm [container-name] -fv //this will also delete the associate volume
 
 ## docker compose
@@ -60,3 +60,18 @@ is used for simplify of volumes command using a docker-compose.yml file
 5. docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 6. docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 7. just change .dev to .prod to build production build and --build for update changes
+
+## database (mongodb)
+
+1. docker exec -it [mongo-c-name] /bin/sh
+2. mongo -u "fahim" -p "fahimkhan" //to connect mongo instance
+3. db //to see databases
+4. use whb_db //to create database
+5. show dbs //show only those who has at least one document
+6. db.[collection-name].insert({"name":"fahim"})
+7. db.[collection-name].find()
+8. docker exec -it [mongo-c] mongo -u "fahim" -p "fahimkhan" //quick way to get there
+9. use docker volume prune after running useful container
+10. docker inspect [c-name] //to get all info e.g networks info/ip networks -> ipAddress
+11. we don't need the ip address we can use service name e.g. mongo (look at compose file)
+12. docker logs [c-name] -f //like terminal logs

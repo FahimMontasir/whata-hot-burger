@@ -1,6 +1,10 @@
 version: "3.8"
 services:
   backend-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
     volumes:
       - ./:/backend
       - /backend/node_modules

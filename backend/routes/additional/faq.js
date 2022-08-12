@@ -19,9 +19,9 @@ router.post("/add", [auth, consumer], async (req, res) => {
 
 //attention!
 router.get("/", async (req, res) => {
-  // const faq = await FAQ.find({ isAdded: true }).sort({ updatedAt: "desc" });
+  const faq = await FAQ.find({ isAdded: true }).sort({ updatedAt: "desc" });
 
-  res.status(200).json({ array: "bye world!!! see you again bro" });
+  res.status(200).json({ array: faq });
 });
 
 //attention!
