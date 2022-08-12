@@ -16,3 +16,47 @@
 5. docker exec -it [container-name] /bin/sh //to see file system
 6. ls //list all the files
 7. exit
+8. docker logs [c-name] //to see logs
+
+## volumes for development
+
+-------------------------`for development process only`------------------------
+
+1. docker run -v [pathToFolderLocation]:[pathToFolderContainer] -p 3000:5000 -d
+   --name [c] [i] //to sync with local folder -v bind mode
+2. //click the file and copy path:(/mnt/coding/whata-hot-burger/backend/)
+   WORKDIR: /backend (it cant be only/) for container
+3. file location variable: $(pwd)
+4. docker run -v $(pwd):/backend -v /backend/node_modules -p 3:5 -d --name [c] [i]
+   //avoid node_modules from overriding in -v
+5. docker run -v $(pwd):/backend:ro -v /backend/node_modules -p 3:5 -d --name [c] [i]
+   //:ro means read only -> container cannot change source file
+
+---
+
+## env variables --env NAME=VALUE --env-file ./.env
+
+1. docker run -v $(pwd):/backend:ro -v /backend/node_modules --env PORT=4000 -p
+   3000:4000 -d --name backend-c backend
+2. printenv //from alpine to see all env variables
+3. --env-file [./.env] //load env from file
+
+## volumes
+
+volume is used for data persistence
+
+1. docker volume ls
+2. docker volume prune
+3. docker rm [container-name] -fv //this will also delete the associate volume
+
+## docker compose
+
+is used for simplify of volumes command using a docker-compose.yml file
+
+1. docker-compose up -d
+2. docker-compose down -v //also delete the volume
+3. docker-compose up -d --build //this fores a brand new build with new updates
+4. docker-compose stop
+5. docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+6. docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
+7. just change .dev to .prod to build production build and --build for update changes

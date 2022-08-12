@@ -4,7 +4,8 @@
   "description": "whata hot burger server",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "Fahim Montasir",

@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  backend-app:
+    volumes:
+      - ./:/backend
+      - /backend/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
