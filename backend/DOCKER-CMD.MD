@@ -76,3 +76,8 @@ is used for simplify of volumes command using a docker-compose.yml file
 10. docker inspect [c-name] //to get all info e.g networks info/ip networks -> ipAddress
 11. we don't need the ip address we can use service name e.g. mongo (look at compose file)
 12. docker logs [c-name] -f //like terminal logs
+
+## nginx for load balancing and scaling
+
+1. up -d -scale [service-name-node]=2 //will run 2 instances service-name e.g backend-app
+2. one node instance run after another

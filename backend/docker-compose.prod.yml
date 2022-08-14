@@ -1,5 +1,8 @@
 version: "3.8"
 services:
+  nginx:
+    ports:
+      - "80:80"
   backend-app:
     build:
       context: .
