@@ -2,5 +2,7 @@
   "jwtPrivateKey": "whb_jwtKey",
   "db_name": "whb_dbName",
   "db_user": "whb_dbUser",
-  "db_pass": "whb_dbPass"
+  "db_pass": "whb_dbPass",
+  "db_port": "whb_dbPort",
+  "db_ip": "whb_dbIp"
 }

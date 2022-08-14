@@ -60,6 +60,7 @@ is used for simplify of volumes command using a docker-compose.yml file
 5. docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 6. docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 7. just change .dev to .prod to build production build and --build for update changes
+8. -V //use capital V after up to renew new npm packages
 
 ## database (mongodb)
 

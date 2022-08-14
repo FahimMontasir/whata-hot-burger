@@ -245,3 +245,53 @@ Error: EIO: i/o error, write
     at Console.Writable.write (/mnt/coding/whata-hot-burger/backend/node_modules/readable-stream/lib/_stream_writable.js:307:11)
 10:25:34 [31merror[39m: connect ECONNREFUSED 127.0.0.1:27017
 10:37:29 [31merror[39m: connect ECONNREFUSED 172.29.0.2:2701
+06:15:35 [31merror[39m: Authentication failed.
+06:39:15 [31merror[39m: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+06:40:49 [31merror[39m: uncaughtException: Cannot find module 'express-session'
+Require stack:
+- /backend/index.js
+Error: Cannot find module 'express-session'
+Require stack:
+- /backend/index.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/backend/index.js:8:17)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+06:43:16 [31merror[39m: uncaughtException: Cannot find module 'express-session'
+Require stack:
+- /backend/index.js
+Error: Cannot find module 'express-session'
+Require stack:
+- /backend/index.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/backend/index.js:8:17)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+06:48:40 [31merror[39m: uncaughtException: Cannot find module 'express-session'
+Require stack:
+- /backend/index.js
+Error: Cannot find module 'express-session'
+Require stack:
+- /backend/index.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/backend/index.js:8:17)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)

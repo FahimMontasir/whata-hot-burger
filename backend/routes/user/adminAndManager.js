@@ -18,7 +18,7 @@ const manager = require("../../middlewares/auth/manager");
 
 const router = express.Router();
 
-//attention! creating an manager/admin
+//attention!creating an manager/admin
 router.post("/register", [auth, admin], async (req, res) => {
   const { error } = validateAdminAndManager(req.body);
   if (error) return res.status(400).json({ message: error.message });
@@ -44,7 +44,7 @@ router.post("/register", [auth, admin], async (req, res) => {
   user.password = await generateHash(password);
   await user.save();
 
-  res.status(201).json({ object: user });
+  res.status(201).json({ text: "Account created successfully!" });
 });
 
 //attention!

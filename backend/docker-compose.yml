@@ -6,6 +6,8 @@ services:
       - "3000:4000"
     environment:
       - PORT=4000
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo
@@ -14,6 +16,8 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=fahimkhan
     volumes:
       - mongo-db:/data/db
+  # redis:
+  #   image: redis
 
 volumes:
   mongo-db:

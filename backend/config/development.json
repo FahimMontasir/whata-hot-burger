@@ -1,6 +1,8 @@
 {
   "jwtPrivateKey": "abc*",
-  "db_name": "whata_db",
-  "db_user": "root",
-  "db_pass": "1234"
+  "db_name": "whb_db",
+  "db_user": "fahim",
+  "db_pass": "fahimkhan",
+  "db_port": "27017",
+  "db_ip": "mongo"
 }

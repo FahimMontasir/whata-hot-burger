@@ -22,6 +22,7 @@ const Consumer = mongoose.model(
       type: String,
       required: true,
       maxlength: 75,
+      unique: true,
     },
     password: {
       type: String,
