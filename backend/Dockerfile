@@ -9,6 +9,6 @@ RUN if [ "$NODE_ENV" = "development" ]; \
         fi
 
 COPY . ./
-ENV PORT 5000
+ENV PORT 4000
 EXPOSE $PORT
 CMD [ "npm", "start" ]
