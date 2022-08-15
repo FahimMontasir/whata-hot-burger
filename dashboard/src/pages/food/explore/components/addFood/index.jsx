@@ -133,11 +133,6 @@ export default function AddFood({ isEdit, currentProduct }) {
                   )}
                   <UploadSingleFile
                     maxSize={3145728}
-                    accept={{
-                      "image/png": [".png"],
-                      "image/jpg": [".jpg"],
-                      "image/jpeg": [".jpeg"],
-                    }}
                     file={values.photoUrl}
                     onDrop={(acceptedFiles) =>
                       uploadImage(acceptedFiles, setFieldValue)

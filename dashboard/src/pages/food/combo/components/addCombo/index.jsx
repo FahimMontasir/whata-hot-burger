@@ -6,12 +6,10 @@ import { LoadingButton } from "@mui/lab";
 import {
   styled,
   Card,
-  Chip,
   Grid,
   Stack,
   TextField,
   Typography,
-  Autocomplete,
   InputAdornment,
   Alert,
   Button,
@@ -125,11 +123,6 @@ export default function AddFood({ isEdit, currentProduct }) {
                   <UploadMultiFile
                     showPreview
                     maxSize={3145728}
-                    accept={{
-                      "image/png": [".png"],
-                      "image/jpg": [".jpg"],
-                      "image/jpeg": [".jpeg"],
-                    }}
                     files={values.photoUrls}
                     onDrop={(acceptedFiles) =>
                       handleDrop(acceptedFiles, setFieldValue)

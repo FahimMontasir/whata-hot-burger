@@ -97,11 +97,6 @@ export default function ConsumerForm({ isEdit, currentUser }) {
             <Card sx={{ py: 10, px: 3 }}>
               <Box sx={{ mb: 5 }}>
                 <UploadAvatar
-                  accept={{
-                    "image/png": [".png"],
-                    "image/jpg": [".jpg"],
-                    "image/jpeg": [".jpeg"],
-                  }}
                   file={values.photoUrl}
                   maxSize={31457280}
                   onDrop={(acceptedFiles) =>
