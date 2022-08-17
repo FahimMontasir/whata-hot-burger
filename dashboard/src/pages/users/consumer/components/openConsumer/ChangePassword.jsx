@@ -58,7 +58,7 @@ export default function ChangePassword() {
         })
         .catch((error) => {
           setErrors(error);
-          toast.error(error.data.message);
+          toast.error(error.data?.message);
         });
     },
   });
@@ -118,7 +118,10 @@ export default function ChangePassword() {
             </LoadingButton>
             {isError && (
               <Alert severity="error">
-                An error occurred: {error.data.message}
+                An error occurred:{" "}
+                {error.data
+                  ? error.data.message
+                  : "Check your network connection"}
               </Alert>
             )}
             {isSuccess && (

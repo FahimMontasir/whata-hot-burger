@@ -72,7 +72,15 @@ export default function SearchAM() {
           {isSuccess && !isFetching && (
             <List data={data} isFetching={isFetching} isSuccess={isSuccess} />
           )}
-          {isError && <NotFound message={error.data.message} />}
+          {isError && (
+            <NotFound
+              message={
+                error.data
+                  ? error.data.message
+                  : "Check your network connection"
+              }
+            />
+          )}
         </Card>
       </Form>
     </FormikProvider>

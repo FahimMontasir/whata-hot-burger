@@ -70,7 +70,13 @@ export default function LoginForm() {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
-          {isError && <Alert severity="error">{error.data.message}</Alert>}
+          {isError && (
+            <Alert severity="error">
+              {error.data
+                ? error.data.message
+                : "Check your network connection"}
+            </Alert>
+          )}
 
           <TextField
             fullWidth

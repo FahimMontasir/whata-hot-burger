@@ -2,6 +2,7 @@ import {
   Button,
   ButtonGroup,
   Card,
+  Checkbox,
   FormControl,
   InputLabel,
   MenuItem,
@@ -46,6 +47,7 @@ const ThumbImgStyle = styled("img")(({ theme }) => ({
 
 const FoodList = () => {
   const [category, setCategory] = useState("burgers");
+  const [toComboIds, setToComboIds] = useState([]);
 
   const { isSuccess, isFetching, data, isError, error } =
     useGetFoodByCategoryQuery(category);
@@ -57,7 +59,11 @@ const FoodList = () => {
       .then((data) => toast.success(data.text))
       .catch(() => toast.error("Delete failed"));
   };
-
+  const handleChange = (event, _id) => {
+    if (event.target.checked) setToComboIds((p) => [...p, _id]);
+    else setToComboIds(toComboIds.filter((v) => v !== _id));
+  };
+  console.log(toComboIds);
   return (
     <Card sx={{ p: 2 }}>
       <Typography variant="h6" align="center">
@@ -114,6 +120,13 @@ const FoodList = () => {
                             variant="outlined"
                             aria-label="outlined button group"
                           >
+                            <Checkbox
+                              checked={Boolean(
+                                toComboIds.find((id) => id === _id)
+                              )}
+                              onChange={(e) => handleChange(e, _id)}
+                              inputProps={{ "aria-label": "controlled" }}
+                            />
                             <Button onClick={() => handleDeleteFood(_id)}>
                               Delete
                             </Button>
@@ -150,7 +163,15 @@ const FoodList = () => {
               </>
             )}
           </Table>
-          {isError && <NotFound message={error.data.message} />}
+          {isError && (
+            <NotFound
+              message={
+                error.data
+                  ? error.data.message
+                  : "Check your network connection"
+              }
+            />
+          )}
         </TableContainer>
       </Scrollbar>
     </Card>

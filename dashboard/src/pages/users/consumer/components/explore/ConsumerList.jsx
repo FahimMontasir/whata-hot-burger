@@ -174,7 +174,15 @@ const ConsumerList = () => {
               </>
             )}
           </Table>
-          {isError && <NotFound message={error.data.message} />}
+          {isError && (
+            <NotFound
+              message={
+                error.data
+                  ? error.data.message
+                  : "Check your network connection"
+              }
+            />
+          )}
         </TableContainer>
       </Scrollbar>
     </Card>

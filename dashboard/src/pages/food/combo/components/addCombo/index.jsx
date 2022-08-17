@@ -13,6 +13,7 @@ import {
   InputAdornment,
   Alert,
   Button,
+  Box,
 } from "@mui/material";
 //config
 import {
@@ -94,7 +95,8 @@ export default function AddFood({ isEdit, currentProduct }) {
     getFieldProps,
   } = formik;
 
-  const { handleDrop, handleRemove, handleRemoveAll } = useUploadMultiImages();
+  const { uploading, handleDrop, urls, handleRemove, handleRemoveAll } =
+    useUploadMultiImages();
 
   return (
     <FormikProvider value={formik}>
@@ -114,23 +116,22 @@ export default function AddFood({ isEdit, currentProduct }) {
                 />
 
                 <div>
-                  <LabelStyle>Add Images</LabelStyle>
-                  {/* {uploading && (
+                  <LabelStyle>
+                    Add Images: {values.photoUrls.length} image added
+                  </LabelStyle>
+                  {uploading && (
                     <Box sx={{ width: "50%", margin: "auto" }}>
                       <Alert severity="warning">uploading...</Alert>
                     </Box>
-                  )} */}
+                  )}
                   <UploadMultiFile
                     showPreview
                     maxSize={3145728}
-                    files={values.photoUrls}
-                    onDrop={(acceptedFiles) =>
-                      handleDrop(acceptedFiles, setFieldValue)
-                    }
-                    onRemove={(file) =>
-                      handleRemove(file, values, setFieldValue)
-                    }
-                    onRemoveAll={() => handleRemoveAll(setFieldValue)}
+                    files={urls}
+                    onDrop={(acceptedFiles) => handleDrop(acceptedFiles)}
+                    onRemove={(file) => handleRemove(file)}
+                    onRemoveAll={() => handleRemoveAll()}
+                    onConfirm={() => setFieldValue("photoUrls", urls)}
                     error={Boolean(touched.photoUrls && errors.photoUrls)}
                   />
                 </div>

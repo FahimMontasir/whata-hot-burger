@@ -48,6 +48,7 @@ UploadMultiFile.propTypes = {
   files: PropTypes.array,
   onRemove: PropTypes.func,
   onRemoveAll: PropTypes.func,
+  onConfirm: PropTypes.func,
   sx: PropTypes.object,
 };
 
@@ -57,6 +58,7 @@ export default function UploadMultiFile({
   files,
   onRemove,
   onRemoveAll,
+  onConfirm,
   sx,
   ...other
 }) {
@@ -233,8 +235,11 @@ export default function UploadMultiFile({
 
       {hasFile && (
         <Stack direction="row" justifyContent="flex-end">
-          <Button onClick={onRemoveAll} sx={{ mr: 1.5 }}>
+          <Button color="warning" onClick={onRemoveAll} sx={{ mr: 1.5 }}>
             Remove all
+          </Button>
+          <Button color="success" onClick={onConfirm} sx={{ mr: 1.5 }}>
+            Confirm
           </Button>
         </Stack>
       )}
