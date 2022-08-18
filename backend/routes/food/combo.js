@@ -33,9 +33,9 @@ router.get("/", async (req, res) => {
       data,
       _.partialRight(_.pick, [
         "_id",
-        "photoUrl",
+        "photoUrls",
         "category",
-        "extraDiscountRate",
+        "uptoDiscountRate",
       ])
     ),
   });
