@@ -49,6 +49,7 @@ UploadMultiFile.propTypes = {
   onRemove: PropTypes.func,
   onRemoveAll: PropTypes.func,
   onConfirm: PropTypes.func,
+  onLoadImage: PropTypes.func,
   sx: PropTypes.object,
 };
 
@@ -59,6 +60,7 @@ export default function UploadMultiFile({
   onRemove,
   onRemoveAll,
   onConfirm,
+  onLoadImage,
   sx,
   ...other
 }) {
@@ -233,16 +235,17 @@ export default function UploadMultiFile({
         </AnimatePresence>
       </List>
 
-      {hasFile && (
-        <Stack direction="row" justifyContent="flex-end">
-          <Button color="warning" onClick={onRemoveAll} sx={{ mr: 1.5 }}>
-            Remove all
-          </Button>
-          <Button color="success" onClick={onConfirm} sx={{ mr: 1.5 }}>
-            Confirm
-          </Button>
-        </Stack>
-      )}
+      <Stack direction="row" justifyContent="flex-end">
+        <Button color="error" onClick={onRemoveAll} sx={{ mr: 1.5 }}>
+          Remove all
+        </Button>
+        <Button color="success" onClick={onConfirm} sx={{ mr: 1.5 }}>
+          Confirm
+        </Button>
+        <Button color="info" onClick={onLoadImage} sx={{ mr: 1.5 }}>
+          Load Images
+        </Button>
+      </Stack>
     </Box>
   );
 }

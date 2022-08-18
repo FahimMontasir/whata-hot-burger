@@ -1,58 +1,38 @@
 import {
-  Button,
-  ButtonGroup,
   Card,
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
   Stack,
-  styled,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
   Typography,
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { useState } from "react";
-//utils
-import { fDateTimeSuffix } from "../../../../../utils/formatTime";
-//component
-import Scrollbar from "../../../../../common/Scrollbar";
-import { NotFound, UserListHead } from "../../../../../common/list";
-import Label from "../../../../../common/Label";
+
 import ListSkeleton from "../../../../../common/skeleton/List";
 import DialogModal from "../../../../../common/DialogModal";
-import AddFood from "../addCombo";
+import UpdateCombo from "../addCombo";
 //config
 import { CATEGORY_OPTION } from "../addCombo/addCombo.config";
-import { FOOD_TABLE_HEAD } from "./comboList.config";
 //api
 import {
-  useDeleteFoodMutation,
-  useGetFoodByCategoryQuery,
-} from "../../../../../store/redux/api/food";
+  useDeleteComboMutation,
+  useGetComboByCategoryQuery,
+} from "../../../../../store/redux/api/combo";
+import ComboCard from "./ComboCard";
+import { NotFound } from "../../../../../common/list";
 
-//styled component
-const ThumbImgStyle = styled("img")(({ theme }) => ({
-  width: 64,
-  height: 64,
-  objectFit: "cover",
-  margin: theme.spacing(0, 2),
-  borderRadius: theme.shape.borderRadiusSm,
-}));
-
-const FoodList = () => {
-  const [category, setCategory] = useState("burgers");
+const ComboList = () => {
+  const [category, setCategory] = useState("Hot");
 
   const { isSuccess, isFetching, data, isError, error } =
-    useGetFoodByCategoryQuery(category);
-  const [deleteFood] = useDeleteFoodMutation();
+    useGetComboByCategoryQuery(category);
+  const [deleteCombo] = useDeleteComboMutation();
 
-  const handleDeleteFood = (_id) => {
-    deleteFood({ _id: _id })
+  const handleDeleteCombo = (_id) => {
+    deleteCombo({ _id: _id })
       .unwrap()
       .then((data) => toast.success(data.text))
       .catch(() => toast.error("Delete failed"));
@@ -61,7 +41,7 @@ const FoodList = () => {
   return (
     <Card sx={{ p: 2 }}>
       <Typography variant="h6" align="center">
-        Food List
+        Combo List
       </Typography>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -83,85 +63,26 @@ const FoodList = () => {
       </Stack>
       {isFetching && (
         <Stack alignItems="center">
-          <ListSkeleton size={{ sm: 310, md: 950, arr: 10, skh: 55 }} />
+          <ListSkeleton size={{ sm: 310, md: 950, arr: 5, skh: 55 }} />
         </Stack>
       )}
-      <Scrollbar>
-        <TableContainer sx={{ mt: 2 }}>
-          <Table>
-            {isSuccess && !isFetching && (
-              <>
-                <UserListHead headLabel={FOOD_TABLE_HEAD} />
-
-                <TableBody>
-                  {data.array.map((row) => {
-                    const {
-                      _id,
-                      name,
-                      photoUrl,
-                      category,
-                      price,
-                      discountRate,
-                      size,
-                      numberInStock,
-                      updatedAt,
-                    } = row;
-
-                    return (
-                      <TableRow hover key={_id}>
-                        <TableCell align="center">
-                          <ButtonGroup
-                            variant="outlined"
-                            aria-label="outlined button group"
-                          >
-                            <Button onClick={() => handleDeleteFood(_id)}>
-                              Delete
-                            </Button>
-                            <DialogModal title="Update" update fullScreen>
-                              <AddFood isEdit currentProduct={row} />
-                            </DialogModal>
-                          </ButtonGroup>
-                        </TableCell>
-                        <TableCell
-                          style={{ minWidth: 150 }}
-                          component="th"
-                          scope="row"
-                          padding="none"
-                        >
-                          <ThumbImgStyle alt={name} src={photoUrl} />
-                        </TableCell>
-                        <TableCell align="left">{name}</TableCell>
-                        <TableCell align="left">
-                          {category.map((v, i) => (
-                            <Label key={i}>{v}</Label>
-                          ))}
-                        </TableCell>
-                        <TableCell align="right">${price}</TableCell>
-                        <TableCell align="right">{discountRate}%</TableCell>
-                        <TableCell align="left">{size}</TableCell>
-                        <TableCell align="right">{numberInStock}</TableCell>
-                        <TableCell align="left">
-                          {fDateTimeSuffix(updatedAt)}
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </>
-            )}
-          </Table>
-          {isError && (
-            <NotFound
-              message={
-                error.data
-                  ? error.data.message
-                  : "Check your network connection"
-              }
-            />
-          )}
-        </TableContainer>
-      </Scrollbar>
+      {isSuccess && (
+        <Grid container spacing={3}>
+          {data.array.map((combo) => (
+            <Grid key={combo._id} item xs={12} sm={6} md={3}>
+              <ComboCard combo={combo} handleDeleteCombo={handleDeleteCombo} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
+      {isError && (
+        <NotFound
+          message={
+            error.data ? error.data.message : "Check your network connection"
+          }
+        />
+      )}
     </Card>
   );
 };
-export default FoodList;
+export default ComboList;

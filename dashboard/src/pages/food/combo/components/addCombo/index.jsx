@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { Form, FormikProvider, useFormik } from "formik";
@@ -14,6 +16,7 @@ import {
   Alert,
   Button,
   Box,
+  ButtonGroup,
 } from "@mui/material";
 //config
 import {
@@ -24,11 +27,15 @@ import {
 //components
 //api
 import {
-  useAddFoodMutation,
-  useUpdateFoodMutation,
-} from "../../../../../store/redux/api/food";
+  useAddComboMutation,
+  useUpdateComboMutation,
+} from "../../../../../store/redux/api/combo";
 import UploadMultiFile from "../../../../../common/upload/UploadMultiFile";
 import useUploadMultiImages from "../../../../../hooks/useUploadMultipleImages";
+import {
+  getToComboIds,
+  removeAllIdToCombo,
+} from "../../../../../store/redux/slices/toComboIds";
 
 const LabelStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
@@ -42,18 +49,31 @@ AddFood.propTypes = {
 };
 
 export default function AddFood({ isEdit, currentProduct }) {
-  const [addFood, { isError, error, isSuccess, isLoading }] =
-    useAddFoodMutation();
+  const {
+    uploading,
+    handleDrop,
+    urls,
+    handleRemove,
+    handleRemoveAll,
+    loadImage,
+  } = useUploadMultiImages();
+
+  const [addCombo, { isError, error, isSuccess, isLoading }] =
+    useAddComboMutation();
+
+  const toComboIds = useSelector(getToComboIds);
+
+  const dispatch = useDispatch();
 
   const [
-    updateFood,
+    updateCombo,
     {
       isError: isErrorU,
       error: errorU,
       isSuccess: isSuccessU,
       isLoading: isLoadingU,
     },
-  ] = useUpdateFoodMutation();
+  ] = useUpdateComboMutation();
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -61,22 +81,26 @@ export default function AddFood({ isEdit, currentProduct }) {
     validationSchema: ComboSchema,
     onSubmit: (values, { resetForm, setErrors }) => {
       if (isEdit) {
-        updateFood(values)
+        updateCombo(values)
           .unwrap()
           .then(() => {
             resetForm();
             toast.success("Food updated successfully!");
+            // handleRemoveAll();
+            // dispatch(removeAllIdToCombo());
           })
           .catch((error) => {
             setErrors(error);
             toast.error("Some error occurred!");
           });
       } else {
-        addFood(values)
+        addCombo(values)
           .unwrap()
           .then(() => {
             resetForm();
             toast.success("Food added successfully!");
+            handleRemoveAll();
+            dispatch(removeAllIdToCombo());
           })
           .catch((error) => {
             setErrors(error);
@@ -94,9 +118,6 @@ export default function AddFood({ isEdit, currentProduct }) {
     setFieldValue,
     getFieldProps,
   } = formik;
-
-  const { uploading, handleDrop, urls, handleRemove, handleRemoveAll } =
-    useUploadMultiImages();
 
   return (
     <FormikProvider value={formik}>
@@ -132,6 +153,7 @@ export default function AddFood({ isEdit, currentProduct }) {
                     onRemove={(file) => handleRemove(file)}
                     onRemoveAll={() => handleRemoveAll()}
                     onConfirm={() => setFieldValue("photoUrls", urls)}
+                    onLoadImage={() => loadImage(values.photoUrls)}
                     error={Boolean(touched.photoUrls && errors.photoUrls)}
                   />
                 </div>
@@ -143,8 +165,33 @@ export default function AddFood({ isEdit, currentProduct }) {
             <Stack spacing={3}>
               <Card sx={{ p: 3 }}>
                 <Stack spacing={3}>
-                  {/* need to add logic  from food section*/}
-                  <Button>Add items</Button>
+                  <Typography>
+                    Food added:{toComboIds.length} Food Confirmed:
+                    {values.items.length}
+                  </Typography>
+                  <ButtonGroup
+                    variant="outlined"
+                    aria-label="outlined button group"
+                  >
+                    <Button
+                      color="info"
+                      onClick={() => setFieldValue("items", toComboIds)}
+                    >
+                      Confirm items
+                    </Button>
+                    <Button component={RouterLink} to="/food/explore">
+                      Add items
+                    </Button>
+                    <Button
+                      color="warning"
+                      onClick={() => {
+                        dispatch(removeAllIdToCombo());
+                        setFieldValue("items", []);
+                      }}
+                    >
+                      delete items
+                    </Button>
+                  </ButtonGroup>
                   <TextField
                     select
                     fullWidth

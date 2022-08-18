@@ -38,6 +38,18 @@ const useUploadMultiImages = () => {
     setUrls(filteredItems);
   };
 
-  return { uploading, error, handleDrop, handleRemoveAll, handleRemove, urls };
+  const loadImage = (v) => {
+    setUrls(v);
+  };
+
+  return {
+    uploading,
+    error,
+    handleDrop,
+    handleRemoveAll,
+    handleRemove,
+    loadImage,
+    urls,
+  };
 };
 export default useUploadMultiImages;

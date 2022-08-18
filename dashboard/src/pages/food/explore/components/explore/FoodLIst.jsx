@@ -16,6 +16,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useState } from "react";
 //utils
@@ -35,6 +36,11 @@ import {
   useDeleteFoodMutation,
   useGetFoodByCategoryQuery,
 } from "../../../../../store/redux/api/food";
+import {
+  addIdToCombo,
+  getToComboIds,
+  removeIdToCombo,
+} from "../../../../../store/redux/slices/toComboIds";
 
 //styled component
 const ThumbImgStyle = styled("img")(({ theme }) => ({
@@ -47,7 +53,9 @@ const ThumbImgStyle = styled("img")(({ theme }) => ({
 
 const FoodList = () => {
   const [category, setCategory] = useState("burgers");
-  const [toComboIds, setToComboIds] = useState([]);
+
+  const dispatch = useDispatch();
+  const toComboIds = useSelector(getToComboIds);
 
   const { isSuccess, isFetching, data, isError, error } =
     useGetFoodByCategoryQuery(category);
@@ -59,11 +67,12 @@ const FoodList = () => {
       .then((data) => toast.success(data.text))
       .catch(() => toast.error("Delete failed"));
   };
+
   const handleChange = (event, _id) => {
-    if (event.target.checked) setToComboIds((p) => [...p, _id]);
-    else setToComboIds(toComboIds.filter((v) => v !== _id));
+    if (event.target.checked) dispatch(addIdToCombo({ _id }));
+    else dispatch(removeIdToCombo({ _id }));
   };
-  console.log(toComboIds);
+
   return (
     <Card sx={{ p: 2 }}>
       <Typography variant="h6" align="center">
