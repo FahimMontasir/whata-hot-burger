@@ -29,15 +29,7 @@ router.get("/", async (req, res) => {
   if (!data.length) return res.status(400).json({ message: "combo not found" });
 
   res.status(200).json({
-    array: _.map(
-      data,
-      _.partialRight(_.pick, [
-        "_id",
-        "photoUrls",
-        "category",
-        "uptoDiscountRate",
-      ])
-    ),
+    array: data,
   });
 });
 
