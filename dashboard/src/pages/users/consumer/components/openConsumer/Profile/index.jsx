@@ -1,9 +1,10 @@
 import { useLocation } from "react-router-dom";
 // material
-import { Typography, Grid, Stack } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 //components
 import CommentReact from "./CommentAndReact";
 import About from "./About";
+import Cart from "./Cart";
 
 export default function Profile() {
   const { state } = useLocation();
@@ -18,7 +19,7 @@ export default function Profile() {
       </Grid>
 
       <Grid item xs={12} md={8}>
-        <Typography variant="h2">Others will be here!</Typography>
+        <Cart id={state._id} />
       </Grid>
     </Grid>
   );
