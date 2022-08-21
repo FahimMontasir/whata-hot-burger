@@ -41,6 +41,10 @@ const cartApi = mainApi.injectEndpoints({
     getCart: builder.query({
       query: (userId) => `/cart/${userId}`,
     }),
+    getUserHasCart: builder.query({
+      query: ({ pageNumber, pageSize }) =>
+        `/cart/user/hasCart?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+    }),
   }),
   overrideExisting: false,
 });
@@ -51,4 +55,5 @@ export const {
   useUpdateCartMutation,
   useDeleteCartMutation,
   useGetCartQuery,
+  useGetUserHasCartQuery,
 } = cartApi;

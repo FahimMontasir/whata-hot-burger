@@ -90,7 +90,7 @@ export default function Router() {
             },
             { path: "explore", element: <ExploreFood /> },
             { path: "combo", element: <ComboPage /> },
-            { path: "cart", element: <Explore /> },
+            { path: "cart", element: <CartDetails /> },
             { path: "invoice", element: <Explore /> },
           ],
         },
@@ -152,3 +152,4 @@ const OpenConsumer = Loadable(
 //page --food
 const ExploreFood = Loadable(lazy(() => import("../pages/food/explore")));
 const ComboPage = Loadable(lazy(() => import("../pages/food/combo")));
+const CartDetails = Loadable(lazy(() => import("../pages/food/cart")));

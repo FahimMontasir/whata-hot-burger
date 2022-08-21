@@ -15,8 +15,8 @@ import {
 } from "@mui/material";
 
 UserMoreMenu.propTypes = {
-  onDelete: PropTypes.func.isRequired,
-  navigateWithData: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
+  navigateWithData: PropTypes.func,
   navigateOpen: PropTypes.func,
 };
 
@@ -44,25 +44,29 @@ export default function UserMoreMenu({
         anchorOrigin={{ vertical: "top", horizontal: "left" }}
         transformOrigin={{ vertical: "top", horizontal: "left" }}
       >
-        <MenuItem onClick={onDelete} sx={{ color: "error.light" }}>
-          <ListItemIcon>
-            <Icon icon={trash2Outline} width={24} height={24} />
-          </ListItemIcon>
-          <ListItemText
-            primary="Delete"
-            primaryTypographyProps={{ variant: "body2" }}
-          />
-        </MenuItem>
+        {onDelete && (
+          <MenuItem onClick={onDelete} sx={{ color: "error.light" }}>
+            <ListItemIcon>
+              <Icon icon={trash2Outline} width={24} height={24} />
+            </ListItemIcon>
+            <ListItemText
+              primary="Delete"
+              primaryTypographyProps={{ variant: "body2" }}
+            />
+          </MenuItem>
+        )}
 
-        <MenuItem onClick={navigateWithData} sx={{ color: "success.main" }}>
-          <ListItemIcon>
-            <Icon icon={editFill} width={24} height={24} />
-          </ListItemIcon>
-          <ListItemText
-            primary="Edit"
-            primaryTypographyProps={{ variant: "body2" }}
-          />
-        </MenuItem>
+        {navigateWithData && (
+          <MenuItem onClick={navigateWithData} sx={{ color: "success.main" }}>
+            <ListItemIcon>
+              <Icon icon={editFill} width={24} height={24} />
+            </ListItemIcon>
+            <ListItemText
+              primary="Edit"
+              primaryTypographyProps={{ variant: "body2" }}
+            />
+          </MenuItem>
+        )}
         {navigateOpen && (
           <MenuItem onClick={navigateOpen} sx={{ color: "info.main" }}>
             <ListItemIcon>

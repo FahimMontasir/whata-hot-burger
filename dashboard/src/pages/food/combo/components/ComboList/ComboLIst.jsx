@@ -12,8 +12,6 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 
 import ListSkeleton from "../../../../../common/skeleton/List";
-import DialogModal from "../../../../../common/DialogModal";
-import UpdateCombo from "../addCombo";
 //config
 import { CATEGORY_OPTION } from "../addCombo/addCombo.config";
 //api
