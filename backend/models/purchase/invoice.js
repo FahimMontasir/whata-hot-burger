@@ -8,6 +8,14 @@ const Invoice = mongoose.model(
       type: mongoose.Types.ObjectId,
       required: true,
     },
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
     address: {
       type: String,
       required: true,
@@ -33,6 +41,8 @@ const Invoice = mongoose.model(
 const validateInvoice = (invoice) => {
   const schema = Joi.object({
     userId: Joi.objectId().required(),
+    name: Joi.string().required(),
+    email: Joi.string().email().required(),
     address: Joi.string().required(),
     items: Joi.object().required(),
     paidAmount: Joi.number().required(),

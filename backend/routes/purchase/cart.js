@@ -2,8 +2,10 @@ const express = require("express");
 const _ = require("lodash");
 const { validateId } = require("../../helper/validate");
 const auth = require("../../middlewares/auth");
+const admin = require("../../middlewares/auth/admin");
 const consumer = require("../../middlewares/auth/consumer");
 const { Product } = require("../../models/food");
+const { Consumer } = require("../../models/user/consumer");
 const {
   validateCart,
   Cart,
@@ -65,6 +67,8 @@ router.get("/:userId", [auth, consumer], async (req, res) => {
   if (!allFood.length)
     return res.status(400).json({ message: "Food not found" });
 
+  if (data.length !== allFood.length)
+    return res.status(401).json({ message: "Your cart contain deleted food" });
   let merged = [];
 
   for (let i = 0; i < data.length; i++) {
@@ -125,7 +129,7 @@ router.patch("/update", [auth, consumer], async (req, res) => {
   return res.status(200).json({ text: "Cart Updated successfully" });
 });
 
-//attention!
+//attention
 router.delete("/delete", [auth, consumer], async (req, res) => {
   const { error } = validateId({ _id: req.body._id });
   if (error) return res.status(400).json({ message: error.message });
@@ -136,6 +140,44 @@ router.delete("/delete", [auth, consumer], async (req, res) => {
   await cart.remove();
 
   res.status(200).json({ text: "Item deleted successfully" });
+});
+
+//attention! get consumer who has food in cart
+router.get("/user/hasCart", [auth, admin], async (req, res) => {
+  const { pageNumber, pageSize } = req.query;
+
+  const limit = parseInt(pageSize);
+  const offset = (parseInt(pageNumber) - 1) * limit;
+
+  const cartUserIds = await Cart.find().sort({ updatedAt: "desc" });
+
+  const uniqueUser = [
+    ...new Map(cartUserIds.map((v) => [v.patientId, v])).values(),
+  ];
+  const userIds = uniqueUser.map((v) => v.userId);
+
+  const hasCartUser = await Consumer.find({ _id: userIds })
+    .skip(offset)
+    .limit(limit);
+  if (hasCartUser.length == 0)
+    res.status(404).json({ message: "No user found with cart" });
+
+  res.status(200).json({
+    array: _.map(
+      hasCartUser,
+      _.partialRight(_.pick, [
+        "_id",
+        "type",
+        "name",
+        "email",
+        "photoUrl",
+        "dateOfBirth",
+        "gender",
+        "createdAt",
+        "updatedAt",
+      ])
+    ),
+  });
 });
 
 module.exports = router;

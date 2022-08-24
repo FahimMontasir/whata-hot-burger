@@ -295,3 +295,63 @@ Require stack:
     at Module.load (node:internal/modules/cjs/loader:981:32)
     at Function.Module._load (node:internal/modules/cjs/loader:822:12)
     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+09:30:18 [31merror[39m: uncaughtException: admin is not defined
+ReferenceError: admin is not defined
+    at Object.<anonymous> (/backend/routes/purchase/cart.js:142:36)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/backend/startup/routes.js:9:14)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+09:31:05 [31merror[39m: uncaughtException: admin is not defined
+ReferenceError: admin is not defined
+    at Object.<anonymous> (/backend/routes/purchase/cart.js:142:36)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/backend/startup/routes.js:9:14)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+09:31:29 [31merror[39m: uncaughtException: admin is not defined
+ReferenceError: admin is not defined
+    at Object.<anonymous> (/backend/routes/purchase/cart.js:142:36)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/backend/startup/routes.js:9:14)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+07:03:00 [31merror[39m: Parameter "filter" to find() must be an object, got 6301d77c81760fe909f091f8
+08:13:24 [31merror[39m: Cannot set headers after they are sent to the client
+08:13:28 [31merror[39m: Cannot set headers after they are sent to the client
+08:13:30 [31merror[39m: Cannot set headers after they are sent to the client
+08:15:11 [31merror[39m: Cannot set headers after they are sent to the client
+08:15:15 [31merror[39m: Cannot set headers after they are sent to the client
+08:15:23 [31merror[39m: Cannot set headers after they are sent to the client
+08:16:48 [31merror[39m: Cannot set headers after they are sent to the client
+08:16:54 [31merror[39m: Cannot set headers after they are sent to the client
+08:16:56 [31merror[39m: Cannot set headers after they are sent to the client
+08:17:00 [31merror[39m: Cannot set headers after they are sent to the client
+08:33:53 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+08:34:01 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+08:35:38 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+08:45:30 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+08:50:21 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+08:52:32 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+09:04:29 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+09:07:32 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+09:09:25 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+09:11:41 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+09:27:15 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+09:30:39 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
+09:34:47 [31merror[39m: Cannot read properties of undefined (reading 'toObject')
