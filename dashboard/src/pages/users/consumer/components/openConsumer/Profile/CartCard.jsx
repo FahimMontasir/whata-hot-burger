@@ -67,7 +67,7 @@ function CardItem({ food }) {
 
 export default function CartCard({ data }) {
   for (const property in data) {
-    console.log(`${property}: ${data[property]}`);
+    // console.log(`${property}: ${data[property]}`);
     return (
       <>
         <Typography variant="h6">

@@ -24,9 +24,10 @@ import { DialogAnimate } from "../../../../../common/animate";
 
 InvoiceToolbar.propTypes = {
   invoice: PropTypes.object.isRequired,
+  noPrint: PropTypes.bool,
 };
 
-export default function InvoiceToolbar({ invoice }) {
+export default function InvoiceToolbar({ invoice, noPrint }) {
   const [openPDF, setOpenPDF] = useState(false);
 
   const handleOpenPreview = () => {
@@ -40,16 +41,18 @@ export default function InvoiceToolbar({ invoice }) {
   return (
     <>
       <Stack direction="row" justifyContent="flex-start" spacing={1.5}>
-        <Button
-          color="info"
-          size="small"
-          variant="contained"
-          onClick={handleOpenPreview}
-          endIcon={<Icon icon={eyeFill} />}
-          sx={{ mx: 1 }}
-        >
-          Print
-        </Button>
+        {!noPrint && (
+          <Button
+            color="info"
+            size="small"
+            variant="contained"
+            onClick={handleOpenPreview}
+            endIcon={<Icon icon={eyeFill} />}
+            sx={{ mx: 1 }}
+          >
+            Print
+          </Button>
+        )}
 
         <PDFDownloadLink
           document={<InvoicePDF invoice={invoice} />}

@@ -12,7 +12,7 @@ Cart.propTypes = {
 
 export default function Cart({ id }) {
   const { isSuccess, data } = useGetCartQuery(id);
-  console.log(data);
+  // console.log(data);
   return (
     <Card sx={{ py: 3 }}>
       {isSuccess && (

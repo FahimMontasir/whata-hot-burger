@@ -20,7 +20,7 @@ import Scrollbar from "../../../../common/Scrollbar";
 import { NotFound, UserListHead } from "../../../../common/list";
 import { fDateTimeSuffix } from "../../../../utils/formatTime";
 import { USER_INVOICE_TABLE_HEAD } from "./invoice.config";
-import InvoiceToolbar from "./pdf/InvoiceToolbar";
+import InvoiceToolbar from "./pdf/InvoiceToolbar.jsx";
 
 const UserInvoice = () => {
   const { size, page, handleNext, handlePrevious, handleSize } =
@@ -31,8 +31,6 @@ const UserInvoice = () => {
       pageNumber: page,
       pageSize: size,
     });
-
-  console.log(data);
 
   return (
     <Card sx={{ p: 2 }}>
@@ -89,9 +87,10 @@ const UserInvoice = () => {
                   {data.array.map((row) => {
                     const {
                       _id,
+                      name,
+                      email,
                       paidAmount,
                       paymentStatus,
-                      address,
                       createdAt,
                     } = row;
 
@@ -100,11 +99,12 @@ const UserInvoice = () => {
                         <TableCell align="left">
                           <InvoiceToolbar invoice={row} />
                         </TableCell>
+                        <TableCell align="left">{name}</TableCell>
+                        <TableCell align="left">{email}</TableCell>
                         <TableCell align="left">${paidAmount}</TableCell>
                         <TableCell align="left">
                           {paymentStatus.Method}
                         </TableCell>
-                        <TableCell align="left">{address}</TableCell>
                         <TableCell align="left">
                           {fDateTimeSuffix(createdAt)}
                         </TableCell>

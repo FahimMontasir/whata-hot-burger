@@ -6,14 +6,20 @@ import { Box, Grid, Card, Button, Typography, Stack } from "@mui/material";
 import BillingAddressBook from "./BillingAddressBook";
 import PaymentMethod from "./PaymentMethod";
 import InvoiceHistory from "./InvoiceHistory";
+import { useGetConsumerInvoicesQuery } from "../../../../../../store/redux/api/invoice";
+import { useLocation } from "react-router-dom";
 //components
 
 export default function Billing() {
-  const { cards, invoices, addressBook } = {
+  const { cards, addressBook } = {
     cards: [],
     invoices: [],
     addressBook: [],
   };
+  const { state } = useLocation();
+
+  const { isSuccess, data } = useGetConsumerInvoicesQuery(state._id);
+  console.log(data);
   const [open, setOpen] = useState(false);
 
   const NewCardSchema = Yup.object().shape({
@@ -95,7 +101,7 @@ export default function Billing() {
       </Grid>
 
       <Grid item xs={12} md={4}>
-        <InvoiceHistory invoices={invoices} />
+        {isSuccess && <InvoiceHistory invoices={data.array} />}
       </Grid>
     </Grid>
   );
