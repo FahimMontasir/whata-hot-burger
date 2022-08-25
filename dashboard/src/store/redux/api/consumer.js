@@ -11,7 +11,7 @@ const consumerApi = mainApi.injectEndpoints({
       invalidatesTags: (result) => (result ? ["consumer"] : null),
     }),
 
-    login: builder.mutation({
+    conLogin: builder.mutation({
       query: (data) => ({
         url: "/consumer/login",
         method: "POST",
@@ -66,7 +66,7 @@ const consumerApi = mainApi.injectEndpoints({
 
 export const {
   useConRegisterMutation,
-  useLoginMutation,
+  useConLoginMutation,
   useConChangePasswordMutation,
   useUpdateConsumerMutation,
   useDeleteConsumerMutation,
