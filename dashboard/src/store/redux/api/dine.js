@@ -1,6 +1,6 @@
 import { mainApi } from "./index";
 
-const comboApi = mainApi.injectEndpoints({
+const dineApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
     addDine: builder.mutation({
       query: (data) => ({
@@ -53,4 +53,4 @@ export const {
   useBookDineMutation,
   useDeleteDineMutation,
   useGetAllDinesQuery,
-} = comboApi;
+} = dineApi;

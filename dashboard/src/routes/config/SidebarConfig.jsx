@@ -15,6 +15,9 @@ const ICONS = {
   ecommerce: getIcon("ic_ecommerce"),
   food: getIcon("ic_food"),
   dine: getIcon("ic_dine"),
+  blog: getIcon("ic_blog"),
+  faq: getIcon("ic_faq"),
+  terms: getIcon("ic_terms"),
 };
 
 const sidebarConfig = [
@@ -71,6 +74,31 @@ const sidebarConfig = [
         title: "Dine",
         path: PATH_DASHBOARD.dine.root,
         icon: ICONS.dine,
+      },
+    ],
+  },
+
+  {
+    subheader: "Additional",
+    items: [
+      {
+        title: "Blog",
+        path: PATH_DASHBOARD.blog.root,
+        icon: ICONS.blog,
+        children: [
+          { title: "Posts", path: PATH_DASHBOARD.blog.posts },
+          { title: "Create", path: PATH_DASHBOARD.blog.createPost },
+        ],
+      },
+      {
+        title: "FAQ",
+        path: PATH_DASHBOARD.faq.root,
+        icon: ICONS.faq,
+      },
+      {
+        title: "Terms & Condition",
+        path: PATH_DASHBOARD.termsAndCondition.root,
+        icon: ICONS.terms,
       },
     ],
   },

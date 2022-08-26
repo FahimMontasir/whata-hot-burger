@@ -36,4 +36,15 @@ export const PATH_DASHBOARD = {
   dine: {
     root: "/dine",
   },
+  blog: {
+    root: "/blog",
+    posts: "/blog/posts",
+    createPost: "/blog/createPost",
+  },
+  faq: {
+    root: "/faq",
+  },
+  termsAndCondition: {
+    root: "/termsAndCondition",
+  },
 };

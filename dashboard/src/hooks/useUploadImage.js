@@ -5,7 +5,7 @@ const useUploadImage = () => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
 
-  const uploadImage = (acceptedFiles, setFieldValue) => {
+  const uploadImage = (acceptedFiles, setFieldValue, v = "photoUrl") => {
     const file = acceptedFiles[0];
     if (file) {
       setUploading(true);
@@ -16,7 +16,7 @@ const useUploadImage = () => {
       axios
         .post("https://api.imgbb.com/1/upload", imgData)
         .then((response) => {
-          setFieldValue("photoUrl", response.data.data.display_url);
+          setFieldValue(v, response.data.data.display_url);
           setUploading(false);
         })
         .catch((err) => setError(err))

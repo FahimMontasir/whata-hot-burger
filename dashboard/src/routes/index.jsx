@@ -95,6 +95,19 @@ export default function Router() {
           ],
         },
         { path: "dine", element: <ExploreDine /> },
+        {
+          path: "blog",
+          children: [
+            {
+              path: "/blog",
+              element: <Navigate to="/blog/posts" replace />,
+            },
+            { path: "posts", element: <Blog /> },
+            { path: "createPost", element: <CreateBlog /> },
+          ],
+        },
+        { path: "faq", element: <FAQ /> },
+        { path: "termsAndCondition", element: <TermsAndCondition /> },
       ],
     },
 
@@ -157,3 +170,11 @@ const InvoicePage = Loadable(lazy(() => import("../pages/food/invoice")));
 
 // page --dine
 const ExploreDine = Loadable(lazy(() => import("../pages/dine")));
+
+// additional pages
+const Blog = Loadable(lazy(() => import("../pages/additional/blog")));
+const CreateBlog = Loadable(
+  lazy(() => import("../pages/additional/blog/create"))
+);
+const FAQ = Loadable(lazy(() => import("../pages/dine")));
+const TermsAndCondition = Loadable(lazy(() => import("../pages/dine")));

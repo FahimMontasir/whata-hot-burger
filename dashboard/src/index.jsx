@@ -2,6 +2,12 @@
 import "simplebar/src/simplebar.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
+// highlight
+import "./utils/highlight";
+
+// editor
+import "react-quill/dist/quill.snow.css";
+
 import { HelmetProvider } from "react-helmet-async";
 import { SettingsProvider } from "./store/contexts/SettingsContext";
 import { BrowserRouter } from "react-router-dom";
