@@ -38,7 +38,7 @@ const validateFAQ = (faq) => {
   const schema = Joi.object({
     name: Joi.string().min(5).max(50).required(),
     email: Joi.string().email().required(),
-    question: Joi.string().max(100).required(),
+    question: Joi.string().max(500).required(),
   });
   return schema.validate(faq);
 };

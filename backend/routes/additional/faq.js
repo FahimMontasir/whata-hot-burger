@@ -25,6 +25,19 @@ router.get("/", async (req, res) => {
 });
 
 //attention!
+router.post("/addWithAns", [auth, admin], async (req, res) => {
+  await FAQ.create(req.body);
+
+  res.status(200).json({ text: "sended successfully!" });
+});
+
+//attention!
+router.get("/all", [auth, admin], async (req, res) => {
+  const faq = await FAQ.find().sort({ updatedAt: "desc" });
+  res.status(200).json({ array: faq });
+});
+
+//attention!
 router.patch("/update", [auth, admin], async (req, res) => {
   const faq = await FAQ.findById(req.body._id);
   if (!faq) return res.status(404).json({ message: "faq not found" });
