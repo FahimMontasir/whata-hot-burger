@@ -2,9 +2,9 @@ import { mainApi } from "./index";
 
 const faqApi = mainApi.injectEndpoints({
   endpoints: (builder) => ({
-    askQuestion: builder.mutation({
+    askQuestionAdmin: builder.mutation({
       query: (data) => ({
-        url: "/faq/add",
+        url: "/faq/addWithAns",
         method: "POST",
         body: data,
       }),
@@ -30,7 +30,7 @@ const faqApi = mainApi.injectEndpoints({
     }),
 
     getAllFaq: builder.query({
-      query: () => `/faq`,
+      query: () => "/faq/all",
       providesTags: ["faq"],
     }),
   }),
@@ -38,7 +38,7 @@ const faqApi = mainApi.injectEndpoints({
 });
 
 export const {
-  useAskQuestionMutation,
+  useAskQuestionAdminMutation,
   useAnswerQuestionMutation,
   useDeleteFaqMutation,
   useGetAllFaqQuery,

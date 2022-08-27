@@ -96,8 +96,8 @@ const sidebarConfig = [
         icon: ICONS.faq,
       },
       {
-        title: "Terms & Condition",
-        path: PATH_DASHBOARD.termsAndCondition.root,
+        title: "Settings",
+        path: PATH_DASHBOARD.settings.root,
         icon: ICONS.terms,
       },
     ],

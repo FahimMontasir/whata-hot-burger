@@ -44,7 +44,7 @@ export const PATH_DASHBOARD = {
   faq: {
     root: "/faq",
   },
-  termsAndCondition: {
-    root: "/termsAndCondition",
+  settings: {
+    root: "/settings",
   },
 };

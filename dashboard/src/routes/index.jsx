@@ -107,7 +107,7 @@ export default function Router() {
           ],
         },
         { path: "faq", element: <FAQ /> },
-        { path: "termsAndCondition", element: <TermsAndCondition /> },
+        { path: "settings", element: <Settings /> },
       ],
     },
 
@@ -176,5 +176,5 @@ const Blog = Loadable(lazy(() => import("../pages/additional/blog")));
 const CreateBlog = Loadable(
   lazy(() => import("../pages/additional/blog/create"))
 );
-const FAQ = Loadable(lazy(() => import("../pages/dine")));
-const TermsAndCondition = Loadable(lazy(() => import("../pages/dine")));
+const FAQ = Loadable(lazy(() => import("../pages/additional/faq")));
+const Settings = Loadable(lazy(() => import("../pages/additional/settings")));
