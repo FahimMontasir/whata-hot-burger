@@ -7,7 +7,7 @@ import { Link as RouterLink } from "react-router-dom";
 import HeaderBreadcrumbs from "../../../common/HeaderBreadcrumbs";
 import Page from "../../../common/Page";
 import useSettings from "../../../hooks/useSettings";
-import FoodList from "../../food/explore/components/explore/FoodLIst";
+import BlogList from "./components/list";
 // routes
 import { PATH_DASHBOARD } from "../../../routes/paths";
 
@@ -35,7 +35,7 @@ export default function ExploreBlog() {
             </Button>
           }
         />
-        <FoodList />
+        <BlogList />
       </Container>
     </Page>
   );
