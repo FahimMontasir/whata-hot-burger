@@ -79,7 +79,21 @@ router.get("/", [auth, manager], async (req, res) => {
   res.status(200).json({
     array: _.map(
       blogs,
-      _.partialRight(_.pick, ["_id", "title", "tags", "reactLength", "cover"])
+      _.partialRight(_.pick, [
+        "_id",
+        "title",
+        "tags",
+        "reactLength",
+        "cover",
+        "shortDescription",
+        "content",
+        "publish",
+        "comments",
+        "metaTitle",
+        "metaDescription",
+        "metaKeywords",
+        "updatedAt",
+      ])
     ),
   });
 });
