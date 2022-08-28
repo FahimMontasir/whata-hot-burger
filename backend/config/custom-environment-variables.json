@@ -4,5 +4,6 @@
   "db_user": "whb_dbUser",
   "db_pass": "whb_dbPass",
   "db_port": "whb_dbPort",
-  "db_ip": "whb_dbIp"
+  "db_ip": "whb_dbIp",
+  "node_env": "NODE_ENV"
 }
