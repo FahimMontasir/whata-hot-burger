@@ -106,8 +106,8 @@ function SetColor(themeColor) {
 }
 
 const initialState = {
-  themeMode: "light",
-  themeColor: "default",
+  themeMode: "dark",
+  themeColor: "orange",
   themeStretch: false,
   onChangeMode: () => {},
   onChangeColor: () => {},
@@ -123,7 +123,7 @@ SettingsProvider.propTypes = {
 };
 
 function SettingsProvider({ children }) {
-  const [settings, setSettings] = useLocalStorage("settings", {
+  const [settings, setSettings] = useLocalStorage("whb-dash-settings", {
     themeMode: initialState.themeMode,
     themeColor: initialState.themeColor,
     themeStretch: initialState.themeStretch,

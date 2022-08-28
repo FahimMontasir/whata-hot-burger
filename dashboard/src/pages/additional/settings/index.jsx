@@ -9,6 +9,7 @@ import { PATH_DASHBOARD } from "../../../routes/paths";
 import DialogModal from "../../../common/DialogModal";
 import { useGetTermsConditionQuery } from "../../../store/redux/api/termsAndCondition";
 import AddTerms from "./components/AddTerms";
+import Settings from "../../../common/settings";
 
 export default function SettingsPage() {
   const { themeStretch } = useSettings();
@@ -37,7 +38,7 @@ export default function SettingsPage() {
             )
           }
         />
-        {/* <FAQList /> */}
+        <Settings />
       </Container>
     </Page>
   );
