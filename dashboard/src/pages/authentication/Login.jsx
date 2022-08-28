@@ -57,7 +57,7 @@ export default function Login() {
                 Sign in to WhataHotBurger Dashboard
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
-                Enter your details below.
+                Enter your details below. Admin: fahim@gmail.com pass: 123456
               </Typography>
             </Box>
           </Stack>
