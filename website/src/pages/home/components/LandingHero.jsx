@@ -6,7 +6,6 @@ import { Link as RouterLink } from "react-router-dom";
 import {
   Button,
   Box,
-  Link,
   Container,
   Typography,
   Stack,
@@ -14,7 +13,6 @@ import {
 } from "@mui/material";
 //
 import {
-  varFadeIn,
   varFadeInUp,
   varWrapEnter,
   varFadeInRight,
@@ -24,7 +22,7 @@ import {
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
-  backgroundColor: theme.palette.grey[400],
+  backgroundColor: theme.palette.grey[300],
   [theme.breakpoints.up("md")]: {
     top: 0,
     left: 0,
@@ -39,26 +37,18 @@ const RootStyle = styled(motion.div)(({ theme }) => ({
 const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(
   ({ theme }) => ({
     zIndex: 10,
-    maxWidth: 520,
     margin: "auto",
     textAlign: "center",
     position: "relative",
-    paddingTop: theme.spacing(15),
+    paddingTop: theme.spacing(30),
     paddingBottom: theme.spacing(15),
     [theme.breakpoints.up("md")]: {
+      paddingTop: theme.spacing(15),
       margin: "unset",
-      textAlign: "left",
+      textAlign: "right",
     },
   })
 );
-
-const HeroOverlayStyle = styled(motion.img)({
-  zIndex: 9,
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  position: "absolute",
-});
 
 const HeroImgStyle = styled(motion.img)(({ theme }) => ({
   top: 0,
@@ -69,78 +59,50 @@ const HeroImgStyle = styled(motion.img)(({ theme }) => ({
   margin: "auto",
   position: "absolute",
   [theme.breakpoints.up("lg")]: {
-    right: "8%",
+    right: "55%",
     width: "auto",
-    height: "48vh",
+    height: "80vh",
   },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function LandingHero() {
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <HeroOverlayStyle
-          alt="overlay"
-          src="/static/overlay.svg"
-          variants={varFadeIn}
-        />
-
         <HeroImgStyle
           alt="hero"
-          src="/static/home/hero.png"
+          src="/static/illustrations/hero.png"
           variants={varFadeInUp}
         />
 
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
-              <Typography variant="h1" sx={{ color: "common.white" }}>
-                Start a <br />
-                new project <br /> with
+              <Typography variant="h1" sx={{ color: "common.black" }}>
+                Welcome to <br />
                 <Typography
                   component="span"
                   variant="h1"
                   sx={{ color: "primary.main" }}
                 >
-                  &nbsp;Minimal
+                  Whata Hot Burger
                 </Typography>
               </Typography>
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
-              <Typography sx={{ color: "common.white" }}>
-                The starting point for your next project based on
-                easy-to-customize Material-UI © helps you build apps faster and
-                better.
+              <Typography
+                variant="h5"
+                sx={{
+                  color: "common.black",
+                  bgcolor: { xs: "rgba(228, 233, 237,0.8)", md: "transparent" },
+                  borderRadius: { xs: 1, md: 0 },
+                }}
+              >
+                To get full experience and <br /> lots of eye catchy features
+                with ease.
               </Typography>
             </motion.div>
-
-            <Stack
-              component={motion.div}
-              variants={varFadeInRight}
-              direction="row"
-              spacing={1}
-              justifyContent={{ xs: "center", md: "flex-start" }}
-            >
-              <img
-                alt="sketch icon"
-                src="/static/home/ic_sketch_small.svg"
-                width={20}
-                height={20}
-              />
-
-              <Link
-                underline="always"
-                href="https://www.sketch.com/s/0fa4699d-a3ff-4cd5-a3a7-d851eb7e17f0"
-                target="_blank"
-                color="common.white"
-                sx={{ typography: "body2" }}
-              >
-                Preview in Sketch Cloud
-              </Link>
-            </Stack>
 
             <motion.div variants={varFadeInRight}>
               <Button
@@ -150,40 +112,9 @@ export default function LandingHero() {
                 component={RouterLink}
                 startIcon={<Icon icon={flashFill} width={20} height={20} />}
               >
-                Live Preview
+                Download the mobile app
               </Button>
             </motion.div>
-
-            <Stack
-              direction="row"
-              spacing={1.5}
-              justifyContent={{ xs: "center", md: "flex-start" }}
-            >
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_sketch.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_figma.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_material.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_react.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_js.svg"
-              />
-              <motion.img
-                variants={varFadeInRight}
-                src="/static/home/ic_ts.svg"
-              />
-            </Stack>
           </ContentStyle>
         </Container>
       </RootStyle>

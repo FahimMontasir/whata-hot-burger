@@ -34,9 +34,9 @@ const LINKS = [
   {
     headline: "Minimal",
     children: [
-      { name: "About us", href: PATH_PAGE.about },
-      { name: "Contact us", href: PATH_PAGE.contact },
-      { name: "FAQs", href: PATH_PAGE.faqs },
+      { name: "About us", href: PATH_PAGE.aboutUs },
+      { name: "Contact us", href: PATH_PAGE.aboutUs },
+      { name: "FAQs", href: PATH_PAGE.faq },
     ],
   },
   {

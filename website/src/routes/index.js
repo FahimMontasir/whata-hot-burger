@@ -4,8 +4,6 @@ import { useRoutes } from "react-router-dom";
 // layouts
 import MainLayout from "../layout";
 
-// ----------------------------------------------------------------------
-
 const Loadable = (Component) => (props) => {
   return (
     <Suspense fallback={<CircularProgress />}>

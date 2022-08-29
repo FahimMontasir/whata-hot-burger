@@ -1,3 +1,6 @@
+import { Icon } from "@iconify/react";
+import cart from "@iconify/icons-ic/shopping-cart";
+
 import { NavLink as RouterLink, useLocation } from "react-router-dom";
 // material
 import { Box, Button, AppBar, Toolbar, Container, styled } from "@mui/material";
@@ -6,13 +9,10 @@ import useOffSetTop from "../hooks/useOffSetTop";
 // components
 import Logo from "../common/Logo";
 import MHidden from "../common/@mui-extend/MHidden";
-import Label from "../common/Label";
 //
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 import navConfig from "./MenuConfig";
-
-// ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -41,8 +41,6 @@ const ToolbarShadowStyle = styled("div")(({ theme }) => ({
   boxShadow: theme.customShadows.z8,
 }));
 
-// ----------------------------------------------------------------------
-
 export default function MainNavbar() {
   const isOffset = useOffSetTop(100);
   const { pathname } = useLocation();
@@ -67,13 +65,13 @@ export default function MainNavbar() {
             justifyContent: "space-between",
           }}
         >
-          <RouterLink to="/">
-            <Logo />
-          </RouterLink>
-          <Label color="info" sx={{ ml: 1 }}>
-            v2.5.0
-          </Label>
-          <Box sx={{ flexGrow: 1 }} />
+          <MHidden width="mdUp">
+            <MenuMobile
+              isOffset={isOffset}
+              isHome={isHome}
+              navConfig={navConfig}
+            />
+          </MHidden>
 
           <MHidden width="mdDown">
             <MenuDesktop
@@ -83,21 +81,26 @@ export default function MainNavbar() {
             />
           </MHidden>
 
+          <Box sx={{ flexGrow: 1 }} />
+
+          <RouterLink to="/">
+            <Logo />
+          </RouterLink>
+
+          <Box sx={{ flexGrow: 1 }} />
+
+          <Button variant="contained" target="_blank" href="/">
+            Sign Up
+          </Button>
           <Button
+            sx={{ ml: 2 }}
+            startIcon={<Icon icon={cart} />}
             variant="contained"
             target="_blank"
-            href="https://material-ui.com/store/items/minimal-dashboard/"
+            href="/"
           >
-            Purchase Now
+            $0.00
           </Button>
-
-          <MHidden width="mdUp">
-            <MenuMobile
-              isOffset={isOffset}
-              isHome={isHome}
-              navConfig={navConfig}
-            />
-          </MHidden>
         </Container>
       </ToolbarStyle>
 

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 // material
 import { useTheme, Box } from "@mui/material";
-// ----------------------------------------------------------------------
+
 Logo.propTypes = {
   sx: PropTypes.object,
 };
@@ -18,36 +18,110 @@ export default function Logo({ sx }) {
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
-        viewBox="0 0 512 512"
+        x="0px"
+        y="0px"
+        viewBox="0 0 320 320"
+        xmlSpace="preserve"
       >
-        <defs>
-          <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">
-            <stop offset="0%" stopColor={PRIMARY_DARK} />
-            <stop offset="100%" stopColor={PRIMARY_MAIN} />
-          </linearGradient>
-          <linearGradient id="BG2" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor={PRIMARY_LIGHT} />
-            <stop offset="100%" stopColor={PRIMARY_MAIN} />
-          </linearGradient>
-          <linearGradient id="BG3" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor={PRIMARY_LIGHT} />
-            <stop offset="100%" stopColor={PRIMARY_MAIN} />
-          </linearGradient>
-        </defs>
-        <g fill={PRIMARY_MAIN} fillRule="evenodd" stroke="none" strokeWidth="1">
+        <g id="XMLID_813_">
           <path
-            fill="url(#BG1)"
-            d="M183.168 285.573l-2.918 5.298-2.973 5.363-2.846 5.095-2.274 4.043-2.186 3.857-2.506 4.383-1.6 2.774-2.294 3.939-1.099 1.869-1.416 2.388-1.025 1.713-1.317 2.18-.95 1.558-1.514 2.447-.866 1.38-.833 1.312-.802 1.246-.77 1.18-.739 1.111-.935 1.38-.664.956-.425.6-.41.572-.59.8-.376.497-.537.69-.171.214c-10.76 13.37-22.496 23.493-36.93 29.334-30.346 14.262-68.07 14.929-97.202-2.704l72.347-124.682 2.8-1.72c49.257-29.326 73.08 1.117 94.02 40.927z"
+            id="XMLID_814_"
+            fill="#FFAD41"
+            d="M300,159.355v-20C300,84.483,255.518,40,200.645,40h-81.29
+		C64.482,40,20,84.483,20,139.355v20H300z"
           />
           <path
-            fill="url(#BG2)"
-            d="M444.31 229.726c-46.27-80.956-94.1-157.228-149.043-45.344-7.516 14.384-12.995 42.337-25.267 42.337v-.142c-12.272 0-17.75-27.953-25.265-42.337C189.79 72.356 141.96 148.628 95.69 229.584c-3.483 6.106-6.828 11.932-9.69 16.996 106.038-67.127 97.11 135.667 184 137.278V384c86.891-1.611 77.962-204.405 184-137.28-2.86-5.062-6.206-10.888-9.69-16.994"
+            id="XMLID_815_"
+            fill="#FF9811"
+            d="M160,40h-40.645C64.482,40,20,84.483,20,139.355v20h140V40z"
+          />
+          <circle id="XMLID_816_" fill={PRIMARY_MAIN} cx="70" cy="110" r="10" />
+          <circle
+            id="XMLID_817_"
+            fill={PRIMARY_LIGHT}
+            cx="120"
+            cy="80"
+            r="10"
+          />
+          <circle
+            id="XMLID_818_"
+            fill={PRIMARY_MAIN}
+            cx="250"
+            cy="110"
+            r="10"
+          />
+          <circle id="XMLID_819_" fill={PRIMARY_DARK} cx="200" cy="80" r="10" />
+          <circle
+            id="XMLID_820_"
+            fill={PRIMARY_MAIN}
+            cx="160"
+            cy="110"
+            r="10"
           />
           <path
-            fill="url(#BG3)"
-            d="M450 384c26.509 0 48-21.491 48-48s-21.491-48-48-48-48 21.491-48 48 21.491 48 48 48"
+            id="XMLID_821_"
+            fill="#804C09"
+            d="M160,100c-5.523,0-10,4.477-10,10s4.477,10,10,10"
+          />
+          <path
+            id="XMLID_822_"
+            fill="#FF5023"
+            d="M270,170H50c-16.568,0-30,13.432-30,30s13.432,30,30,30h220
+		c16.568,0,30-13.432,30-30S286.568,170,270,170z"
+          />
+          <path
+            id="XMLID_823_"
+            fill="#BD3C1A"
+            d="M160,170H50c-16.568,0-30,13.432-30,30s13.432,30,30,30h110V170z"
+          />
+          <path
+            id="XMLID_824_"
+            fill="#FFAD41"
+            d="M320,250c0,16.568-13.432,30-30,30H30c-16.568,0-30-13.432-30-30l0,0
+		c0-16.568,13.432-30,30-30h260C306.568,220,320,233.432,320,250L320,250z"
+          />
+          <path
+            id="XMLID_825_"
+            fill="#FF9811"
+            d="M160,220H30c-16.568,0-30,13.432-30,30s13.432,30,30,30h130V220z"
+          />
+          <polygon
+            id="XMLID_826_"
+            fill={PRIMARY_MAIN}
+            points="60,180 160,170 260,180 160,250 	"
+          />
+          <polygon
+            id="XMLID_827_"
+            fill={PRIMARY_MAIN}
+            points="60,180 160,170 160,250 	"
+          />
+          <path
+            id="XMLID_828_"
+            fill="#91DC5A"
+            d="M320,165c0,8.284-6.716,15-15,15H15c-8.284,0-15-6.716-15-15l0,0
+		c0-8.284,6.716-15,15-15h290C313.284,150,320,156.716,320,165L320,165z"
+          />
+          <path
+            id="XMLID_829_"
+            fill="#64C37D"
+            d="M160,150H15c-8.284,0-15,6.716-15,15s6.716,15,15,15h145V150z"
           />
         </g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
       </svg>
     </Box>
   );
