@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import flashFill from "@iconify/icons-eva/flash-fill";
-import { Link as RouterLink } from "react-router-dom";
 // material
 import {
   Button,
@@ -17,8 +16,6 @@ import {
   varWrapEnter,
   varFadeInRight,
 } from "../../../common/animate";
-
-// ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
   position: "relative",
@@ -107,9 +104,9 @@ export default function LandingHero() {
             <motion.div variants={varFadeInRight}>
               <Button
                 size="large"
-                to="/"
+                href="https://moontasir.web.app/"
+                target="_blank"
                 variant="contained"
-                component={RouterLink}
                 startIcon={<Icon icon={flashFill} width={20} height={20} />}
               >
                 Download the mobile app

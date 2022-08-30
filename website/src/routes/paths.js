@@ -5,4 +5,6 @@ export const PATH_PAGE = {
   blog: "/blog",
   faq: "/faq",
   aboutUs: "/about-us",
+  login: "/login",
+  register: "/register",
 };

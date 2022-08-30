@@ -1,11 +1,12 @@
 import { Icon } from "@iconify/react";
-import homeFill from "@iconify/icons-eva/home-fill";
-import roundGrain from "@iconify/icons-ic/round-grain";
-import bookOpenFill from "@iconify/icons-eva/book-open-fill";
+import homeFill from "@iconify/icons-ic/round-grain";
+import combo from "@iconify/icons-ic/restaurant-menu";
+import dine from "@iconify/icons-ic/restaurant";
+import blog from "@iconify/icons-ic/book";
+import faq from "@iconify/icons-ic/question-answer";
+import aboutUs from "@iconify/icons-ic/info";
 // routes
 import { PATH_PAGE } from "../routes/paths";
-
-// ----------------------------------------------------------------------
 
 const ICON_SIZE = {
   width: 22,
@@ -20,27 +21,27 @@ const menuConfig = [
   },
   {
     title: "Combo",
-    icon: <Icon icon={roundGrain} {...ICON_SIZE} />,
+    icon: <Icon icon={combo} {...ICON_SIZE} />,
     path: PATH_PAGE.combo,
   },
   {
     title: "Dine",
-    icon: <Icon icon={roundGrain} {...ICON_SIZE} />,
+    icon: <Icon icon={dine} {...ICON_SIZE} />,
     path: PATH_PAGE.dine,
   },
   {
     title: "Nutrition Tips",
-    icon: <Icon icon={bookOpenFill} {...ICON_SIZE} />,
+    icon: <Icon icon={blog} {...ICON_SIZE} />,
     path: PATH_PAGE.blog,
   },
   {
     title: "FAQs",
-    icon: <Icon icon={bookOpenFill} {...ICON_SIZE} />,
+    icon: <Icon icon={faq} {...ICON_SIZE} />,
     path: PATH_PAGE.faq,
   },
   {
     title: "About Us",
-    icon: <Icon icon={bookOpenFill} {...ICON_SIZE} />,
+    icon: <Icon icon={aboutUs} {...ICON_SIZE} />,
     path: PATH_PAGE.aboutUs,
   },
 ];

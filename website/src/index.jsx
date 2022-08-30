@@ -9,13 +9,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { store } from "./store/redux/store";
 
 ReactDOM.render(
   <React.StrictMode>
     <HelmetProvider>
       <SettingsProvider>
         <BrowserRouter>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </BrowserRouter>
       </SettingsProvider>
     </HelmetProvider>

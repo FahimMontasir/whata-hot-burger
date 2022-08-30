@@ -17,8 +17,6 @@ import {
   varFadeInDown,
 } from "../../../common/animate";
 
-// ----------------------------------------------------------------------
-
 const CARDS = [
   {
     icon: "/static/icons/ic_design.svg",
@@ -31,6 +29,18 @@ const CARDS = [
     title: "Development",
     description:
       "Easy to customize and extend each component, saving you time and money.",
+  },
+  {
+    icon: "/static/brand/logo_single.svg",
+    title: "Branding",
+    description:
+      "Consistent design in colors, fonts ... makes brand recognition easy.",
+  },
+  {
+    icon: "/static/brand/logo_single.svg",
+    title: "Branding",
+    description:
+      "Consistent design in colors, fonts ... makes brand recognition easy.",
   },
   {
     icon: "/static/brand/logo_single.svg",
@@ -103,9 +113,7 @@ const CardIconStyle = styled("img")(({ theme }) => ({
   filter: shadowIcon(theme.palette.primary.main),
 }));
 
-// ----------------------------------------------------------------------
-
-export default function LandingMinimalHelps() {
+export default function ComboPack() {
   const theme = useTheme();
   const isLight = theme.palette.mode === "light";
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
@@ -114,18 +122,9 @@ export default function LandingMinimalHelps() {
     <RootStyle>
       <Container maxWidth="lg">
         <Box sx={{ mb: { xs: 10, md: 25 } }}>
-          <MotionInView variants={varFadeInUp}>
-            <Typography
-              component="p"
-              variant="overline"
-              sx={{ mb: 2, color: "text.secondary", textAlign: "center" }}
-            >
-              Minimal
-            </Typography>
-          </MotionInView>
           <MotionInView variants={varFadeInDown}>
             <Typography variant="h2" sx={{ textAlign: "center" }}>
-              What minimal helps you?
+              Special combo pack for you!!!
             </Typography>
           </MotionInView>
         </Box>

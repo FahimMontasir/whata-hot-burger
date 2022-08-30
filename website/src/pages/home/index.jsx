@@ -2,7 +2,8 @@
 import { styled } from "@mui/material";
 // components
 import Page from "../../common/Page";
-import { LandingHero, LandingMinimal } from "./components";
+import ComboPack from "./components/ComboPack";
+import Hero from "./components/Hero";
 
 const RootStyle = styled(Page)({
   height: "100%",
@@ -17,9 +18,9 @@ const ContentStyle = styled("div")(({ theme }) => ({
 export default function LandingPage() {
   return (
     <RootStyle title="Welcome to Whata Hot Burger" id="move_top">
-      <LandingHero />
+      <Hero />
       <ContentStyle>
-        <LandingMinimal />
+        <ComboPack />
       </ContentStyle>
     </RootStyle>
   );

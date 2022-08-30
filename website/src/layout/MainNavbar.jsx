@@ -89,8 +89,8 @@ export default function MainNavbar() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          <Button variant="contained" target="_blank" href="/">
-            Sign Up
+          <Button variant="contained" component={RouterLink} to="/login">
+            Sign in
           </Button>
           <Button
             sx={{ ml: 2 }}
