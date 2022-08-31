@@ -1,6 +1,9 @@
 // scroll bar
 import "simplebar/src/simplebar.css";
 
+//
+import "react-toastify/dist/ReactToastify.min.css";
+
 import { HelmetProvider } from "react-helmet-async";
 import { SettingsProvider } from "./store/contexts/SettingsContext";
 import React from "react";
@@ -11,6 +14,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store/redux/store";
+import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +23,7 @@ ReactDOM.render(
         <BrowserRouter>
           <Provider store={store}>
             <App />
+            <ToastContainer />
           </Provider>
         </BrowserRouter>
       </SettingsProvider>

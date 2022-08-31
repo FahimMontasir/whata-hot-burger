@@ -131,7 +131,7 @@ export default function ComboPack() {
 
         <Grid container spacing={isDesktop ? 10 : 5}>
           {CARDS.map((card, index) => (
-            <Grid key={card.title} item xs={12} md={4}>
+            <Grid key={index} item xs={12} md={4}>
               <MotionInView variants={varFadeInUp}>
                 <CardStyle
                   className={

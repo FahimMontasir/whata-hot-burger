@@ -1,6 +1,6 @@
 export const PATH_PAGE = {
   explore: "/explore",
-  combo: "/combo",
+  food: "/food",
   dine: "/dine",
   blog: "/blog",
   faq: "/faq",

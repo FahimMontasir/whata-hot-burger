@@ -20,9 +20,9 @@ const menuConfig = [
     path: "/",
   },
   {
-    title: "Combo",
+    title: "Food",
     icon: <Icon icon={combo} {...ICON_SIZE} />,
-    path: PATH_PAGE.combo,
+    path: PATH_PAGE.food,
   },
   {
     title: "Dine",

@@ -21,7 +21,7 @@ export default function Router() {
       element: <MainLayout />,
       children: [
         { path: "/", element: <Home /> },
-        { path: "combo", element: <Combo /> },
+        { path: "food", element: <Combo /> },
         { path: "dine", element: <Dine /> },
         { path: "blog", element: <Blog /> },
         { path: "faq", element: <FAQ /> },
@@ -37,5 +37,5 @@ const Home = Loadable(lazy(() => import("../pages/home")));
 const AboutUs = Loadable(lazy(() => import("../pages/aboutUs")));
 const FAQ = Loadable(lazy(() => import("../pages/faq")));
 const Dine = Loadable(lazy(() => import("../pages/dine")));
-const Combo = Loadable(lazy(() => import("../pages/combo")));
+const Combo = Loadable(lazy(() => import("../pages/food")));
 const Blog = Loadable(lazy(() => import("../pages/blog")));

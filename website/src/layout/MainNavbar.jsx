@@ -1,6 +1,3 @@
-import { Icon } from "@iconify/react";
-import cart from "@iconify/icons-ic/shopping-cart";
-
 import { NavLink as RouterLink, useLocation } from "react-router-dom";
 // material
 import { Box, Button, AppBar, Toolbar, Container, styled } from "@mui/material";
@@ -13,6 +10,9 @@ import MHidden from "../common/@mui-extend/MHidden";
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 import navConfig from "./MenuConfig";
+import { useSelector } from "react-redux";
+import { getToken } from "../store/redux/slices/localStorageAuth";
+import ShowCartCover from "../pages/user/components/ShowCartCover";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -42,6 +42,8 @@ const ToolbarShadowStyle = styled("div")(({ theme }) => ({
 }));
 
 export default function MainNavbar() {
+  const isAuthenticated = useSelector(getToken);
+
   const isOffset = useOffSetTop(100);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
@@ -89,18 +91,13 @@ export default function MainNavbar() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          <Button variant="contained" component={RouterLink} to="/login">
-            Sign in
-          </Button>
-          <Button
-            sx={{ ml: 2 }}
-            startIcon={<Icon icon={cart} />}
-            variant="contained"
-            target="_blank"
-            href="/"
-          >
-            $0.00
-          </Button>
+          {isAuthenticated ? (
+            <ShowCartCover />
+          ) : (
+            <Button variant="contained" component={RouterLink} to="/login">
+              Sign in
+            </Button>
+          )}
         </Container>
       </ToolbarStyle>
 

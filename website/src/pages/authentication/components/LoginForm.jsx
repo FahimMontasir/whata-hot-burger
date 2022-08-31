@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useFormik, Form, FormikProvider } from "formik";
 import { Icon } from "@iconify/react";
 import eyeFill from "@iconify/icons-eva/eye-fill";
@@ -21,11 +21,13 @@ import { PATH_PAGE } from "../../../routes/paths";
 // hooks
 import { useConLoginMutation } from "../../../store/redux/api/consumer";
 import { login } from "../../../store/redux/slices/localStorageAuth";
+import { toast } from "react-toastify";
 
 //main component
 export default function LoginForm() {
   const [validateLogin, { isError, error }] = useConLoginMutation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -47,6 +49,8 @@ export default function LoginForm() {
         const result = await validateLogin(values).unwrap();
         dispatch(login({ token: result.text }));
         setSubmitting(false);
+        toast.success("User logged in successfully!");
+        navigate("/");
       } catch (error) {
         setSubmitting(false);
       }
@@ -107,7 +111,7 @@ export default function LoginForm() {
             variant="subtitle2"
             to={PATH_PAGE.register}
           >
-            Don not have an account? click here to Register
+            Do not have an account? click here to Register
           </Link>
         </Stack>
 

@@ -1,4 +1,4 @@
-const TOKEN_NAME = "whbToken";
+const TOKEN_NAME = "whbWebToken";
 
 const reHydrateStore = () => {
   if (localStorage.getItem(TOKEN_NAME) !== null) {

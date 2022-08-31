@@ -44,7 +44,7 @@ export default function Login() {
             variant="h3"
             sx={{ px: 5, mt: 10, mb: 5, color: "primary.light" }}
           >
-            Hi, Welcome Back to WhataHotBurger
+            Hi, Welcome Back to Whata Hot Burger
           </Typography>
         </SectionStyle>
       </MHidden>
@@ -54,7 +54,7 @@ export default function Login() {
           <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
-                Sign in to WhataHotBurger Dashboard
+                Sign in to Whata Hot Burger
               </Typography>
             </Box>
           </Stack>
