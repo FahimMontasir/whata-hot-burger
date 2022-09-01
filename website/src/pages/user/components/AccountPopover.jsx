@@ -31,12 +31,12 @@ const MENU_OPTIONS = [
   {
     label: "Profile",
     icon: personFill,
-    linkTo: PATH_PAGE.aboutUs,
+    linkTo: PATH_PAGE.user,
   },
   {
     label: "Settings",
     icon: settings2Fill,
-    linkTo: PATH_PAGE.aboutUs,
+    linkTo: PATH_PAGE.settings,
   },
 ];
 

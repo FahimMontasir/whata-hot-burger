@@ -28,6 +28,7 @@ export default function Router() {
         { path: "about-us", element: <AboutUs /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
+        { path: "user", element: <UserPage /> },
       ],
     },
   ]);
@@ -39,3 +40,4 @@ const FAQ = Loadable(lazy(() => import("../pages/faq")));
 const Dine = Loadable(lazy(() => import("../pages/dine")));
 const Combo = Loadable(lazy(() => import("../pages/food")));
 const Blog = Loadable(lazy(() => import("../pages/blog")));
+const UserPage = Loadable(lazy(() => import("../pages/user")));

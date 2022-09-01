@@ -7,4 +7,7 @@ export const PATH_PAGE = {
   aboutUs: "/about-us",
   login: "/login",
   register: "/register",
+  user: "/user",
+  settings: "/settings",
+  cart: "/cart",
 };
