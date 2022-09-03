@@ -6,13 +6,14 @@ import CartCard from "./CartCard";
 import { useGetCartQuery } from "../../../../../store/redux/api/cart";
 //util
 import { fNumber } from "../../../../../utils/formatNumber";
+import NotFound from "../../../../../common/NotFound";
 
 Cart.propTypes = {
   id: PropTypes.string,
 };
 
 export default function Cart({ id }) {
-  const { isSuccess, data } = useGetCartQuery(id);
+  const { isSuccess, data, error } = useGetCartQuery(id);
   // console.log(data);
   return (
     <Card sx={{ py: 3 }}>
@@ -22,26 +23,26 @@ export default function Cart({ id }) {
           divider={<Divider orientation="vertical" flexItem />}
         >
           <Stack width={1} textAlign="center">
-            <Typography variant="h4">{fNumber(data.subTotal)}$</Typography>
+            <Typography variant="h4">{fNumber(data?.subTotal)}$</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               Cart: Subtotal
             </Typography>
           </Stack>
           <Stack width={1} textAlign="center">
-            <Typography variant="h4">{fNumber(data.discount)}$</Typography>
+            <Typography variant="h4">{fNumber(data?.discount)}$</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               Cart: Discount
             </Typography>
           </Stack>
           <Stack width={1} textAlign="center">
-            <Typography variant="h4">{fNumber(data.total)}$</Typography>
+            <Typography variant="h4">{fNumber(data?.total)}$</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               Cart: Total
             </Typography>
           </Stack>
 
           <Stack width={1} textAlign="center">
-            <Typography variant="h4">{fNumber(data.totalQty)}</Typography>
+            <Typography variant="h4">{fNumber(data?.totalQty)}</Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               Cart: Total Quantity
             </Typography>
@@ -49,7 +50,15 @@ export default function Cart({ id }) {
         </Stack>
       )}
       <Stack sx={{ mt: 5, p: 5 }}>
-        {isSuccess && <CartCard data={data.food} />}
+        {isSuccess ? (
+          <CartCard data={data?.food} />
+        ) : (
+          <NotFound
+            message={
+              error ? error.data.message : "Check your network connection"
+            }
+          />
+        )}
       </Stack>
     </Card>
   );

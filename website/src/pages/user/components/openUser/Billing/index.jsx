@@ -8,6 +8,7 @@ import BillingAddressBook from "./BillingAddressBook";
 import PaymentMethod from "./PaymentMethod";
 import InvoiceHistory from "./InvoiceHistory";
 import { useGetConsumerInvoicesQuery } from "../../../../../store/redux/api/invoice";
+import NotFound from "../../../../../common/NotFound";
 //components
 
 export default function Billing() {
@@ -18,8 +19,8 @@ export default function Billing() {
   };
   const { state } = useLocation();
 
-  const { isSuccess, data } = useGetConsumerInvoicesQuery(state._id);
-  console.log(data);
+  const { isSuccess, error, data } = useGetConsumerInvoicesQuery(state._id);
+
   const [open, setOpen] = useState(false);
 
   const NewCardSchema = Yup.object().shape({
@@ -101,7 +102,15 @@ export default function Billing() {
       </Grid>
 
       <Grid item xs={12} md={4}>
-        {isSuccess && <InvoiceHistory invoices={data.array} />}
+        {isSuccess ? (
+          <InvoiceHistory invoices={data.array} />
+        ) : (
+          <NotFound
+            message={
+              error ? error.data.message : "Check your network connection"
+            }
+          />
+        )}
       </Grid>
     </Grid>
   );

@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import homeFill from "@iconify/icons-eva/home-fill";
 import personFill from "@iconify/icons-eva/person-fill";
 import settings2Fill from "@iconify/icons-eva/settings-2-fill";
-import { Link as RouterLink } from "react-router-dom";
 // material
 import {
   Button,
@@ -15,6 +14,7 @@ import {
   alpha,
   CircularProgress,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { PATH_PAGE } from "../../../routes/paths";
 import { logout } from "../../../store/redux/slices/localStorageAuth";
 import { useGetConsumerQuery } from "../../../store/redux/api/consumer";
@@ -33,14 +33,10 @@ const MENU_OPTIONS = [
     icon: personFill,
     linkTo: PATH_PAGE.user,
   },
-  {
-    label: "Settings",
-    icon: settings2Fill,
-    linkTo: PATH_PAGE.settings,
-  },
 ];
 
 export default function AccountPopover({ _id }) {
+  const navigate = useNavigate();
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -110,9 +106,12 @@ export default function AccountPopover({ _id }) {
             {MENU_OPTIONS.map((option) => (
               <MenuItem
                 key={option.label}
-                to={option.linkTo}
-                component={RouterLink}
-                onClick={handleClose}
+                onClick={() => {
+                  navigate(option.linkTo, {
+                    state: option.linkTo === PATH_PAGE.user && data.object,
+                  });
+                  handleClose();
+                }}
                 sx={{ typography: "body2", py: 1, px: 2.5 }}
               >
                 <Box

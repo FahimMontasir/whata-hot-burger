@@ -8,6 +8,5 @@ export const PATH_PAGE = {
   login: "/login",
   register: "/register",
   user: "/user",
-  settings: "/settings",
   cart: "/cart",
 };

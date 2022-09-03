@@ -43,6 +43,7 @@ export default function UserPage() {
           <Card
             sx={{
               mb: 3,
+              mt: 3,
               height: 280,
               position: "relative",
             }}

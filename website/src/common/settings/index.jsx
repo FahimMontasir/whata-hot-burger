@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import closeFill from "@iconify/icons-eva/close-fill";
-import options2Fill from "@iconify/icons-eva/options-2-fill";
+import options2Fill from "@iconify/icons-eva/settings-outline";
 // material
 import {
   Box,
@@ -17,10 +17,7 @@ import Scrollbar from "../Scrollbar";
 import MIconButton from "../@mui-extend/MIconButton";
 import SettingMode from "./SettingMode";
 import SettingColor from "./SettingColor";
-import SettingStretch from "./SettingStretch";
 import SettingFullscreen from "./SettingFullscreen";
-
-// ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 260;
 
@@ -112,7 +109,7 @@ export default function Settings() {
             justifyContent="space-between"
             sx={{ py: 2, pr: 1, pl: 2.5 }}
           >
-            <Typography variant="subtitle1">Settings</Typography>
+            <Typography variant="subtitle1">Display Settings</Typography>
             <MIconButton onClick={handleClose}>
               <Icon icon={closeFill} width={20} height={20} />
             </MIconButton>
@@ -122,18 +119,13 @@ export default function Settings() {
           <Scrollbar sx={{ height: 1 }}>
             <Stack spacing={4} sx={{ pt: 3, px: 3, pb: 15 }}>
               <Stack spacing={1.5}>
-                <Typography variant="subtitle2">Mode</Typography>
+                <Typography variant="subtitle2">Switch Mode</Typography>
                 <SettingMode />
               </Stack>
 
               <Stack spacing={1.5}>
-                <Typography variant="subtitle2">Color</Typography>
+                <Typography variant="subtitle2">All Colors</Typography>
                 <SettingColor />
-              </Stack>
-
-              <Stack spacing={1.5}>
-                <Typography variant="subtitle2">Stretch</Typography>
-                <SettingStretch />
               </Stack>
 
               <SettingFullscreen />

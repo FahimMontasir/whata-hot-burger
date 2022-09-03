@@ -1,6 +1,6 @@
 import { CircularProgress } from "@mui/material";
 import { Suspense, lazy } from "react";
-import { useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 // layouts
 import MainLayout from "../layout";
 import Login from "../pages/authentication/Login";
@@ -31,6 +31,16 @@ export default function Router() {
         { path: "user", element: <UserPage /> },
       ],
     },
+    {
+      path: "*",
+      element: <MainLayout />,
+      children: [
+        { path: "coming-soon", element: <ComingSoon /> },
+        { path: "maintenance", element: <Maintenance /> },
+        { path: "404", element: <NotFound /> },
+        { path: "*", element: <Navigate to="/404" replace /> },
+      ],
+    },
   ]);
 }
 
@@ -41,3 +51,8 @@ const Dine = Loadable(lazy(() => import("../pages/dine")));
 const Combo = Loadable(lazy(() => import("../pages/food")));
 const Blog = Loadable(lazy(() => import("../pages/blog")));
 const UserPage = Loadable(lazy(() => import("../pages/user")));
+
+// temp
+const ComingSoon = Loadable(lazy(() => import("../pages/temp/ComingSoon")));
+const Maintenance = Loadable(lazy(() => import("../pages/temp/Maintenance")));
+const NotFound = Loadable(lazy(() => import("../pages/temp/Page404")));

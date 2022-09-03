@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 
 const RootStyle = styled(Page)({
   height: "100%",
+  padding: "0px",
 });
 
 const ContentStyle = styled("div")(({ theme }) => ({

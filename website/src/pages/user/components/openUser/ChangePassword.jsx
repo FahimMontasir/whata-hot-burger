@@ -4,39 +4,24 @@ import { useFormik, Form, FormikProvider } from "formik";
 // material
 import { Stack, Card, TextField, Alert } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getUser } from "../../../../store/redux/slices/localStorageAuth";
 import { useConChangePasswordMutation } from "../../../../store/redux/api/consumer";
 
 export default function ChangePassword() {
-  const { type } = useSelector(getUser);
   const { state } = useLocation();
 
   const [changePass, { isError, error, isSuccess, isLoading }] =
     useConChangePasswordMutation();
 
-  let ChangePassWordSchema;
-  if (type === "admin") {
-    ChangePassWordSchema = Yup.object().shape({
-      newPassword: Yup.string()
-        .min(6, "Password must be at least 6 characters")
-        .required("New Password is required"),
-      confirmNewPassword: Yup.string()
-        .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
-        .required("Confirm Password is required"),
-    });
-  } else {
-    ChangePassWordSchema = Yup.object().shape({
-      oldPassword: Yup.string().required("Old Password is required"),
-      newPassword: Yup.string()
-        .min(6, "Password must be at least 6 characters")
-        .required("New Password is required"),
-      confirmNewPassword: Yup.string()
-        .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
-        .required("Confirm Password is required"),
-    });
-  }
+  const ChangePassWordSchema = Yup.object().shape({
+    oldPassword: Yup.string().required("Old Password is required"),
+    newPassword: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("New Password is required"),
+    confirmNewPassword: Yup.string()
+      .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
+      .required("Confirm Password is required"),
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -70,17 +55,15 @@ export default function ChangePassword() {
       <FormikProvider value={formik}>
         <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <Stack spacing={3} alignItems="flex-end">
-            {type !== "admin" && (
-              <TextField
-                {...getFieldProps("oldPassword")}
-                fullWidth
-                autoComplete="on"
-                type="password"
-                label="Old Password"
-                error={Boolean(touched.oldPassword && errors.oldPassword)}
-                helperText={touched.oldPassword && errors.oldPassword}
-              />
-            )}
+            <TextField
+              {...getFieldProps("oldPassword")}
+              fullWidth
+              autoComplete="on"
+              type="password"
+              label="Old Password"
+              error={Boolean(touched.oldPassword && errors.oldPassword)}
+              helperText={touched.oldPassword && errors.oldPassword}
+            />
 
             <TextField
               {...getFieldProps("newPassword")}

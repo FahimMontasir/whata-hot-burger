@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import bellFill from "@iconify/icons-eva/bell-fill";
+import update from "@iconify/icons-eva/info-fill";
 import roundVpnKey from "@iconify/icons-ic/round-vpn-key";
 import roundAccountBox from "@iconify/icons-ic/round-account-box";
 import roundReceipt from "@iconify/icons-ic/round-receipt";
@@ -8,6 +9,7 @@ import Profile from "./components/openUser/Profile";
 import Billing from "./components/openUser/Billing";
 import Notification from "./components/openUser/Notification";
 import ChangePassword from "./components/openUser/ChangePassword";
+import UpdateUser from "./components/openUser/UpdateUser";
 
 //config
 export const PROFILE_TABS = [
@@ -25,6 +27,11 @@ export const PROFILE_TABS = [
     value: "notifications",
     icon: <Icon icon={bellFill} width={20} height={20} />,
     component: <Notification />,
+  },
+  {
+    value: "update info",
+    icon: <Icon icon={update} width={20} height={20} />,
+    component: <UpdateUser />,
   },
   {
     value: "change password",

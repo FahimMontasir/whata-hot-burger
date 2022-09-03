@@ -8,7 +8,6 @@ import { Link as RouterLink } from "react-router-dom";
 import {
   Grid,
   Link,
-  Divider,
   Container,
   Typography,
   IconButton,
@@ -69,7 +68,6 @@ const RootStyle = styled("div")(({ theme }) => ({
 export default function MainFooter() {
   return (
     <RootStyle>
-      <Divider />
       <Container maxWidth="lg" sx={{ pt: 10 }}>
         <Grid
           container

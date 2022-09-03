@@ -30,10 +30,11 @@ import { PATH_PAGE } from "../../../../routes/paths";
 
 ConsumerForm.propTypes = {
   isEdit: PropTypes.bool,
+  notShow: PropTypes.bool,
   currentUser: PropTypes.object,
 };
 
-export default function ConsumerForm({ isEdit, currentUser }) {
+export default function ConsumerForm({ isEdit, currentUser, notShow }) {
   const { uploading, uploadImage } = useUploadImage();
   const navigate = useNavigate();
 
@@ -207,15 +208,17 @@ export default function ConsumerForm({ isEdit, currentUser }) {
                     {!isEdit ? "Register" : "Save Changes"}
                   </LoadingButton>
                 </Box>
-                <Stack sx={{ my: 2 }}>
-                  <Link
-                    component={RouterLink}
-                    variant="subtitle2"
-                    to={PATH_PAGE.login}
-                  >
-                    Do you have an account? click here to Login
-                  </Link>
-                </Stack>
+                {!notShow && (
+                  <Stack sx={{ my: 2 }}>
+                    <Link
+                      component={RouterLink}
+                      variant="subtitle2"
+                      to={PATH_PAGE.login}
+                    >
+                      Do you have an account? click here to Login
+                    </Link>
+                  </Stack>
+                )}
                 {isError && (
                   <Alert severity="error">
                     An error occurred: {error.data?.message}
