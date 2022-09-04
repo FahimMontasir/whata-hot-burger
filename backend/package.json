@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "jest --watchAll"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "Fahim Montasir",

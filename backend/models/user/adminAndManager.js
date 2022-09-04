@@ -4,6 +4,10 @@ const Joi = require("joi");
 const AdminAndManager = mongoose.model(
   "AdminAndManager",
   new mongoose.Schema({
+    _id: {
+      type: mongoose.Types.ObjectId,
+      default: new mongoose.Types.ObjectId(),
+    },
     token: {
       type: String,
       default: null,
@@ -55,6 +59,7 @@ const AdminAndManager = mongoose.model(
 
 const validateAdminAndManager = (adminAndManager) => {
   const schema = Joi.object({
+    _id: Joi.objectId(),
     token: Joi.string(),
     type: Joi.string().max(10).required(),
     managerialPosition: Joi.any(),
