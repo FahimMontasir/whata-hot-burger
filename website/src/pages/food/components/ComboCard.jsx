@@ -1,76 +1,58 @@
-import { alpha, Card, styled, Typography, useTheme } from "@mui/material";
+import PropTypes from "prop-types";
+// material
+import { Box, Card, styled } from "@mui/material";
+// component
+import Label from "../../../common/Label";
 
-const shadowIcon = (color) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
-
-const CardStyle = styled(Card)(({ theme }) => {
-  const shadowCard = (opacity) =>
-    theme.palette.mode === "light"
-      ? alpha(theme.palette.grey[500], opacity)
-      : alpha(theme.palette.common.black, opacity);
-
-  return {
-    maxWidth: 380,
-    minHeight: 440,
-    margin: "auto",
-    textAlign: "center",
-    padding: theme.spacing(10, 5, 0),
-    boxShadow: `-40px 40px 80px 0 ${shadowCard(0.48)}`,
-    [theme.breakpoints.up("md")]: {
-      boxShadow: "none",
-      backgroundColor:
-        theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
-    },
-    "&.cardLeft": {
-      [theme.breakpoints.up("md")]: { marginTop: -40 },
-    },
-    "&.cardCenter": {
-      [theme.breakpoints.up("md")]: {
-        marginTop: -80,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: `-40px 40px 80px 0 ${shadowCard(0.4)}`,
-        "&:before": {
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: -1,
-          content: "''",
-          margin: "auto",
-          position: "absolute",
-          width: "calc(100% - 40px)",
-          height: "calc(100% - 40px)",
-          borderRadius: theme.shape.borderRadiusMd,
-          backgroundColor: theme.palette.background.paper,
-          boxShadow: `-20px 20px 40px 0 ${shadowCard(0.12)}`,
-        },
-      },
-    },
-  };
+const ProductImgStyle = styled("img")({
+  top: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  position: "absolute",
 });
 
-const CardImageStyle = styled("img")(({ theme }) => ({
-  width: 40,
-  height: 40,
-  margin: "auto",
-  marginBottom: theme.spacing(10),
-  filter: shadowIcon(theme.palette.primary.main),
-}));
+ComboCard.propTypes = {
+  combo: PropTypes.object,
+  onClick: PropTypes.func,
+};
 
-export default function ComboCard({ index, card }) {
-  const theme = useTheme();
-  const isLight = theme.palette.mode === "light";
+export default function ComboCard({ combo, onClick }) {
+  const { photoUrls, category, uptoDiscountRate } = combo;
 
   return (
-    <CardStyle
-      className={(index === 0 && "cardLeft") || (index === 1 && "cardCenter")}
-    >
-      <CardImageStyle src={card.icon} alt={card.title} />
-      <Typography variant="h5" paragraph>
-        {card.title}
-      </Typography>
-      <Typography sx={{ color: isLight ? "text.secondary" : "common.white" }}>
-        {card.description}
-      </Typography>
-    </CardStyle>
+    <Card onClick={onClick}>
+      <Box sx={{ pt: "100%", position: "relative" }}>
+        <Label
+          variant="filled"
+          color="error"
+          sx={{
+            top: 16,
+            right: 16,
+            zIndex: 9,
+            position: "absolute",
+            textTransform: "uppercase",
+          }}
+        >
+          {category}
+        </Label>
+
+        <Label
+          variant="filled"
+          color="info"
+          sx={{
+            top: 16,
+            left: 16,
+            zIndex: 9,
+            position: "absolute",
+            textTransform: "uppercase",
+          }}
+        >
+          Upto: {uptoDiscountRate}%
+        </Label>
+
+        <ProductImgStyle alt="combo cover photo" src={photoUrls[0]} />
+      </Box>
+    </Card>
   );
 }
