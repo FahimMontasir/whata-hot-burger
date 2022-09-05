@@ -19,8 +19,6 @@ import { PATH_PAGE } from "../routes/paths";
 //
 import Logo from "../common/Logo";
 
-// ----------------------------------------------------------------------
-
 const SOCIALS = [
   {
     name: "Github",
@@ -146,7 +144,10 @@ export default function MainFooter() {
             textAlign: { xs: "center", md: "left" },
           }}
         >
-          © 2022. All rights reserved
+          © 2022. All rights reserved by{" "}
+          <a href="https://moontasir.web.app/" rel="noreferrer" target="_blank">
+            Fahim Montasir
+          </a>
         </Typography>
       </Container>
     </RootStyle>

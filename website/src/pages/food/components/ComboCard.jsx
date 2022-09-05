@@ -22,7 +22,7 @@ export default function ComboCard({ combo, onClick }) {
 
   return (
     <Card onClick={onClick}>
-      <Box sx={{ pt: "100%", position: "relative" }}>
+      <Box sx={{ pt: "100%", position: "relative", cursor: "pointer" }}>
         <Label
           variant="filled"
           color="error"
