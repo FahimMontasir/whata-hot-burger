@@ -9,8 +9,8 @@ import { useGetCartQuery } from "../../../store/redux/api/cart";
 
 export default function ShowCartCover() {
   const { _id } = useSelector(getUser);
-  const { isLoading, isSuccess } = useGetCartQuery(_id);
-
+  const { isLoading, isSuccess, data } = useGetCartQuery(_id);
+  // console.log(data);
   return (
     <>
       <AccountPopover _id={_id} />
@@ -25,7 +25,7 @@ export default function ShowCartCover() {
         {isLoading ? (
           <CircularProgress color="warning" size="10px" />
         ) : (
-          "$00.00"
+          `$${data?.total}`
         )}
       </Button>
     </>

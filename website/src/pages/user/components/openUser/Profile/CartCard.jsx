@@ -8,8 +8,9 @@ import priceIcon from "@iconify/icons-ant-design/dollar";
 import { Box, Typography, Stack, styled } from "@mui/material";
 // utils
 import { fShortenNumber } from "../../../../../utils/formatNumber";
-
-// ----------------------------------------------------------------------
+import React from "react";
+import ComboTitle from "./ComboTitle";
+import Label from "../../../../../common/Label";
 
 const ItemBlockStyle = styled((props) => (
   <Stack direction="row" alignItems="center" {...props} />
@@ -24,8 +25,6 @@ const ItemIconStyle = styled(Icon)(({ theme }) => ({
   marginRight: theme.spacing(0.5),
   color: theme.palette.text.disabled,
 }));
-
-// ----------------------------------------------------------------------
 
 CartCard.propTypes = {
   data: PropTypes.object,
@@ -66,17 +65,21 @@ function CardItem({ food }) {
 }
 
 export default function CartCard({ data }) {
-  for (const property in data) {
-    // console.log(`${property}: ${data[property]}`);
-    return (
-      <>
-        <Typography variant="h6">
-          {property === "notACombo" ? "" : "Combo"}
-        </Typography>
-        {data[property].map((food) => (
-          <CardItem key={food._id} food={food} />
-        ))}
-      </>
-    );
-  }
+  const dItems = Object.keys(data);
+  return (
+    <>
+      {dItems.map((key) => (
+        <React.Fragment key={key}>
+          {key === "notACombo" ? (
+            <Label>Other Product</Label>
+          ) : (
+            <ComboTitle id={key} />
+          )}
+          {data[key].map((v) => (
+            <CardItem key={v._id} food={v} />
+          ))}
+        </React.Fragment>
+      ))}
+    </>
+  );
 }
