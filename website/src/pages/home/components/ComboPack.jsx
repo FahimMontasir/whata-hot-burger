@@ -18,6 +18,7 @@ import {
 import { useGetComboByCategoryQuery } from "../../../store/redux/api/combo";
 
 import ComboCard from "../../food/components/ComboCard";
+import { SkeletonLoad } from "../../food/components/List";
 
 const RootStyle = styled("div")(({ theme }) => ({
   paddingTop: theme.spacing(15),
@@ -31,7 +32,8 @@ export default function ComboPack() {
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const navigate = useNavigate();
 
-  const { isSuccess, data } = useGetComboByCategoryQuery("Special deals");
+  const { isSuccess, data, isLoading } =
+    useGetComboByCategoryQuery("Special deals");
 
   return (
     <RootStyle>
@@ -43,7 +45,7 @@ export default function ComboPack() {
             </Typography>
           </MotionInView>
         </Box>
-
+        {isLoading && SkeletonLoad}
         {isSuccess && (
           <Grid container spacing={isDesktop ? 10 : 5}>
             {data.array.map((combo) => (

@@ -38,7 +38,9 @@ export default function ComboDetails() {
           <Card>
             <Grid container>
               <Grid item xs={12} md={6}>
-                <Card sx={{ m: 5, p: 5 }}>
+                <Card
+                  sx={{ m: { md: 4, xs: 0 }, p: { md: 4, xs: "0 0 30px 0" } }}
+                >
                   <ComboDetailsCarousel combo={data.object} />
                 </Card>
               </Grid>
