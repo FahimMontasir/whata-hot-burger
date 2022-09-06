@@ -25,7 +25,7 @@ export default function ShowCartCover() {
         {isLoading ? (
           <CircularProgress color="warning" size="10px" />
         ) : (
-          `$${data?.total}`
+          `$${data?.total ? data?.total : "00"}`
         )}
       </Button>
     </>
