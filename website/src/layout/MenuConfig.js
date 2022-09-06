@@ -1,12 +1,12 @@
 import { Icon } from "@iconify/react";
-import homeFill from "@iconify/icons-eva/home-fill";
-import fileFill from "@iconify/icons-eva/file-fill";
-import roundGrain from "@iconify/icons-ic/round-grain";
-import bookOpenFill from "@iconify/icons-eva/book-open-fill";
+import homeFill from "@iconify/icons-ic/round-grain";
+import combo from "@iconify/icons-ic/restaurant-menu";
+import dine from "@iconify/icons-ic/restaurant";
+import blog from "@iconify/icons-ic/book";
+import faq from "@iconify/icons-ic/question-answer";
+import aboutUs from "@iconify/icons-ic/info";
 // routes
-import { PATH_AUTH, PATH_DOCS, PATH_PAGE } from "../routes/paths";
-
-// ----------------------------------------------------------------------
+import { PATH_PAGE } from "../routes/paths";
 
 const ICON_SIZE = {
   width: 22,
@@ -15,54 +15,34 @@ const ICON_SIZE = {
 
 const menuConfig = [
   {
-    title: "Home",
+    title: "Explore",
     icon: <Icon icon={homeFill} {...ICON_SIZE} />,
     path: "/",
   },
   {
-    title: "Components",
-    icon: <Icon icon={roundGrain} {...ICON_SIZE} />,
-    path: PATH_PAGE.components,
+    title: "Food",
+    icon: <Icon icon={combo} {...ICON_SIZE} />,
+    path: PATH_PAGE.food,
   },
   {
-    title: "Pages",
-    path: "/pages",
-    icon: <Icon icon={fileFill} {...ICON_SIZE} />,
-    children: [
-      {
-        subheader: "Other",
-        items: [
-          { title: "About us", path: PATH_PAGE.about },
-          { title: "Contact us", path: PATH_PAGE.contact },
-          { title: "FAQs", path: PATH_PAGE.faqs },
-          { title: "Pricing", path: PATH_PAGE.pricing },
-          { title: "Payment", path: PATH_PAGE.payment },
-          { title: "Maintenance", path: PATH_PAGE.maintenance },
-          { title: "Coming Soon", path: PATH_PAGE.comingSoon },
-        ],
-      },
-      {
-        subheader: "Authentication",
-        items: [
-          { title: "Login", path: PATH_AUTH.loginUnprotected },
-          { title: "Register", path: PATH_AUTH.registerUnprotected },
-          { title: "Reset password", path: PATH_AUTH.resetPassword },
-          { title: "Verify code", path: PATH_AUTH.verify },
-        ],
-      },
-      {
-        subheader: "Error",
-        items: [
-          { title: "Page 404", path: PATH_PAGE.page404 },
-          { title: "Page 500", path: PATH_PAGE.page500 },
-        ],
-      },
-    ],
+    title: "Dine",
+    icon: <Icon icon={dine} {...ICON_SIZE} />,
+    path: PATH_PAGE.dine,
   },
   {
-    title: "Documentation",
-    icon: <Icon icon={bookOpenFill} {...ICON_SIZE} />,
-    path: PATH_DOCS,
+    title: "Nutrition Tips",
+    icon: <Icon icon={blog} {...ICON_SIZE} />,
+    path: PATH_PAGE.blog,
+  },
+  {
+    title: "FAQs",
+    icon: <Icon icon={faq} {...ICON_SIZE} />,
+    path: PATH_PAGE.faq,
+  },
+  {
+    title: "About Us",
+    icon: <Icon icon={aboutUs} {...ICON_SIZE} />,
+    path: PATH_PAGE.aboutUs,
   },
 ];
 

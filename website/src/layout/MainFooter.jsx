@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react";
 import googleFill from "@iconify/icons-eva/google-fill";
-import twitterFill from "@iconify/icons-eva/twitter-fill";
-import facebookFill from "@iconify/icons-eva/facebook-fill";
+import github from "@iconify/icons-eva/github-fill";
 import linkedinFill from "@iconify/icons-eva/linkedin-fill";
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
@@ -9,7 +8,6 @@ import { Link as RouterLink } from "react-router-dom";
 import {
   Grid,
   Link,
-  Divider,
   Container,
   Typography,
   IconButton,
@@ -21,22 +19,27 @@ import { PATH_PAGE } from "../routes/paths";
 //
 import Logo from "../common/Logo";
 
-// ----------------------------------------------------------------------
-
 const SOCIALS = [
-  { name: "FaceBook", icon: facebookFill },
-  { name: "Google", icon: googleFill },
-  { name: "Linkedin", icon: linkedinFill },
-  { name: "Twitter", icon: twitterFill },
+  {
+    name: "Github",
+    icon: github,
+    link: "https://github.com/FahimMontasir",
+  },
+  { name: "Google", icon: googleFill, link: "https://moontasir.web.app/" },
+  {
+    name: "Linkedin",
+    icon: linkedinFill,
+    link: "https://www.linkedin.com/in/fahim-montasir/",
+  },
 ];
 
 const LINKS = [
   {
-    headline: "Minimal",
+    headline: "WHB",
     children: [
-      { name: "About us", href: PATH_PAGE.about },
-      { name: "Contact us", href: PATH_PAGE.contact },
-      { name: "FAQs", href: PATH_PAGE.faqs },
+      { name: "About us", href: PATH_PAGE.aboutUs },
+      { name: "Contact us", href: PATH_PAGE.aboutUs },
+      { name: "FAQs", href: PATH_PAGE.faq },
     ],
   },
   {
@@ -49,8 +52,8 @@ const LINKS = [
   {
     headline: "Contact",
     children: [
-      { name: "support@minimals.cc", href: "#" },
-      { name: "Los Angeles, 359  Hidden Valley Road", href: "#" },
+      { name: "fahimmontasirshakil@gmail.com", href: "#" },
+      { name: "Dhaka, Bangladesh", href: "#" },
     ],
   },
 ];
@@ -60,12 +63,9 @@ const RootStyle = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
 }));
 
-// ----------------------------------------------------------------------
-
 export default function MainFooter() {
   return (
     <RootStyle>
-      <Divider />
       <Container maxWidth="lg" sx={{ pt: 10 }}>
         <Grid
           container
@@ -79,9 +79,7 @@ export default function MainFooter() {
           </Grid>
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              The starting point for your next project with Minimal UI Kit,
-              built on the newest version of Material-UI ©, ready to be
-              customized to your style.
+              Everything is hot and spicy!!!
             </Typography>
 
             <Stack
@@ -91,7 +89,13 @@ export default function MainFooter() {
               sx={{ mt: 5, mb: { xs: 5, md: 0 } }}
             >
               {SOCIALS.map((social) => (
-                <IconButton key={social.name} color="primary" sx={{ p: 1 }}>
+                <IconButton
+                  href={social.link}
+                  target="_blank"
+                  key={social.name}
+                  color="primary"
+                  sx={{ p: 1 }}
+                >
                   <Icon icon={social.icon} width={16} height={16} />
                 </IconButton>
               ))}
@@ -140,7 +144,10 @@ export default function MainFooter() {
             textAlign: { xs: "center", md: "left" },
           }}
         >
-          © 2021. All rights reserved
+          © 2022. All rights reserved by{" "}
+          <a href="https://moontasir.web.app/" rel="noreferrer" target="_blank">
+            Fahim Montasir
+          </a>
         </Typography>
       </Container>
     </RootStyle>

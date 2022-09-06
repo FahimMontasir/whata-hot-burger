@@ -1,5 +1,10 @@
 # Whata Hot Burger :)
 
+## `Live Link`
+
+1. [Api](https://whb-backend.onrender.com/faq)
+2. [Dashboard](https://whb-dashboard.netlify.app)
+
 ## `design inspiration`
 
 1. [kfc mobile app](https://play.google.com/store/apps/details?id=com.kfc.egypt&hl=en_US&gl=US)

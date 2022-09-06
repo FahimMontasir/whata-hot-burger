@@ -1,6 +1,7 @@
 {
   "jwtPrivateKey": "abc*",
   "db_name": "whb_db",
+  "test_db_name": "test_whb_db",
   "db_user": "fahim",
   "db_pass": "fahimkhan",
   "db_port": "27017",

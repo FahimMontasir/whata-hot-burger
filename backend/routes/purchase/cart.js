@@ -19,7 +19,10 @@ router.post("/add", [auth, consumer], async (req, res) => {
   const { error } = validateCart(req.body);
   if (error) return res.status(400).json({ message: error.message });
 
-  const combo = await Cart.find({ comboId: req.body[0].comboId });
+  const combo = await Cart.find({
+    comboId: req.body[0].comboId,
+    userId: req.body[0].userId,
+  });
   if (combo.length)
     return res.status(400).json({ message: "Combo already added." });
 
@@ -35,6 +38,7 @@ router.post("/add/singleFood", [auth, consumer], async (req, res) => {
 
   const cart = await Cart.findOne({
     foodId: req.body.foodId,
+    userId: req.body.userId,
     comboId: "notACombo",
   });
 

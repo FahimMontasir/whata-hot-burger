@@ -6,13 +6,13 @@ import useOffSetTop from "../hooks/useOffSetTop";
 // components
 import Logo from "../common/Logo";
 import MHidden from "../common/@mui-extend/MHidden";
-import Label from "../common/Label";
 //
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 import navConfig from "./MenuConfig";
-
-// ----------------------------------------------------------------------
+import { useSelector } from "react-redux";
+import { getToken } from "../store/redux/slices/localStorageAuth";
+import ShowCartCover from "../pages/user/components/ShowCartCover";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -41,9 +41,9 @@ const ToolbarShadowStyle = styled("div")(({ theme }) => ({
   boxShadow: theme.customShadows.z8,
 }));
 
-// ----------------------------------------------------------------------
-
 export default function MainNavbar() {
+  const isAuthenticated = useSelector(getToken);
+
   const isOffset = useOffSetTop(100);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
@@ -67,13 +67,13 @@ export default function MainNavbar() {
             justifyContent: "space-between",
           }}
         >
-          <RouterLink to="/">
-            <Logo />
-          </RouterLink>
-          <Label color="info" sx={{ ml: 1 }}>
-            v2.5.0
-          </Label>
-          <Box sx={{ flexGrow: 1 }} />
+          <MHidden width="mdUp">
+            <MenuMobile
+              isOffset={isOffset}
+              isHome={isHome}
+              navConfig={navConfig}
+            />
+          </MHidden>
 
           <MHidden width="mdDown">
             <MenuDesktop
@@ -83,21 +83,21 @@ export default function MainNavbar() {
             />
           </MHidden>
 
-          <Button
-            variant="contained"
-            target="_blank"
-            href="https://material-ui.com/store/items/minimal-dashboard/"
-          >
-            Purchase Now
-          </Button>
+          <Box sx={{ flexGrow: 1 }} />
 
-          <MHidden width="mdUp">
-            <MenuMobile
-              isOffset={isOffset}
-              isHome={isHome}
-              navConfig={navConfig}
-            />
-          </MHidden>
+          <RouterLink to="/">
+            <Logo />
+          </RouterLink>
+
+          <Box sx={{ flexGrow: 1 }} />
+
+          {isAuthenticated ? (
+            <ShowCartCover />
+          ) : (
+            <Button variant="contained" component={RouterLink} to="/login">
+              Sign in
+            </Button>
+          )}
         </Container>
       </ToolbarStyle>
 

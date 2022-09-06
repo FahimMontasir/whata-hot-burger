@@ -2,6 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 //routes
+const demo = require("../routes/boilerplate");
 const consumer = require("../routes/user/consumer");
 const adminAndManager = require("../routes/user/adminAndManager");
 const product = require("../routes/food");
@@ -19,6 +20,7 @@ module.exports = function (app) {
   app.use(cors());
   app.use(express.json());
   app.use(helmet());
+  app.use("/demo", demo);
   app.use("/consumer", consumer);
   app.use("/am", adminAndManager);
   app.use("/product", product);

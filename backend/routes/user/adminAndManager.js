@@ -31,6 +31,7 @@ router.post("/register", [auth, admin], async (req, res) => {
 
   user = new AdminAndManager(
     _.pick(req.body, [
+      "_id",
       "token",
       "type",
       "managerialPosition",

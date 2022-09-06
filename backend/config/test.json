@@ -1,0 +1,9 @@
+{
+  "jwtPrivateKey": "abc*",
+  "test_db_name": "test_whb_db",
+  "db_name": "test_whb_db",
+  "db_user": "fahim",
+  "db_pass": "fahimkhan",
+  "db_port": "27017",
+  "db_ip": "mongo"
+}
