@@ -19,7 +19,10 @@ router.post("/add", [auth, consumer], async (req, res) => {
   const { error } = validateCart(req.body);
   if (error) return res.status(400).json({ message: error.message });
 
-  const combo = await Cart.find({ comboId: req.body[0].comboId });
+  const combo = await Cart.find({
+    comboId: req.body[0].comboId,
+    userId: req.body[0].userId,
+  });
   if (combo.length)
     return res.status(400).json({ message: "Combo already added." });
 
@@ -35,6 +38,7 @@ router.post("/add/singleFood", [auth, consumer], async (req, res) => {
 
   const cart = await Cart.findOne({
     foodId: req.body.foodId,
+    userId: req.body[0].userId,
     comboId: "notACombo",
   });
 
@@ -64,11 +68,11 @@ router.get("/:userId", [auth, consumer], async (req, res) => {
 
   const foodIds = data.map((e) => e.foodId);
   const allFood = await Product.find({ _id: { $in: foodIds } });
-  if (!allFood.length)
-    return res.status(400).json({ message: "Food not found" });
+  // if (!allFood.length)
+  //   return res.status(400).json({ message: "Food not found" });
 
-  if (data.length !== allFood.length)
-    return res.status(401).json({ message: "Your cart contain deleted food" });
+  // if (data.length !== allFood.length)
+  //   return res.status(401).json({ message: "Your cart contain deleted food" });
   let merged = [];
 
   for (let i = 0; i < data.length; i++) {
