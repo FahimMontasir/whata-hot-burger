@@ -38,7 +38,7 @@ router.post("/add/singleFood", [auth, consumer], async (req, res) => {
 
   const cart = await Cart.findOne({
     foodId: req.body.foodId,
-    userId: req.body[0].userId,
+    userId: req.body.userId,
     comboId: "notACombo",
   });
 
@@ -101,7 +101,7 @@ router.get("/:userId", [auth, consumer], async (req, res) => {
 
   const subTotal = merged.reduce((sum, v) => sum + v.price, 0) + sizeTk;
   const discount = merged.reduce(
-    (sum, v) => sum + Math.round(v.price * (v.discountRate / 100)),
+    (sum, v) => sum + Math.ceil(v.price * (v.discountRate / 100)),
     0
   );
   const total = subTotal - discount;
