@@ -30,7 +30,7 @@ export default function ComboDetails() {
   const { id } = useParams();
   const { data, isSuccess, isError, isLoading } = useGetComboQuery(id);
 
-  console.log(data);
+  // console.log(data);
   return (
     <Page title="product details">
       <Container maxWidth="lg">
@@ -45,7 +45,7 @@ export default function ComboDetails() {
                 </Card>
               </Grid>
               <Grid item xs={12} md={6}>
-                <ComboDetailsSummary combo={data.object} />
+                <ComboDetailsSummary comboId={id} combo={data.object} />
               </Grid>
             </Grid>
           </Card>

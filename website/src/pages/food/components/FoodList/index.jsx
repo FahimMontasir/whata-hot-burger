@@ -1,17 +1,13 @@
 import {
-  Button,
   Card,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   Stack,
-  styled,
   Table,
   TableBody,
-  TableCell,
   TableContainer,
-  TableRow,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
@@ -20,19 +16,13 @@ import { CATEGORY_OPTION } from "./foodList.config";
 import { useGetFoodByCategoryQuery } from "../../../../store/redux/api/food";
 import ListSkeleton from "./ListSkeleton";
 import Scrollbar from "../../../../common/Scrollbar";
-import Label from "../../../../common/Label";
 import NotFound from "../../../../common/NotFound";
-
-//styled component
-const ThumbImgStyle = styled("img")(({ theme }) => ({
-  width: 64,
-  height: 64,
-  objectFit: "cover",
-  margin: theme.spacing(0, 4),
-  borderRadius: theme.shape.borderRadiusSm,
-}));
+import { useSelector } from "react-redux";
+import { getUser } from "../../../../store/redux/slices/localStorageAuth";
+import FoodCard from "./FoodCard";
 
 const FoodList = () => {
+  const { _id: userId } = useSelector(getUser);
   const [category, setCategory] = useState("burgers");
 
   const { isSuccess, isFetching, data, isError, error } =
@@ -70,48 +60,11 @@ const FoodList = () => {
         <TableContainer sx={{ mt: 2 }}>
           <Table>
             {isSuccess && !isFetching && (
-              <>
-                <TableBody>
-                  {data.array.map((row) => {
-                    const {
-                      _id,
-                      name,
-                      photoUrl,
-                      category,
-                      price,
-                      discountRate,
-                      size,
-                      numberInStock,
-                    } = row;
-
-                    return (
-                      <TableRow hover key={_id}>
-                        <TableCell
-                          style={{ maxWidth: 100 }}
-                          component="th"
-                          scope="row"
-                          padding="none"
-                        >
-                          <ThumbImgStyle alt={name} src={photoUrl} />
-                        </TableCell>
-                        <TableCell align="left">{name}</TableCell>
-                        <TableCell align="left">
-                          {category.map((v, i) => (
-                            <Label key={i}>{v}</Label>
-                          ))}
-                        </TableCell>
-                        <TableCell align="right">${price}</TableCell>
-                        <TableCell align="right">{discountRate}%</TableCell>
-                        <TableCell align="left">{size}</TableCell>
-                        <TableCell align="right">{numberInStock}</TableCell>
-                        <TableCell align="right">
-                          <Button variant="contained">add to cart</Button>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </>
+              <TableBody>
+                {data.array.map((row) => {
+                  return <FoodCard food={row} key={row._id} userId={userId} />;
+                })}
+              </TableBody>
             )}
           </Table>
           {isError && (

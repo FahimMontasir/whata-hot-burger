@@ -21,7 +21,13 @@ const localStorageAuthSlice = createSlice({
   },
 });
 export const getToken = (state) => state.localStorageAuth.token;
-export const getUser = (state) => jwtDecode(state.localStorageAuth.token);
+export const getUser = (state) => {
+  try {
+    return jwtDecode(state.localStorageAuth.token);
+  } catch (error) {
+    return error;
+  }
+};
 
 export const { login, logout } = localStorageAuthSlice.actions;
 export default localStorageAuthSlice.reducer;

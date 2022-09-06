@@ -40,6 +40,7 @@ const cartApi = mainApi.injectEndpoints({
 
     getCart: builder.query({
       query: (userId) => `/cart/${userId}`,
+      providesTags: ["cart"],
     }),
   }),
   overrideExisting: false,

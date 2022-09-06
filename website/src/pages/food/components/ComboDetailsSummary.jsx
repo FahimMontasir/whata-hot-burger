@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { Link as RouterLink } from "react-router-dom";
 import twitterFill from "@iconify/icons-eva/twitter-fill";
 import linkedinFill from "@iconify/icons-eva/linkedin-fill";
 import facebookFill from "@iconify/icons-eva/facebook-fill";
@@ -18,6 +19,11 @@ import {
 import MIconButton from "../../../common/@mui-extend/MIconButton";
 import Label from "../../../common/Label";
 import Scrollbar from "../../../common/Scrollbar";
+import { useSelector } from "react-redux";
+import { getUser } from "../../../store/redux/slices/localStorageAuth";
+import { PATH_PAGE } from "../../../routes/paths";
+import { toast } from "react-toastify";
+import { useAddComboCartMutation } from "../../../store/redux/api/cart";
 
 const SOCIALS = [
   {
@@ -55,7 +61,27 @@ const RootStyle = styled("div")(({ theme }) => ({
   },
 }));
 
-export default function ComboDetailsSummary({ combo }) {
+export default function ComboDetailsSummary({ combo, comboId }) {
+  const { _id: userId } = useSelector(getUser);
+  const foods = combo.food.map((f) => {
+    return {
+      userId: userId,
+      foodId: f._id,
+      qty: 1,
+      size: "standard:0",
+      comboId: comboId,
+    };
+  });
+
+  const [addCart] = useAddComboCartMutation();
+
+  const handleAddToCart = () => {
+    addCart(foods)
+      .unwrap()
+      .then((data) => toast.success(data.text))
+      .catch(() => toast.error("Add to cart failed"));
+  };
+
   return (
     <RootStyle>
       <Scrollbar>
@@ -87,7 +113,6 @@ export default function ComboDetailsSummary({ combo }) {
                     </TableCell>
                     <TableCell align="right">${price}</TableCell>
                     <TableCell align="right">{discountRate}%</TableCell>
-                    {/* <TableCell align="left">{size}</TableCell> */}
                   </TableRow>
                 );
               })}
@@ -96,7 +121,24 @@ export default function ComboDetailsSummary({ combo }) {
         </TableContainer>
       </Scrollbar>
       <Box sx={{ mt: 3, textAlign: "center" }}>
-        <Button variant="contained">add to cart</Button>
+        {userId ? (
+          <Button
+            variant="contained"
+            sx={{ minWidth: 150 }}
+            onClick={handleAddToCart}
+          >
+            add to cart
+          </Button>
+        ) : (
+          <Button
+            component={RouterLink}
+            to={PATH_PAGE.login}
+            variant="contained"
+            sx={{ minWidth: 220 }}
+          >
+            Login for adding to cart
+          </Button>
+        )}
       </Box>
       <Box sx={{ mt: 3, textAlign: "center" }}>
         {SOCIALS.map((social) => (
