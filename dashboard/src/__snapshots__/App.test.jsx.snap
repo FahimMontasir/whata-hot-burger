@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`taking snapshot of the root file(App) should match snapshot 1`] = `
+Array [
+  <div
+    className="MuiBox-root css-nrrkmw"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiCard-root css-mye6x0-MuiPaper-root-MuiCard-root"
+    >
+      <h3
+        className="MuiTypography-root MuiTypography-h3 css-1g2dbuu-MuiTypography-root"
+      >
+        Hi, Welcome Back to WhataHotBurger
+      </h3>
+    </div>
+    <div
+      className="MuiContainer-root MuiContainer-maxWidthSm css-1uznc7b-MuiContainer-root"
+    >
+      <div
+        className="css-26q4qm"
+      >
+        <div
+          className="css-z1d9km-MuiStack-root"
+        >
+          <div
+            className="MuiBox-root css-i9gxme"
+          >
+            <h4
+              className="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom css-50exmm-MuiTypography-root"
+            >
+              Sign in to WhataHotBurger Dashboard
+            </h4>
+            <p
+              className="MuiTypography-root MuiTypography-body1 css-17pgeb6-MuiTypography-root"
+            >
+              Enter your details below. Admin: fahim@gmail.com pass: 123456
+            </p>
+          </div>
+        </div>
+        <form
+          action="#"
+          autoComplete="off"
+          noValidate={true}
+          onReset={[Function]}
+          onSubmit={[Function]}
+        >
+          <div
+            className="css-1lwbda4-MuiStack-root"
+          >
+            <div
+              className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1hfzuw2-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink={false}
+                htmlFor="mui-1"
+                id="mui-1-label"
+              >
+                Email address
+              </label>
+              <div
+                className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1adt013-MuiInputBase-root-MuiOutlinedInput-root"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  autoComplete="email"
+                  autoFocus={false}
+                  className="MuiOutlinedInput-input MuiInputBase-input css-1swivyk-MuiInputBase-input-MuiOutlinedInput-input"
+                  disabled={false}
+                  id="mui-1"
+                  name="email"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  type="email"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden={true}
+                  className="MuiOutlinedInput-notchedOutline css-9425fu-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    className="css-1g8cwq9"
+                  >
+                    <span>
+                      Email address
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-1hfzuw2-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink={false}
+                htmlFor="mui-2"
+                id="mui-2-label"
+              >
+                Password
+              </label>
+              <div
+                className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd css-md3znj-MuiInputBase-root-MuiOutlinedInput-root"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  autoComplete="current-password"
+                  autoFocus={false}
+                  className="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd css-jtnu8p-MuiInputBase-input-MuiOutlinedInput-input"
+                  disabled={false}
+                  id="mui-2"
+                  name="password"
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  type="password"
+                  value=""
+                />
+                <div
+                  className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-jwovz7-MuiInputAdornment-root"
+                >
+                  <button
+                    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-pkl5fg-MuiButtonBase-root-MuiIconButton-root"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onDragLeave={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    tabIndex={0}
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"1.5\\" fill=\\"currentColor\\"/><path fill=\\"currentColor\\" d=\\"M15.29 18.12L14 16.78l-.07-.07l-1.27-1.27a4.07 4.07 0 0 1-.61.06A3.5 3.5 0 0 1 8.5 12a4.07 4.07 0 0 1 .06-.61l-2-2L5 7.87a15.89 15.89 0 0 0-2.87 3.63a1 1 0 0 0 0 1c.63 1.09 4 6.5 9.89 6.5h.25a9.48 9.48 0 0 0 3.23-.67ZM8.59 5.76l2.8 2.8A4.07 4.07 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a4.07 4.07 0 0 1-.06.61l2.68 2.68l.84.84a15.89 15.89 0 0 0 2.91-3.63a1 1 0 0 0 0-1c-.64-1.11-4.16-6.68-10.14-6.5a9.48 9.48 0 0 0-3.23.67Zm12.12 13.53L19.41 18l-2-2l-9.52-9.53L6.42 5L4.71 3.29a1 1 0 0 0-1.42 1.42L5.53 7l1.75 1.7l7.31 7.3l.07.07L16 17.41l.59.59l2.7 2.71a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42Z\\"/>",
+                        }
+                      }
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                    />
+                    <span
+                      className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+                <fieldset
+                  aria-hidden={true}
+                  className="MuiOutlinedInput-notchedOutline css-9425fu-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    className="css-1g8cwq9"
+                  >
+                    <span>
+                      Password
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-1qb7z1w-MuiStack-root"
+          >
+            <a
+              className="MuiTypography-root MuiTypography-subtitle2 MuiLink-root MuiLink-underlineHover css-1t1a161-MuiTypography-root-MuiLink-root"
+              href="/auth/reset-password"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+            >
+              Forgot password?
+            </a>
+          </div>
+          <button
+            className="MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButtonBase-root css-1c1uec8-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            disabled={false}
+            id="mui-3"
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="submit"
+          >
+            Login
+            <span
+              className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="Toastify"
+  />,
+]
+`;

@@ -8,33 +8,16 @@ import "./utils/highlight";
 // editor
 import "react-quill/dist/quill.snow.css";
 
-import { HelmetProvider } from "react-helmet-async";
-import { SettingsProvider } from "./store/contexts/SettingsContext";
-import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import { CollapseDrawerProvider } from "./store/contexts/CollapseDrawerContext";
-import { Provider } from "react-redux";
-import { store } from "./store/redux/store";
+
 import App from "./App";
-import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <SettingsProvider>
-        <CollapseDrawerProvider>
-          <BrowserRouter>
-            <Provider store={store}>
-              <App />
-              <ToastContainer />
-            </Provider>
-          </BrowserRouter>
-        </CollapseDrawerProvider>
-      </SettingsProvider>
-    </HelmetProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

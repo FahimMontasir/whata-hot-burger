@@ -16,7 +16,7 @@ export default function SettingsPage() {
   const { isSuccess, data } = useGetTermsConditionQuery();
 
   return (
-    <Page title="Settings">
+    <Page title="Dashboard Settings">
       <Container maxWidth={themeStretch ? false : "lg"}>
         <HeaderBreadcrumbs
           heading="All Settings"
