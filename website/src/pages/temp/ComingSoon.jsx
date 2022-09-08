@@ -67,7 +67,7 @@ const SeparatorStyle = styled(Typography)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function ComingSoon() {
-  const countdown = useCountdown(new Date("04/09/2022 21:30"));
+  const countdown = useCountdown(new Date("10/20/2022 21:30"));
 
   return (
     <RootStyle title="Coming Soon">

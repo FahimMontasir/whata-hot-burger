@@ -23,13 +23,14 @@ export default function Router() {
         { path: "/", element: <Home /> },
         { path: "food", element: <Combo /> },
         { path: "food/:id", element: <ComboDetails /> },
-        { path: "dine", element: <Dine /> },
-        { path: "blog", element: <Blog /> },
-        { path: "faq", element: <FAQ /> },
-        { path: "about-us", element: <AboutUs /> },
+        { path: "dine", element: <ComingSoon /> },
+        { path: "blog", element: <ComingSoon /> },
+        { path: "faq", element: <ComingSoon /> },
+        { path: "about-us", element: <ComingSoon /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: "user", element: <UserPage /> },
+        { path: "cart", element: <Cart /> },
       ],
     },
     {
@@ -46,13 +47,14 @@ export default function Router() {
 }
 
 const Home = Loadable(lazy(() => import("../pages/home")));
-const AboutUs = Loadable(lazy(() => import("../pages/aboutUs")));
-const FAQ = Loadable(lazy(() => import("../pages/faq")));
-const Dine = Loadable(lazy(() => import("../pages/dine")));
+// const AboutUs = Loadable(lazy(() => import("../pages/aboutUs")));
+// const FAQ = Loadable(lazy(() => import("../pages/faq")));
+// const Dine = Loadable(lazy(() => import("../pages/dine")));
+// const Blog = Loadable(lazy(() => import("../pages/blog")));
 const Combo = Loadable(lazy(() => import("../pages/food")));
 const ComboDetails = Loadable(lazy(() => import("../pages/food/details")));
-const Blog = Loadable(lazy(() => import("../pages/blog")));
 const UserPage = Loadable(lazy(() => import("../pages/user")));
+const Cart = Loadable(lazy(() => import("../pages/cart")));
 
 // temp
 const ComingSoon = Loadable(lazy(() => import("../pages/temp/ComingSoon")));

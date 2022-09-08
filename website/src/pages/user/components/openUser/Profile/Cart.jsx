@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 // material
-import { Card, Stack, Typography, Divider } from "@mui/material";
+import { Card, Stack, Typography, Divider, Button } from "@mui/material";
 import CartCard from "./CartCard";
 //api
 import { useGetCartQuery } from "../../../../../store/redux/api/cart";
 //util
 import { fNumber } from "../../../../../utils/formatNumber";
 import NotFound from "../../../../../common/NotFound";
+import { Link } from "react-router-dom";
+import { PATH_PAGE } from "../../../../../routes/paths";
 
 Cart.propTypes = {
   id: PropTypes.string,
@@ -51,7 +53,12 @@ export default function Cart({ id }) {
       )}
       <Stack sx={{ mt: 5, p: 5 }}>
         {isSuccess ? (
-          <CartCard data={data?.food} />
+          <>
+            <CartCard data={data?.food} />
+            <Button component={Link} to={PATH_PAGE.cart}>
+              Go to Cart
+            </Button>
+          </>
         ) : (
           <NotFound
             message={

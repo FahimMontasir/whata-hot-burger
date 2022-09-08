@@ -6,6 +6,7 @@ import AccountPopover from "./AccountPopover";
 import { useSelector } from "react-redux";
 import { getUser } from "../../../store/redux/slices/localStorageAuth";
 import { useGetCartQuery } from "../../../store/redux/api/cart";
+import { PATH_PAGE } from "../../../routes/paths";
 
 export default function ShowCartCover() {
   const { _id } = useSelector(getUser);
@@ -20,7 +21,7 @@ export default function ShowCartCover() {
         startIcon={<Icon icon={cart} />}
         variant="contained"
         component={RouterLink}
-        to="/combo"
+        to={PATH_PAGE.cart}
       >
         {isLoading ? (
           <CircularProgress color="warning" size="10px" />
