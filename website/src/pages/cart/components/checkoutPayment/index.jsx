@@ -7,37 +7,21 @@ import { Grid, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 //
 import CheckoutSummary from "../checkoutCart/CheckoutSummary";
-import CheckoutDelivery from "./CheckoutDelivery";
 import CheckoutBillingInfo from "./CheckoutBillingInfo";
 import CheckoutPaymentMethods from "./CheckoutPaymentMethods";
-
-// ----------------------------------------------------------------------
-
-const DELIVERY_OPTIONS = [
-  {
-    value: 0,
-    title: "Standard delivery (Free)",
-    description: "Delivered on Monday, August 12",
-  },
-  {
-    value: 2,
-    title: "Fast delivery ($2,00)",
-    description: "Delivered on Monday, August 5",
-  },
-];
 
 const PAYMENT_OPTIONS = [
   {
     value: "paypal",
     title: "Pay with Paypal",
     description:
-      "You will be redirected to PayPal website to complete your purchase securely.",
+      "You will be redirected to /Pay*Pal website to complete your purchase securely.",
     icons: ["/static/icons/ic_paypal.svg"],
   },
   {
     value: "credit_card",
     title: "Credit / Debit Card",
-    description: "We support Mastercard, Visa, Discover and Stripe.",
+    description: "We support Master*card, Vi*sa, Discover and Stripe.",
     icons: ["/static/icons/ic_mastercard.svg", "/static/icons/ic_visa.svg"],
   },
   {
@@ -49,38 +33,31 @@ const PAYMENT_OPTIONS = [
 ];
 
 const CARDS_OPTIONS = [
-  { value: "ViSa1", label: "**** **** **** 1212 - Jimmy Holland" },
-  { value: "ViSa2", label: "**** **** **** 2424 - Shawn Stokes" },
-  { value: "MasterCard", label: "**** **** **** 4545 - Cole Armstrong" },
+  { value: "ViSa*1", label: "**** **** **** 1212 - Jimmy Holland" },
+  { value: "Vi*Sa2", label: "**** **** **** 2424 - Shawn Stokes" },
+  { value: "Master*Ca*rd", label: "**** **** **** 4545 - Cole Armstrong" },
 ];
 
-// ----------------------------------------------------------------------
-
-export default function CheckoutPayment() {
-  const checkout = {};
-  const { total, discount, subtotal, shipping } = checkout;
-
-  const handleNextStep = () => {};
-
-  const handleBackStep = () => {};
-
-  const handleGotoStep = (step) => {};
-
-  const handleApplyShipping = (value) => {};
-
+export default function CheckoutPayment({
+  data,
+  isSuccess,
+  address,
+  handleBackStep,
+  handleMoveNextStep,
+}) {
   const PaymentSchema = Yup.object().shape({
     payment: Yup.mixed().required("Payment is required"),
   });
 
   const formik = useFormik({
     initialValues: {
-      delivery: shipping,
+      delivery: "",
       payment: "",
     },
     validationSchema: PaymentSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
       try {
-        handleNextStep();
+        handleMoveNextStep();
       } catch (error) {
         console.error(error);
         setSubmitting(false);
@@ -96,11 +73,6 @@ export default function CheckoutPayment() {
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
-            <CheckoutDelivery
-              formik={formik}
-              onApplyShipping={handleApplyShipping}
-              deliveryOptions={DELIVERY_OPTIONS}
-            />
             <CheckoutPaymentMethods
               formik={formik}
               cardOptions={CARDS_OPTIONS}
@@ -118,15 +90,11 @@ export default function CheckoutPayment() {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <CheckoutBillingInfo onBackStep={handleBackStep} />
-            <CheckoutSummary
-              enableEdit
-              total={total}
-              subtotal={subtotal}
-              discount={discount}
-              shipping={shipping}
-              onEdit={() => handleGotoStep(0)}
+            <CheckoutBillingInfo
+              address={address}
+              onBackStep={handleBackStep}
             />
+            {isSuccess && <CheckoutSummary data={data} />}
             <LoadingButton
               fullWidth
               size="large"

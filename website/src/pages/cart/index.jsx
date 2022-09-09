@@ -18,6 +18,10 @@ import CheckoutCart from "./components/checkoutCart";
 import CheckoutBillingAddress from "./components/checkoutBillingAddress";
 import CheckoutPayment from "./components/checkoutPayment";
 import CheckoutOrderComplete from "./components/CheckoutOrderComplete";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getUser } from "../../store/redux/slices/localStorageAuth";
+import { useGetCartQuery } from "../../store/redux/api/cart";
 
 // ----------------------------------------------------------------------
 
@@ -81,7 +85,12 @@ function QontoStepIcon({ active, completed }) {
 }
 
 export default function EcommerceCheckout() {
-  const activeStep = 0;
+  const { _id } = useSelector(getUser);
+  const { isSuccess, data, isLoading } = useGetCartQuery(_id);
+
+  const [activeStep, setActiveStep] = useState(0);
+  const [addr, setAddr] = useState({});
+
   const isComplete = activeStep === STEPS.length;
 
   return (
@@ -115,9 +124,31 @@ export default function EcommerceCheckout() {
 
         {!isComplete ? (
           <>
-            {activeStep === 0 && <CheckoutCart />}
-            {activeStep === 1 && <CheckoutBillingAddress />}
-            {activeStep === 2 && <CheckoutPayment />}
+            {activeStep === 0 && (
+              <CheckoutCart
+                onCheckout={() => setActiveStep(1)}
+                isSuccess={isSuccess}
+                data={data}
+                isLoading={isLoading}
+              />
+            )}
+            {activeStep === 1 && (
+              <CheckoutBillingAddress
+                handleBackStep={() => setActiveStep(0)}
+                handleMoveNextStep={() => setActiveStep(2)}
+                handleSetAddr={setAddr}
+                address={addr}
+              />
+            )}
+            {activeStep === 2 && (
+              <CheckoutPayment
+                handleBackStep={() => setActiveStep(1)}
+                handleMoveNextStep={() => setActiveStep(3)}
+                isSuccess={isSuccess}
+                data={data}
+                address={addr}
+              />
+            )}
           </>
         ) : (
           <CheckoutOrderComplete open={isComplete} />

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
-import appleFilled from "@iconify/icons-ant-design/apple-filled";
 import percentage from "@iconify/icons-ant-design/percentage";
+import trash2Fill from "@iconify/icons-eva/trash-2-fill";
 import qtyIcon from "@iconify/icons-ant-design/fire-fill";
 import priceIcon from "@iconify/icons-ant-design/dollar";
 // material
@@ -11,6 +11,9 @@ import { fShortenNumber } from "../../../../../utils/formatNumber";
 import React from "react";
 import ComboTitle from "./ComboTitle";
 import Label from "../../../../../common/Label";
+import { Incrementor } from "../../../../../common/Incrementor";
+import useIncDec from "../../../../../hooks/useIncDec";
+import MIconButton from "../../../../../common/@mui-extend/MIconButton";
 
 const ItemBlockStyle = styled((props) => (
   <Stack direction="row" alignItems="center" {...props} />
@@ -31,6 +34,10 @@ CartCard.propTypes = {
 };
 
 function CardItem({ food }) {
+  const { q, decrementQuantity, incrementQuantity } = useIncDec(food.qty);
+
+  const onDelete = () => {};
+
   return (
     <Stack mb={2} direction="row" alignItems="center" spacing={2}>
       <ItemBlockStyle sx={{ minWidth: 120 }}>
@@ -44,22 +51,30 @@ function CardItem({ food }) {
       </ItemBlockStyle>
       <ItemBlockStyle>
         <ItemIconStyle icon={priceIcon} />
-        <Typography variant="body2">{fShortenNumber(food.price)}</Typography>
+        <Typography variant="body2">{food.price}</Typography>
       </ItemBlockStyle>
       <ItemBlockStyle>
         <ItemIconStyle icon={qtyIcon} />
         <Typography variant="body2">{fShortenNumber(food.qty)}</Typography>
       </ItemBlockStyle>
       <ItemBlockStyle sx={{ minWidth: 88 }}>
-        <ItemIconStyle icon={appleFilled} />
-        <Typography variant="body2">{food.size}</Typography>
+        <Incrementor
+          q={q}
+          decrementQuantity={decrementQuantity}
+          incrementQuantity={incrementQuantity}
+          available={food.numberInStock}
+        />
       </ItemBlockStyle>
-      <ItemBlockStyle sx={{ minWidth: 88 }}>
+      <ItemBlockStyle>
         <ItemIconStyle icon={percentage} />
         <Typography variant="body2">
           {fShortenNumber(food.discountRate)}
         </Typography>
       </ItemBlockStyle>
+
+      <MIconButton onClick={onDelete}>
+        <Icon icon={trash2Fill} width={20} height={20} />
+      </MIconButton>
     </Stack>
   );
 }

@@ -1,149 +1,89 @@
-import PropTypes from "prop-types";
+import * as Yup from "yup";
+import { useFormik, Form, FormikProvider } from "formik";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
-import plusFill from "@iconify/icons-eva/plus-fill";
 import arrowIosBackFill from "@iconify/icons-eva/arrow-ios-back-fill";
 // material
-import { Box, Grid, Card, Button, Typography } from "@mui/material";
-import Label from "../../../../common/Label";
-import CheckoutSummary from "../checkoutCart/CheckoutSummary";
-import CheckoutNewAddressForm from "./CheckoutNewAddressForm";
+import { Box, Grid, Button, Stack, TextField } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
-// ----------------------------------------------------------------------
+export default function CheckoutBillingAddress({
+  handleBackStep,
+  handleMoveNextStep,
+  handleSetAddr,
+  address,
+}) {
+  const NewAddressSchema = Yup.object().shape({
+    city: Yup.string().required("City is required"),
+    state: Yup.string().required("State is required"),
+  });
 
-const MOCK_ADDRESS_BOOKS = [...Array(5)].map((_, index) => ({
-  id: index,
-  receiver: "fahim",
-  fullAddress: "dhaka bangladesh",
-  phone: "01876309987",
-  addressType: index === 0 ? "Home" : "Office",
-  isDefault: index === 0,
-}));
+  const formik = useFormik({
+    initialValues: {
+      city: address.city || "",
+      state: address.state || "",
+      zipcode: address.zipcode || "",
+    },
+    validationSchema: NewAddressSchema,
+    onSubmit: (values, { setSubmitting }) => {
+      setSubmitting(true);
+      handleSetAddr(values);
+      handleMoveNextStep();
+    },
+  });
 
-// ----------------------------------------------------------------------
-
-AddressItem.propTypes = {
-  address: PropTypes.object,
-  onNextStep: PropTypes.func,
-  onCreateBilling: PropTypes.func,
-};
-
-function AddressItem({ address, onNextStep, onCreateBilling }) {
-  const { receiver, fullAddress, addressType, phone, isDefault } = address;
-
-  const handleCreateBilling = () => {
-    onCreateBilling(address);
-    onNextStep();
-  };
-
+  const { errors, touched, isSubmitting, handleSubmit, getFieldProps } = formik;
   return (
-    <Card sx={{ p: 3, mb: 3, position: "relative" }}>
-      <Box sx={{ mb: 1, display: "flex", alignItems: "center" }}>
-        <Typography variant="subtitle1">{receiver}</Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          &nbsp;({addressType})
-        </Typography>
-        {isDefault && (
-          <Label color="info" sx={{ ml: 1 }}>
-            Default
-          </Label>
-        )}
-      </Box>
-      <Typography variant="body2" gutterBottom>
-        {fullAddress}
-      </Typography>
-      <Typography variant="body2" sx={{ color: "text.secondary" }}>
-        {phone}
-      </Typography>
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={8}>
+        <FormikProvider value={formik}>
+          <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+              <TextField
+                fullWidth
+                label="Town / City"
+                {...getFieldProps("city")}
+                error={Boolean(touched.city && errors.city)}
+                helperText={touched.city && errors.city}
+              />
 
-      <Box
-        sx={{
-          mt: 3,
-          display: "flex",
-          position: { sm: "absolute" },
-          right: { sm: 24 },
-          bottom: { sm: 24 },
-        }}
-      >
-        {!isDefault && (
-          <Button variant="outlined" size="small" color="inherit">
-            Delete
-          </Button>
-        )}
-        <Box sx={{ mx: 0.5 }} />
-        <Button variant="outlined" size="small" onClick={handleCreateBilling}>
-          Deliver to this Address
-        </Button>
-      </Box>
-    </Card>
-  );
-}
+              <TextField
+                fullWidth
+                label="State"
+                {...getFieldProps("state")}
+                error={Boolean(touched.state && errors.state)}
+                helperText={touched.state && errors.state}
+              />
 
-export default function CheckoutBillingAddress() {
-  const [open, setOpen] = useState(false);
-  const checkout = {};
-  const { total, discount, subtotal } = checkout;
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleNextStep = () => {};
-
-  const handleBackStep = () => {};
-
-  const handleCreateBilling = (value) => {};
-
-  return (
-    <>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={8}>
-          {MOCK_ADDRESS_BOOKS.map((address, index) => (
-            <AddressItem
-              key={index}
-              address={address}
-              onNextStep={handleNextStep}
-              onCreateBilling={handleCreateBilling}
-            />
-          ))}
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Button
-              size="small"
-              color="inherit"
-              onClick={handleBackStep}
-              startIcon={<Icon icon={arrowIosBackFill} />}
+              <TextField
+                fullWidth
+                label="Zip / Postal Code"
+                {...getFieldProps("zipcode")}
+                error={Boolean(touched.zipcode && errors.zipcode)}
+                helperText={touched.zipcode && errors.zipcode}
+              />
+            </Stack>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}
             >
-              Back
-            </Button>
-            <Button
-              size="small"
-              onClick={handleClickOpen}
-              startIcon={<Icon icon={plusFill} />}
-            >
-              Add new address
-            </Button>
-          </Box>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <CheckoutSummary
-            subtotal={subtotal}
-            total={total}
-            discount={discount}
-          />
-        </Grid>
+              <Button
+                size="small"
+                color="inherit"
+                onClick={handleBackStep}
+                startIcon={<Icon icon={arrowIosBackFill} />}
+              >
+                Back
+              </Button>
+              <LoadingButton
+                type="submit"
+                variant="contained"
+                loading={isSubmitting}
+              >
+                Deliver to this Address
+              </LoadingButton>
+            </Box>
+          </Form>
+        </FormikProvider>
       </Grid>
-
-      <CheckoutNewAddressForm
-        open={open}
-        onClose={handleClose}
-        onNextStep={handleNextStep}
-        onCreateBilling={handleCreateBilling}
-      />
-    </>
+    </Grid>
   );
 }

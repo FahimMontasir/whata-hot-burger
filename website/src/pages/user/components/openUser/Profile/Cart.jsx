@@ -9,6 +9,7 @@ import { fNumber } from "../../../../../utils/formatNumber";
 import NotFound from "../../../../../common/NotFound";
 import { Link } from "react-router-dom";
 import { PATH_PAGE } from "../../../../../routes/paths";
+import Scrollbar from "../../../../../common/Scrollbar";
 
 Cart.propTypes = {
   id: PropTypes.string,
@@ -54,7 +55,9 @@ export default function Cart({ id }) {
       <Stack sx={{ mt: 5, p: 5 }}>
         {isSuccess ? (
           <>
-            <CartCard data={data?.food} />
+            <Scrollbar>
+              <CartCard data={data?.food} />
+            </Scrollbar>
             <Button component={Link} to={PATH_PAGE.cart}>
               Go to Cart
             </Button>
