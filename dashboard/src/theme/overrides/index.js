@@ -1,5 +1,4 @@
 import { merge } from "lodash";
-import Fab from "./Fab";
 import Card from "./Card";
 import Chip from "./Chip";
 import Tabs from "./Tabs";
@@ -16,7 +15,6 @@ import Radio from "./Radio";
 import Drawer from "./Drawer";
 import Dialog from "./Dialog";
 import Avatar from "./Avatar";
-import Rating from "./Rating";
 import Slider from "./Slider";
 import Button from "./Button";
 import Switch from "./Switch";
@@ -25,14 +23,9 @@ import SvgIcon from "./SvgIcon";
 import Tooltip from "./Tooltip";
 import Popover from "./Popover";
 import Stepper from "./Stepper";
-import Pickers from "./Pickers";
-import DataGrid from "./DataGrid";
 import Skeleton from "./Skeleton";
 import Backdrop from "./Backdrop";
-import Snackbar from "./Snackbar";
 import Progress from "./Progress";
-import Timeline from "./Timeline";
-import TreeView from "./TreeView";
 import Checkbox from "./Checkbox";
 import Container from "./Container";
 import Accordion from "./Accordion";
@@ -42,13 +35,11 @@ import IconButton from "./IconButton";
 import Breadcrumbs from "./Breadcrumbs";
 import ButtonGroup from "./ButtonGroup";
 import Autocomplete from "./Autocomplete";
-import ToggleButton from "./ToggleButton";
 import ControlLabel from "./ControlLabel";
 import LoadingButton from "./LoadingButton";
 
 export default function ComponentsOverrides(theme) {
   return merge(
-    Fab(theme),
     Tabs(theme),
     Chip(theme),
     Card(theme),
@@ -65,23 +56,17 @@ export default function ComponentsOverrides(theme) {
     Switch(theme),
     Select(theme),
     Button(theme),
-    Rating(theme),
     Dialog(theme),
     Avatar(theme),
     Slider(theme),
     Drawer(theme),
-    Pickers(theme),
     Stepper(theme),
     Tooltip(theme),
     Popover(theme),
     SvgIcon(theme),
     Checkbox(theme),
-    DataGrid(theme),
     Skeleton(theme),
-    Timeline(theme),
-    TreeView(theme),
     Backdrop(theme),
-    Snackbar(theme),
     Progress(theme),
     Container(theme),
     Accordion(theme),
@@ -92,7 +77,6 @@ export default function ComponentsOverrides(theme) {
     Breadcrumbs(theme),
     Autocomplete(theme),
     ControlLabel(theme),
-    ToggleButton(theme),
     LoadingButton(theme)
   );
 }
