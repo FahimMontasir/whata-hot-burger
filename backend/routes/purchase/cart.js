@@ -29,6 +29,31 @@ router.post("/add", [auth, consumer], async (req, res) => {
   await Cart.insertMany(req.body);
 
   res.status(200).json({ text: "Cart added successfully!" });
+
+  const ids = req.body.map((v) => v.foodId);
+
+  // const combo = await Cart.find({
+  //   foodId: { $in: ids },
+  //   userId: req.body[0].userId,
+  // });
+  // // console.log(combo);
+
+  // for (let i = 0; i < req.body.length; i++) {
+  //   const id = req.body[i].foodId;
+  //   const body = req.body[i];
+  //   for (let j = 0; j < combo.length; j++) {
+  //     const c = combo[j];
+  //     if (c.foodId.toString() === id.toString()) {
+  //       c.set({
+  //         ..._.omit({ qty: body.qty + c.qty }, ["_id", "updatedAt"]),
+  //         updatedAt: Date.now(),
+  //       });
+  //       await c.save();
+  //     } else {
+  //       await Cart.create(body);
+  //     }
+  //   }
+  // }
 });
 
 //attention! add single food to cart
@@ -63,47 +88,56 @@ router.get("/:userId", [auth, consumer], async (req, res) => {
   const { error } = validateId({ _id: req.params.userId });
   if (error) return res.status(400).json({ message: error.message });
 
-  const data = await Cart.find({ userId: req.params.userId });
+  const data = await Cart.find({ userId: req.params.userId }).select(
+    "-_id -updatedAt -__v -userId"
+  );
   if (!data.length) return res.status(400).json({ message: "Cart not found" });
 
+  const toStrCart = data.map((c) => {
+    return {
+      ...c._doc,
+      foodId: c.foodId.toString(),
+    };
+  });
+  // console.log("cart", toStrCart);
+
   const foodIds = data.map((e) => e.foodId);
-  const allFood = await Product.find({ _id: { $in: foodIds } });
+  const allFood = await Product.find({ _id: { $in: foodIds } }).select(
+    "-size -updatedAt -__v"
+  );
   if (!allFood.length)
     return res.status(400).json({ message: "Food not found" });
 
-  if (data.length !== allFood.length)
-    return res.status(401).json({ message: "Your cart contain deleted food" });
-  let merged = [];
+  const toStrAllFood = allFood.map((f) => {
+    return { ...f._doc, _id: f._id.toString() };
+  });
+  // console.log("food", toStrAllFood);
 
-  for (let i = 0; i < data.length; i++) {
-    merged.push({
-      ..._.omit(data[i].toObject(), ["userId", "__v"]),
-      ..._.omit(
-        allFood
-          .find((e) => e._id.toString() === data[i].foodId.toString())
-          .toObject(),
-        [
-          "_id",
-          "size",
-          "updatedAt",
-          "__v",
-          "category",
-          "numberInStock",
-          "description",
-        ]
-      ),
-    });
-  }
+  const mergedByKey = _.merge(
+    _.keyBy(toStrCart, "foodId"),
+    _.keyBy(toStrAllFood, "_id")
+  );
+  const mergedAll = _.values(mergedByKey);
+  // console.log("merged", merged);
+
+  const merged = mergedAll.filter((v) => v.price && v.name);
+
   const totalQty = merged.reduce((sum, v) => sum + v.qty, 0);
 
-  const sizeArr = merged.map((e) => parseInt(e.size.split(":")[1], 10) || 0);
-  const sizeTk = sizeArr.reduce((sum, v) => sum + v, 0);
+  const sizeArr = merged.map((e) => {
+    return {
+      value: parseInt(e.size.split(":")[1], 10) || 0,
+      qty: e.qty,
+    };
+  });
+  const sizeTk = sizeArr.reduce((sum, v) => sum + v.value * v.qty, 0);
 
-  const subTotal = merged.reduce((sum, v) => sum + v.price, 0) + sizeTk;
+  const subTotal = merged.reduce((sum, v) => sum + v.price * v.qty, 0) + sizeTk;
   const discount = merged.reduce(
-    (sum, v) => sum + Math.round(v.price * (v.discountRate / 100)),
+    (sum, v) => sum + Math.round(v.price * v.qty * (v.discountRate / 100)),
     0
   );
+
   const total = subTotal - discount;
 
   res.status(200).json({
