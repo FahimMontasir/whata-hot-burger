@@ -64,13 +64,16 @@ router.get("/:userId", [auth, consumer], async (req, res) => {
   if (error) return res.status(400).json({ message: error.message });
 
   const data = await Cart.find({ userId: req.params.userId }).select(
-    "-_id -updatedAt -__v -userId"
+    "-updatedAt -__v -userId"
   );
   if (!data.length) return res.status(400).json({ message: "Cart not found" });
 
   const toStrCart = data.map((c) => {
     return {
-      ...c._doc,
+      cartId: c._id,
+      qty: c.qty,
+      size: c.size,
+      comboId: c.comboId.toString(),
       foodId: c.foodId.toString(),
     };
   });
@@ -151,6 +154,15 @@ router.delete("/delete", [auth, consumer], async (req, res) => {
   if (!cart) return res.status(404).json({ message: "Cart not found" });
 
   await cart.remove();
+
+  res.status(200).json({ text: "Item deleted successfully" });
+});
+
+//attention
+router.delete("/deleteAll", [auth, consumer], async (req, res) => {
+  await Cart.deleteMany({
+    userId: req.user._id,
+  });
 
   res.status(200).json({ text: "Item deleted successfully" });
 });
