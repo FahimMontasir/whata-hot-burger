@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
-import plusFill from "@iconify/icons-eva/plus-fill";
 import checkmarkCircle2Fill from "@iconify/icons-eva/checkmark-circle-2-fill";
 // material
 import {
@@ -9,7 +8,6 @@ import {
   Card,
   Grid,
   Radio,
-  Button,
   Collapse,
   TextField,
   Typography,
@@ -51,7 +49,7 @@ export default function CheckoutPaymentMethods({
     <Card sx={{ my: 3 }}>
       <CardHeader title="Payment options" />
       <CardContent>
-        <RadioGroup row {...getFieldProps("payment")}>
+        <RadioGroup row {...getFieldProps("Method")}>
           <Grid container spacing={2}>
             {paymentOptions.map((method) => {
               const { value, title, icons, description } = method;
@@ -61,7 +59,7 @@ export default function CheckoutPaymentMethods({
                 <Grid key={title} item xs={12}>
                   <OptionStyle
                     sx={{
-                      ...(values.payment === value && {
+                      ...(values.Method === value && {
                         boxShadow: (theme) => theme.customShadows.z8,
                       }),
                       ...(hasChildren && { flexWrap: "wrap" }),
@@ -111,7 +109,7 @@ export default function CheckoutPaymentMethods({
 
                     {hasChildren && (
                       <Collapse
-                        in={values.payment === "credit_card"}
+                        in={values.Method === "credit_card"}
                         sx={{ width: "100%" }}
                       >
                         <TextField
@@ -127,18 +125,6 @@ export default function CheckoutPaymentMethods({
                             </option>
                           ))}
                         </TextField>
-
-                        <Button
-                          id="add-card"
-                          type="button"
-                          size="small"
-                          startIcon={
-                            <Icon icon={plusFill} width={20} height={20} />
-                          }
-                          sx={{ my: 3 }}
-                        >
-                          Add new card
-                        </Button>
                       </Collapse>
                     )}
                   </OptionStyle>

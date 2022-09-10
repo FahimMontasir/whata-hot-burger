@@ -15,6 +15,7 @@ import {
   TableBody,
   TableContainer,
   Button,
+  Alert,
 } from "@mui/material";
 import MIconButton from "../../../common/@mui-extend/MIconButton";
 import Label from "../../../common/Label";
@@ -24,6 +25,7 @@ import { getUser } from "../../../store/redux/slices/localStorageAuth";
 import { PATH_PAGE } from "../../../routes/paths";
 import { toast } from "react-toastify";
 import { useAddComboCartMutation } from "../../../store/redux/api/cart";
+import { LoadingButton } from "@mui/lab";
 
 const SOCIALS = [
   {
@@ -73,13 +75,13 @@ export default function ComboDetailsSummary({ combo, comboId }) {
     };
   });
 
-  const [addCart] = useAddComboCartMutation();
+  const [addCart, { isLoading, isError, error }] = useAddComboCartMutation();
 
   const handleAddToCart = () => {
     addCart(foods)
       .unwrap()
       .then((data) => toast.success(data.text))
-      .catch(() => toast.error("Add to cart failed"));
+      .catch(() => toast.error("Adding combo to cart failed"));
   };
 
   return (
@@ -122,13 +124,14 @@ export default function ComboDetailsSummary({ combo, comboId }) {
       </Scrollbar>
       <Box sx={{ mt: 3, textAlign: "center" }}>
         {userId ? (
-          <Button
+          <LoadingButton
+            loading={isLoading}
             variant="contained"
             sx={{ minWidth: 150 }}
             onClick={handleAddToCart}
           >
             add to cart
-          </Button>
+          </LoadingButton>
         ) : (
           <Button
             component={RouterLink}
@@ -139,6 +142,7 @@ export default function ComboDetailsSummary({ combo, comboId }) {
             Login for adding to cart
           </Button>
         )}
+        {isError && <Alert severity="error">{error.data?.message}</Alert>}
       </Box>
       <Box sx={{ mt: 3, textAlign: "center" }}>
         {SOCIALS.map((social) => (

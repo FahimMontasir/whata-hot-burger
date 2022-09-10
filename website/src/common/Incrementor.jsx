@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import plusFill from "@iconify/icons-eva/plus-fill";
 import minusFill from "@iconify/icons-eva/minus-fill";
 import MIconButton from "./@mui-extend/MIconButton";
@@ -8,6 +8,7 @@ export const Incrementor = ({
   q,
   incrementQuantity,
   decrementQuantity,
+  isLoading = false,
   available,
 }) => {
   return (
@@ -23,14 +24,18 @@ export const Incrementor = ({
         borderColor: "grey.50032",
       }}
     >
-      <MIconButton
-        size="small"
-        color="inherit"
-        disabled={q <= 1}
-        onClick={decrementQuantity}
-      >
-        <Icon icon={minusFill} width={16} height={16} />
-      </MIconButton>
+      {isLoading ? (
+        <CircularProgress size="20px" />
+      ) : (
+        <MIconButton
+          size="small"
+          color="inherit"
+          disabled={q <= 1}
+          onClick={decrementQuantity}
+        >
+          <Icon icon={minusFill} width={16} height={16} />
+        </MIconButton>
+      )}
       <Typography
         variant="body2"
         component="span"
@@ -42,14 +47,18 @@ export const Incrementor = ({
       >
         {q}
       </Typography>
-      <MIconButton
-        size="small"
-        color="inherit"
-        disabled={available === q}
-        onClick={incrementQuantity}
-      >
-        <Icon icon={plusFill} width={16} height={16} />
-      </MIconButton>
+      {isLoading ? (
+        <CircularProgress size="20px" />
+      ) : (
+        <MIconButton
+          size="small"
+          color="inherit"
+          disabled={available === q}
+          onClick={incrementQuantity}
+        >
+          <Icon icon={plusFill} width={16} height={16} />
+        </MIconButton>
+      )}
     </Box>
   );
 };

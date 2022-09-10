@@ -90,6 +90,7 @@ export default function EcommerceCheckout() {
 
   const [activeStep, setActiveStep] = useState(0);
   const [addr, setAddr] = useState({});
+  const [invoiceData, setInvoiceData] = useState({});
 
   const isComplete = activeStep === STEPS.length;
 
@@ -147,11 +148,13 @@ export default function EcommerceCheckout() {
                 isSuccess={isSuccess}
                 data={data}
                 address={addr}
+                userId={_id}
+                setInvoiceData={setInvoiceData}
               />
             )}
           </>
         ) : (
-          <CheckoutOrderComplete open={isComplete} />
+          <CheckoutOrderComplete invoiceData={invoiceData} open={isComplete} />
         )}
       </Container>
     </Page>

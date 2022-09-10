@@ -9,6 +9,9 @@ import { LoadingButton } from "@mui/lab";
 import CheckoutSummary from "../checkoutCart/CheckoutSummary";
 import CheckoutBillingInfo from "./CheckoutBillingInfo";
 import CheckoutPaymentMethods from "./CheckoutPaymentMethods";
+import { useAddInvoiceMutation } from "../../../../store/redux/api/invoice";
+import { toast } from "react-toastify";
+import { useDeleteAllCartMutation } from "../../../../store/redux/api/cart";
 
 const PAYMENT_OPTIONS = [
   {
@@ -44,29 +47,50 @@ export default function CheckoutPayment({
   address,
   handleBackStep,
   handleMoveNextStep,
+  userId,
+  setInvoiceData,
 }) {
+  const [addInvoice, { isLoading }] = useAddInvoiceMutation();
+
+  const [clearCart] = useDeleteAllCartMutation();
+
   const PaymentSchema = Yup.object().shape({
-    payment: Yup.mixed().required("Payment is required"),
+    Method: Yup.string().required(),
   });
 
   const formik = useFormik({
     initialValues: {
-      delivery: "",
-      payment: "",
+      Method: "cash",
+      isSuccess: true,
+      details: "not available",
     },
     validationSchema: PaymentSchema,
-    onSubmit: async (values, { setErrors, setSubmitting }) => {
-      try {
-        handleMoveNextStep();
-      } catch (error) {
-        console.error(error);
-        setSubmitting(false);
-        setErrors(error.message);
-      }
+    onSubmit: (values) => {
+      const allVal = {
+        userId: userId,
+        name: address.name,
+        email: address.email,
+        address: address.address,
+        items: data.food,
+        paidAmount: data.total,
+        paymentStatus: values,
+      };
+
+      addInvoice(allVal)
+        .unwrap()
+        .then(async (data) => {
+          toast.success("Purchased Successful!!!");
+          await clearCart();
+          setInvoiceData(data.object);
+          handleMoveNextStep();
+        })
+        .catch(() => {
+          toast.error("Purchase failed :( Please try again!");
+        });
     },
   });
 
-  const { isSubmitting, handleSubmit } = formik;
+  const { handleSubmit } = formik;
 
   return (
     <FormikProvider value={formik}>
@@ -100,7 +124,7 @@ export default function CheckoutPayment({
               size="large"
               type="submit"
               variant="contained"
-              loading={isSubmitting}
+              loading={isLoading}
             >
               Complete Order
             </LoadingButton>

@@ -13,15 +13,16 @@ export default function CheckoutBillingAddress({
   address,
 }) {
   const NewAddressSchema = Yup.object().shape({
-    city: Yup.string().required("City is required"),
-    state: Yup.string().required("State is required"),
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email().required("Email is required"),
+    address: Yup.string().required("Address is required"),
   });
 
   const formik = useFormik({
     initialValues: {
-      city: address.city || "",
-      state: address.state || "",
-      zipcode: address.zipcode || "",
+      name: address.name || "",
+      email: address.email || "",
+      address: address.address || "",
     },
     validationSchema: NewAddressSchema,
     onSubmit: (values, { setSubmitting }) => {
@@ -37,31 +38,32 @@ export default function CheckoutBillingAddress({
       <Grid item xs={12} md={8}>
         <FormikProvider value={formik}>
           <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2} mb={3}>
               <TextField
                 fullWidth
-                label="Town / City"
-                {...getFieldProps("city")}
-                error={Boolean(touched.city && errors.city)}
-                helperText={touched.city && errors.city}
+                label="Full Name"
+                {...getFieldProps("name")}
+                error={Boolean(touched.name && errors.name)}
+                helperText={touched.name && errors.name}
               />
 
               <TextField
                 fullWidth
-                label="State"
-                {...getFieldProps("state")}
-                error={Boolean(touched.state && errors.state)}
-                helperText={touched.state && errors.state}
-              />
-
-              <TextField
-                fullWidth
-                label="Zip / Postal Code"
-                {...getFieldProps("zipcode")}
-                error={Boolean(touched.zipcode && errors.zipcode)}
-                helperText={touched.zipcode && errors.zipcode}
+                label="Email"
+                {...getFieldProps("email")}
+                error={Boolean(touched.email && errors.email)}
+                helperText={touched.email && errors.email}
               />
             </Stack>
+            <TextField
+              rows={4}
+              multiline
+              fullWidth
+              label="Address"
+              {...getFieldProps("address")}
+              error={Boolean(touched.address && errors.address)}
+              helperText={touched.address && errors.address}
+            />
             <Box
               sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}
             >

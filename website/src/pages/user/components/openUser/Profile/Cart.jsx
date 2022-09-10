@@ -1,6 +1,13 @@
 import PropTypes from "prop-types";
 // material
-import { Card, Stack, Typography, Divider, Button } from "@mui/material";
+import {
+  Card,
+  Stack,
+  Typography,
+  Divider,
+  Button,
+  CircularProgress,
+} from "@mui/material";
 import CartCard from "./CartCard";
 //api
 import { useGetCartQuery } from "../../../../../store/redux/api/cart";
@@ -16,7 +23,7 @@ Cart.propTypes = {
 };
 
 export default function Cart({ id }) {
-  const { isSuccess, data, error } = useGetCartQuery(id);
+  const { isSuccess, data, error, isLoading } = useGetCartQuery(id);
   // console.log(data);
   return (
     <Card sx={{ py: 3 }}>
@@ -63,11 +70,17 @@ export default function Cart({ id }) {
             </Button>
           </>
         ) : (
-          <NotFound
-            message={
-              error ? error.data.message : "Check your network connection"
-            }
-          />
+          <>
+            {isLoading ? (
+              <CircularProgress size="50px" />
+            ) : (
+              <NotFound
+                message={
+                  error ? error.data.message : "Check your network connection"
+                }
+              />
+            )}
+          </>
         )}
       </Stack>
     </Card>

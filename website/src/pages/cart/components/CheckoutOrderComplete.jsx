@@ -1,6 +1,5 @@
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
-import filePdfFilled from "@iconify/icons-ant-design/file-pdf-filled";
 import arrowIosBackFill from "@iconify/icons-eva/arrow-ios-back-fill";
 // material
 import {
@@ -16,6 +15,7 @@ import {
 import { DialogAnimate } from "../../../common/animate";
 import { PATH_PAGE } from "../../../routes/paths";
 import { OrderCompleteIllustration } from "../../../assets/image";
+import InvoiceToolbar from "../../../common/pdf/InvoiceToolbar";
 
 // ----------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ const DialogStyle = styled(DialogAnimate)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function CheckoutOrderComplete({ ...other }) {
+export default function CheckoutOrderComplete({ open, invoiceData }) {
   const navigate = useNavigate();
 
   const handleResetStep = () => {
@@ -39,7 +39,7 @@ export default function CheckoutOrderComplete({ ...other }) {
   };
 
   return (
-    <DialogStyle fullScreen {...other}>
+    <DialogStyle fullScreen open={open}>
       <Box sx={{ p: 4, maxWidth: 480, margin: "auto" }}>
         <Box sx={{ textAlign: "center" }}>
           <Typography variant="h4" paragraph>
@@ -50,13 +50,14 @@ export default function CheckoutOrderComplete({ ...other }) {
 
           <Typography align="left" paragraph>
             Thanks for placing order &nbsp;
-            <Link href="#">01dc1370-3df6-11eb-b378-0242ac130002</Link>
+            <Link href="#">{invoiceData._id}</Link>
           </Typography>
 
           <Typography align="left">
-            We will send you a notification within 5 days when it ships.
-            <br /> <br /> If you have any question or queries then fell to get
-            in contact us. <br /> <br /> All the best,
+            We will send you a email within 5 days when it ships.
+            <br /> <br /> If you have any question or queries then feel free to
+            contact us or mail at moontasir001@gmail.com. <br /> <br /> All the
+            best,
           </Typography>
         </Box>
 
@@ -72,15 +73,9 @@ export default function CheckoutOrderComplete({ ...other }) {
             onClick={handleResetStep}
             startIcon={<Icon icon={arrowIosBackFill} />}
           >
-            Continue Shopping
+            Continue Browsing
           </Button>
-          <Button
-            variant="contained"
-            startIcon={<Icon icon={filePdfFilled} />}
-            onClick={handleResetStep}
-          >
-            Download as PDF
-          </Button>
+          <InvoiceToolbar invoice={invoiceData} />
         </Stack>
       </Box>
     </DialogStyle>

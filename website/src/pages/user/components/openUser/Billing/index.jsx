@@ -2,7 +2,15 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useState } from "react";
 // material
-import { Box, Grid, Card, Button, Typography, Stack } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Card,
+  Button,
+  Typography,
+  Stack,
+  CircularProgress,
+} from "@mui/material";
 import { useLocation } from "react-router-dom";
 import BillingAddressBook from "./BillingAddressBook";
 import PaymentMethod from "./PaymentMethod";
@@ -19,7 +27,9 @@ export default function Billing() {
   };
   const { state } = useLocation();
 
-  const { isSuccess, error, data } = useGetConsumerInvoicesQuery(state._id);
+  const { isSuccess, error, data, isLoading } = useGetConsumerInvoicesQuery(
+    state._id
+  );
 
   const [open, setOpen] = useState(false);
 
@@ -105,11 +115,17 @@ export default function Billing() {
         {isSuccess ? (
           <InvoiceHistory invoices={data.array} />
         ) : (
-          <NotFound
-            message={
-              error ? error.data.message : "Check your network connection"
-            }
-          />
+          <>
+            {isLoading ? (
+              <CircularProgress size="30px" />
+            ) : (
+              <NotFound
+                message={
+                  error ? error.data.message : "Check your network connection"
+                }
+              />
+            )}
+          </>
         )}
       </Grid>
     </Grid>

@@ -34,21 +34,14 @@ export default function CheckoutBillingInfo({ onBackStep, address }) {
       />
       <CardContent>
         <Typography variant="subtitle2" gutterBottom>
-          {address.state}&nbsp;
-          <Typography
-            component="span"
-            variant="body2"
-            sx={{ color: "text.secondary" }}
-          >
-            ({address.state})
+          {address.name}{" "}
+          <Typography variant="span" sx={{ color: "text.secondary" }}>
+            ({address.email})
           </Typography>
         </Typography>
 
         <Typography variant="body2" gutterBottom>
-          {address.fullAddress}
-        </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {address.phone}
+          {address.address}
         </Typography>
       </CardContent>
     </Card>

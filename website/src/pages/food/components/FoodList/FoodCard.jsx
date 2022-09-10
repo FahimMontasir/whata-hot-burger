@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab";
 import { Button, styled, TableCell, TableRow } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -21,7 +22,7 @@ export default function FoodCard({ food, userId }) {
     food;
 
   const { q, decrementQuantity, incrementQuantity } = useIncDec(1);
-  const [addCart] = useAddFoodCartMutation();
+  const [addCart, { isLoading }] = useAddFoodCartMutation();
 
   const handleAddToCart = () => {
     addCart({
@@ -64,13 +65,14 @@ export default function FoodCard({ food, userId }) {
       </TableCell>
       <TableCell align="right">
         {userId ? (
-          <Button
+          <LoadingButton
+            loading={isLoading}
             variant="contained"
             sx={{ minWidth: 150 }}
             onClick={handleAddToCart}
           >
             add to cart
-          </Button>
+          </LoadingButton>
         ) : (
           <Button
             component={RouterLink}
