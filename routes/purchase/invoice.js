@@ -16,9 +16,9 @@ router.post("/add", [auth, consumer], async (req, res) => {
   if (req.user._id.toString() !== req.body.userId.toString())
     return res.status(401).json({ message: "unauthorized user" });
 
-  await Invoice.create(req.body);
+  const data = await Invoice.create(req.body);
 
-  res.status(200).json({ text: "Purchased successful!" });
+  res.status(200).json({ object: data });
 });
 
 //attention! get all invoices at a time by admin (pagination)
