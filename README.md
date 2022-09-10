@@ -4,6 +4,12 @@
 
 1. [Api](https://whb-backend.onrender.com/faq)
 2. [Dashboard](https://whb-dashboard.netlify.app)
+3. [Website](https://whb.netlify.app)
+
+![Dashboard](/dashboard/src/assets/snap/whb-dashboard-fahim.png "Screenshot of explore food page")
+![Dashboard](/dashboard/src/assets/snap/whb-dashboard-fahimMontasir.png "Screenshot of dashboard")
+![Website](/dashboard/src/assets/snap/whb-web-fahim-montasir.png "Screenshot of website")
+![Website](/dashboard/src/assets/snap/whb-web-fahim.png "Screenshot of website")
 
 ## `design inspiration`
 
