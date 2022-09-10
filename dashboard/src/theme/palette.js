@@ -1,6 +1,6 @@
 import { alpha } from "@mui/material";
 
-function createGradient(color1, color2) {
+export function createGradient(color1, color2) {
   return `linear-gradient(to bottom, ${color1}, ${color2})`;
 }
 
