@@ -2,15 +2,7 @@ import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import arrowIosBackFill from "@iconify/icons-eva/arrow-ios-back-fill";
 // material
-import {
-  styled,
-  Box,
-  Link,
-  Button,
-  Divider,
-  Typography,
-  Stack,
-} from "@mui/material";
+import { styled, Box, Button, Divider, Typography, Stack } from "@mui/material";
 
 import { DialogAnimate } from "../../../common/animate";
 import { PATH_PAGE } from "../../../routes/paths";
@@ -50,7 +42,7 @@ export default function CheckoutOrderComplete({ open, invoiceData }) {
 
           <Typography align="left" paragraph>
             Thanks for placing order &nbsp;
-            <Link href="#">{invoiceData._id}</Link>
+            {invoiceData._id}
           </Typography>
 
           <Typography align="left">
