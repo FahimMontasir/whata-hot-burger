@@ -89,13 +89,16 @@ router.get("/:userId", [auth, consumer], async (req, res) => {
   if (error) return res.status(400).json({ message: error.message });
 
   const data = await Cart.find({ userId: req.params.userId }).select(
-    "-_id -updatedAt -__v -userId"
+    "-updatedAt -__v -userId"
   );
   if (!data.length) return res.status(400).json({ message: "Cart not found" });
 
   const toStrCart = data.map((c) => {
     return {
-      ...c._doc,
+      cartId: c._id,
+      qty: c.qty,
+      size: c.size,
+      comboId: c.comboId.toString(),
       foodId: c.foodId.toString(),
     };
   });
@@ -180,6 +183,18 @@ router.delete("/delete", [auth, consumer], async (req, res) => {
   res.status(200).json({ text: "Item deleted successfully" });
 });
 
+//attention
+router.delete("/deleteAll", [auth, consumer], async (req, res) => {
+  const { error } = validateId({ _id: req.body._id });
+  if (error) return res.status(400).json({ message: error.message });
+
+  await Cart.deleteMany({
+    userId: req.user._id,
+  });
+
+  res.status(200).json({ text: "Item deleted successfully" });
+});
+
 //attention! get consumer who has food in cart
 router.get("/user/hasCart", [auth, admin], async (req, res) => {
   const { pageNumber, pageSize } = req.query;
@@ -188,7 +203,6 @@ router.get("/user/hasCart", [auth, admin], async (req, res) => {
   const offset = (parseInt(pageNumber) - 1) * limit;
 
   const cartUserIds = await Cart.find().sort({ updatedAt: "desc" });
-
   const uniqueUser = [
     ...new Map(cartUserIds.map((v) => [v.patientId, v])).values(),
   ];
