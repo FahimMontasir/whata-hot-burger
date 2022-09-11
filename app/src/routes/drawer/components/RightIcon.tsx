@@ -9,6 +9,7 @@ export default RightComponent;
 const Logo = styled.Image.attrs({
   source: require('../../../assets/icons/logo.png'),
 })`
-  height: 60px;
-  width: 110px;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
 `;
