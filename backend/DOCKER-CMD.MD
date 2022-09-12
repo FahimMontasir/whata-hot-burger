@@ -53,12 +53,12 @@ volume is used for data persistence
 
 is used for simplify of volumes command using a docker-compose.yml file
 
-1. docker-compose up -d
-2. docker-compose down -v //also delete the volume
-3. docker-compose up -d --build //this fores a brand new build with new updates
-4. docker-compose stop
-5. docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
-6. docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
+1. docker compose up -d
+2. docker compose down -v //also delete the volume
+3. docker compose up -d --build //this fores a brand new build with new updates
+4. docker compose stop
+5. docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+6. docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 7. just change .dev to .prod to build production build and --build for update changes
 8. -V //use capital V after up to renew new npm packages
 
@@ -127,7 +127,7 @@ is used for simplify of volumes command using a docker-compose.yml file
 
 ## orchestration with docker swarm
 
-1. docker-compose vs docker swarm
+1. docker compose vs docker swarm
 2. container = node
 3. docker swarm init --advertise-addr [public-ip]
 4. learn docker swarm
