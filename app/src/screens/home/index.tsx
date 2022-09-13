@@ -4,15 +4,16 @@ import {exploreData} from '../../config/exploreData';
 //components
 import {Box, Container, Scroll} from '../../common';
 import ExploreBox from './components/ExploreBox';
-import HeroBox from './components/HeroBox';
+// import HeroBox from './components/HeroBox';
 import ServiceBox from './components/ServiceBox';
 import {HomeProps} from '../../types/routeTypes';
+import CarouselBox from './components/carousel';
 
 const HomeScreen = ({navigation}: HomeProps) => {
   return (
     <Container>
       <Scroll alignCenter>
-        <HeroBox />
+        <CarouselBox />
         <Box width="100%" height="130px" pv="10px" color="gray">
           <Scroll horizontal>
             <ServiceBox
@@ -20,11 +21,11 @@ const HomeScreen = ({navigation}: HomeProps) => {
                 navigation.navigate('Service', {serviceName: 'Physiotherapy'})
               }
             />
-            <ServiceBox title="Gynecology" />
-            <ServiceBox title="Medicine" />
-            <ServiceBox title="Orthopedics" />
-            <ServiceBox title="Skin" />
-            <ServiceBox title="Gastroenterologist" />
+            <ServiceBox title="Special hot dog" />
+            <ServiceBox title="hot" />
+            <ServiceBox title="spicy" />
+            <ServiceBox title="burgers" />
+            <ServiceBox title="discount" />
           </Scroll>
         </Box>
         <Box row>
