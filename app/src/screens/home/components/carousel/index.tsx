@@ -2,10 +2,16 @@ import * as React from 'react';
 import {Dimensions, StyleSheet, View, ViewStyle} from 'react-native';
 import {AnimatedStyleProp, interpolate} from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
-import {SBItem} from './item';
+import {Item} from './item';
 
 type TAnimationStyle = (value: number) => AnimatedStyleProp<ViewStyle>;
 const PAGE_WIDTH = Dimensions.get('window').width;
+
+const data = [
+  require('../../../../assets/images/caro2.png'),
+  require('../../../../assets/images/caro1.jpeg'),
+  require('../../../../assets/images/caro3.jpg'),
+];
 
 export default function CarouselBox() {
   const animationStyle: TAnimationStyle = React.useCallback((value: number) => {
@@ -28,11 +34,11 @@ export default function CarouselBox() {
         loop
         autoPlay
         style={styles.container}
-        width={PAGE_WIDTH * 0.7}
-        height={240 * 0.7}
-        data={[...new Array(6).keys()]}
-        renderItem={({index}) => {
-          return <SBItem key={index} index={index} />;
+        width={PAGE_WIDTH * 0.9}
+        height={280 * 0.7}
+        data={data}
+        renderItem={({item}) => {
+          return <Item key={item} source={item} />;
         }}
         customAnimation={animationStyle}
       />

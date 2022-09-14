@@ -7,13 +7,13 @@ import NotiBox from './components/NotiBox';
 const DATA = [
   {
     id: 1,
-    message: 'Your medical report is ready',
-    date: '1/2/2021 12am',
+    message: 'Your order is ready!',
+    date: '1/2/2022 12am',
   },
   {
     id: 2,
-    message: 'Welcome to the app',
-    date: '1/2/2021 12am',
+    message: 'shipped to you address!',
+    date: '1/2/2023 12am',
   },
 ];
 

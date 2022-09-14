@@ -1,10 +1,11 @@
 import React from 'react';
-import {Container, Typography} from '../../common';
+import {Container} from '../../common';
+import ComingSoon from '../../common/ComingSoon';
 
 const AboutScreen = () => {
   return (
     <Container>
-      <Typography h1>AboutScreen</Typography>
+      <ComingSoon />
     </Container>
   );
 };

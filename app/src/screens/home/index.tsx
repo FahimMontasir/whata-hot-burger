@@ -4,7 +4,6 @@ import {exploreData} from '../../config/exploreData';
 //components
 import {Box, Container, Scroll} from '../../common';
 import ExploreBox from './components/ExploreBox';
-// import HeroBox from './components/HeroBox';
 import ServiceBox from './components/ServiceBox';
 import {HomeProps} from '../../types/routeTypes';
 import CarouselBox from './components/carousel';

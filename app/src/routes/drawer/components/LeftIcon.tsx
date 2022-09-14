@@ -11,16 +11,6 @@ const LeftComponent = ({navigation}: any) => {
         type="antdesign"
         onPress={() => navigation.toggleDrawer()}
       />
-      <StyledIcon
-        name="phone"
-        type="antdesign"
-        onPress={() => console.log('call')}
-      />
-      <StyledIcon
-        name="hipchat"
-        type="fontisto"
-        onPress={() => console.log('chat')}
-      />
     </Box>
   );
 };

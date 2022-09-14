@@ -1,10 +1,11 @@
-import {Container, Typography} from '../../common';
+import {Container} from '../../common';
 import React from 'react';
+import ComingSoon from '../../common/ComingSoon';
 
 const PrivacyPolicyScreen = () => {
   return (
     <Container>
-      <Typography h1>All terms and conditions</Typography>
+      <ComingSoon />
     </Container>
   );
 };
