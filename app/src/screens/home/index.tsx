@@ -7,8 +7,16 @@ import ExploreBox from './components/ExploreBox';
 import ServiceBox from './components/ServiceBox';
 import {HomeProps} from '../../types/routeTypes';
 import CarouselBox from './components/carousel';
+import {useGetAllFaqQuery} from '../../store/redux/api/faq';
+import {useGetFoodByCategoryQuery} from '../../store/redux/api/food';
 
 const HomeScreen = ({navigation}: HomeProps) => {
+  const {data} = useGetFoodByCategoryQuery('burgers');
+  const {isSuccess} = useGetAllFaqQuery();
+
+  console.log(data);
+  console.log(isSuccess);
+
   return (
     <Container>
       <Scroll alignCenter>
