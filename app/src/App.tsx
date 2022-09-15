@@ -6,15 +6,19 @@ import {ThemeProvider} from 'styled-components/native';
 import {main} from './theme';
 
 import Navigator from './routes';
-import {store} from './store/redux/store';
+import {persistor, store} from './store/redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
+import {Text} from 'react-native';
 
 const App = () => {
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-        <ThemeProvider theme={main}>
-          <Navigator />
-        </ThemeProvider>
+        <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+          <ThemeProvider theme={main}>
+            <Navigator />
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </SafeAreaProvider>
   );

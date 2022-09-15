@@ -1,7 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createSlice} from '@reduxjs/toolkit';
-import {TOKEN_NAME} from '../middlewares/localStorage';
 
 const initialState = {
   token: null,
@@ -11,21 +9,11 @@ const localStorageAuthSlice = createSlice({
   name: 'localStorageAuth',
   initialState,
   reducers: {
-    login: async (state, action) => {
+    login: (state, action) => {
       state.token = action.payload.token;
-      try {
-        await AsyncStorage.setItem(TOKEN_NAME, state.token);
-      } catch (error) {
-        console.log(error);
-      }
     },
-    logout: async state => {
+    logout: state => {
       state.token = null;
-      try {
-        await AsyncStorage.clear();
-      } catch (error) {
-        console.log(error);
-      }
     },
   },
 });

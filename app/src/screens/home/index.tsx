@@ -7,20 +7,35 @@ import ExploreBox from './components/ExploreBox';
 import ServiceBox from './components/ServiceBox';
 import {HomeProps} from '../../types/routeTypes';
 import CarouselBox from './components/carousel';
-import {useGetAllFaqQuery} from '../../store/redux/api/faq';
-import {useGetFoodByCategoryQuery} from '../../store/redux/api/food';
+import {Button} from '@rneui/base';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  getToken,
+  login,
+  logout,
+} from '../../store/redux/slices/localStorageAuth';
 
 const HomeScreen = ({navigation}: HomeProps) => {
-  const {data} = useGetFoodByCategoryQuery('burgers');
-  const {isSuccess} = useGetAllFaqQuery();
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
 
-  console.log(data);
-  console.log(isSuccess);
+  console.log('token', token);
+
+  const loginAsync = () => {
+    dispatch(login({token: '12a34'}));
+    console.log('cli');
+  };
+
+  const logoutAsync = async () => {
+    dispatch(logout());
+  };
 
   return (
     <Container>
       <Scroll alignCenter>
         <CarouselBox />
+        <Button title="log in" onPress={loginAsync} />
+        <Button title="log out" onPress={logoutAsync} />
         <Box width="100%" height="130px" pv="10px" color="gray">
           <Scroll horizontal>
             <ServiceBox

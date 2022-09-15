@@ -29,7 +29,7 @@ const faqApi = mainApi.injectEndpoints({
       invalidatesTags: result => (result ? ['faq'] : null),
     }),
 
-    getAllFaq: builder.query({
+    getFaqs: builder.query({
       query: () => '/faq/all',
       providesTags: ['faq'],
     }),
@@ -41,5 +41,5 @@ export const {
   useAskQuestionAdminMutation,
   useAnswerQuestionMutation,
   useDeleteFaqMutation,
-  useGetAllFaqQuery,
+  useGetFaqsQuery,
 } = faqApi;
