@@ -74,9 +74,9 @@ export default DrawerNavigator;
 const DrawerContainer = styled(Drawer.Navigator).attrs(p => ({
   drawerContent: props => <CustomDrawer {...props} />,
   screenOptions: ({navigation}) => ({
-    drawerActiveBackgroundColor: p.theme.colors.primaryDark,
+    drawerActiveBackgroundColor: p.theme.colors.primary,
     drawerActiveTintColor: p.theme.colors.white,
-    drawerInactiveTintColor: p.theme.colors.primaryDark,
+    drawerInactiveTintColor: p.theme.colors.primary,
     headerLeft: () => (
       <StyledIcon
         type="antdesign"

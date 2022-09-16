@@ -65,5 +65,5 @@ const ContentScrollView = styled(DrawerContentScrollView).attrs(p => ({
 export const LinkIcon = styled(Icon).attrs(p => ({
   raised: true,
   tvParallaxProperties: true,
-  color: p.theme.colors.primaryDark,
+  color: p.theme.colors.primary,
 }))``;

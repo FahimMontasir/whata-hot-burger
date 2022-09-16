@@ -3,7 +3,7 @@ import {DefaultTheme} from 'styled-components/native';
 export const main: DefaultTheme = {
   colors: {
     transparent: 'transparent',
-    primary: '#25578d',
+    primary: '#fda92d',
     primaryDark: '#103059',
     secondary: '#1681a8',
     secondaryLite: '#daf4ff',
