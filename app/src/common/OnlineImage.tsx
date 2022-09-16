@@ -6,7 +6,7 @@ import {Loader, SkeletonLoader} from './skeleton';
 interface IProps {
   width: number;
   height: number;
-  source: object;
+  source: string;
   radius?: number;
 }
 interface SkeletonProps {
@@ -15,7 +15,7 @@ interface SkeletonProps {
   radius: number;
 }
 
-const Skeleton = ({width, height, radius}: SkeletonProps) => {
+export const ImgSkeleton = ({width, height, radius}: SkeletonProps) => {
   return (
     <SafeAreaView>
       <SkeletonLoader>
@@ -28,12 +28,12 @@ const Skeleton = ({width, height, radius}: SkeletonProps) => {
 const OnlineImage = ({width, height, source, radius = 0}: IProps) => {
   return (
     <Image
-      source={source}
+      source={{uri: source}}
       style={{width: width, height: height, borderRadius: radius}}
       // eslint-disable-next-line react-native/no-inline-styles
       placeholderStyle={{backgroundColor: 'transparent'}}
       PlaceholderContent={
-        <Skeleton width={width} height={height} radius={radius} />
+        <ImgSkeleton width={width} height={height} radius={radius} />
       }
     />
   );

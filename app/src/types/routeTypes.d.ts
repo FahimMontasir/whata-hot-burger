@@ -2,8 +2,8 @@ import {StackScreenProps} from '@react-navigation/stack';
 
 export type HomeStackParamList = {
   Home: undefined;
-  Service: {serviceName: string};
+  Combo: {id: string; category: string; photoUrls: string[]};
 };
 
 export type HomeProps = StackScreenProps<HomeStackParamList, 'Home'>;
-export type ServiceProps = StackScreenProps<HomeStackParamList, 'Service'>;
+export type ComboProps = StackScreenProps<HomeStackParamList, 'Combo'>;

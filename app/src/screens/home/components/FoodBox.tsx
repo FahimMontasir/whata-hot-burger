@@ -11,7 +11,7 @@ interface IProps {
   higLighted?: boolean;
 }
 
-const ExploreBox = ({
+const FoodBox = ({
   iconName = 'hipchat',
   iconType = 'fontisto',
   title = 'Patient Portal',
@@ -32,12 +32,12 @@ const ExploreBox = ({
       onPress={onPress}>
       <StyledIcon name={iconName} type={iconType} higLighted={higLighted} />
       <Typography h3 color={higLighted ? 'secondary' : 'heading'}>
-        {title}
+        {title.replace(/^./, title[0].toUpperCase())}
       </Typography>
     </Touchable>
   );
 };
-export default ExploreBox;
+export default FoodBox;
 
 interface IconProp {
   higLighted?: boolean;

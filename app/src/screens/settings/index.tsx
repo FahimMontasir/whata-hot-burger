@@ -1,8 +1,28 @@
 import React from 'react';
 import {Box, Container, Input} from '../../common';
 import AppAvatar from './components/Avatar';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  getToken,
+  login,
+  logout,
+} from '../../store/redux/slices/localStorageAuth';
+import {Button} from '@rneui/base';
 
 const SettingScreen = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+
+  console.log('token', token);
+
+  const loginAsync = () => {
+    dispatch(login({token: '12a34'}));
+    console.log('cli');
+  };
+
+  const logoutAsync = async () => {
+    dispatch(logout());
+  };
   return (
     <Container>
       <Box>
@@ -15,6 +35,8 @@ const SettingScreen = () => {
           rightIconName="save"
         />
       </Box>
+      <Button title="log in" onPress={loginAsync} />
+      <Button title="log out" onPress={logoutAsync} />
       {/* {list.map((item, i) => (
         <ListItem
           key={i}

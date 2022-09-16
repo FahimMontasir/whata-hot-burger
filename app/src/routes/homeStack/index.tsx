@@ -7,7 +7,7 @@ import LeftIcon from '../drawer/components/LeftIcon';
 import RightIcon from '../drawer/components/RightIcon';
 //screens
 import HomeScreen from '../../screens/home';
-import ServiceScreen from '../../screens/service';
+import ComboScreen from '../../screens/combo';
 
 const Stack = createStackNavigator<HomeStackParamList>();
 
@@ -23,11 +23,11 @@ const HomeStack = () => {
         })}
       />
       <Stack.Screen
-        name="Service"
-        initialParams={{serviceName: 'Physiotherapy'}}
-        component={ServiceScreen}
+        name="Combo"
+        initialParams={{category: 'Special deals'}}
+        component={ComboScreen}
         options={({route}) => ({
-          headerTitle: route.params.serviceName,
+          headerTitle: route.params.category,
         })}
       />
     </StackContainer>

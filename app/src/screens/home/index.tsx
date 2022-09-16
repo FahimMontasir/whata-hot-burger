@@ -3,56 +3,56 @@ import React from 'react';
 import {exploreData} from '../../config/exploreData';
 //components
 import {Box, Container, Scroll} from '../../common';
-import ExploreBox from './components/ExploreBox';
-import ServiceBox from './components/ServiceBox';
+import FoodBox from './components/FoodBox';
+import ComboBox from './components/ComboBox';
 import {HomeProps} from '../../types/routeTypes';
 import CarouselBox from './components/carousel';
-import {Button} from '@rneui/base';
-import {useDispatch, useSelector} from 'react-redux';
-import {
-  getToken,
-  login,
-  logout,
-} from '../../store/redux/slices/localStorageAuth';
+import {useGetComboByCategoryQuery} from '../../store/redux/api/combo';
+import {ImgSkeleton} from '../../common/OnlineImage';
+
+export interface CProp {
+  _id: string;
+  photoUrls: string[];
+  category: string;
+}
 
 const HomeScreen = ({navigation}: HomeProps) => {
-  const dispatch = useDispatch();
-  const token = useSelector(getToken);
+  const {data, isSuccess, isLoading} =
+    useGetComboByCategoryQuery('Special deals');
 
-  console.log('token', token);
-
-  const loginAsync = () => {
-    dispatch(login({token: '12a34'}));
-    console.log('cli');
-  };
-
-  const logoutAsync = async () => {
-    dispatch(logout());
-  };
+  console.log(data);
 
   return (
     <Container>
       <Scroll alignCenter>
         <CarouselBox />
-        <Button title="log in" onPress={loginAsync} />
-        <Button title="log out" onPress={logoutAsync} />
         <Box width="100%" height="130px" pv="10px" color="gray">
           <Scroll horizontal>
-            <ServiceBox
-              onPress={() =>
-                navigation.navigate('Service', {serviceName: 'Physiotherapy'})
-              }
-            />
-            <ServiceBox title="Special hot dog" />
-            <ServiceBox title="hot" />
-            <ServiceBox title="spicy" />
-            <ServiceBox title="burgers" />
-            <ServiceBox title="discount" />
+            {isLoading &&
+              ['1', '2', '3'].map(i => (
+                <Box key={i} mv="5px" mh="10px" radius="4px" elevation="3">
+                  <ImgSkeleton width={150} height={100} radius={4} />
+                </Box>
+              ))}
+            {isSuccess &&
+              data.array.map((c: CProp) => (
+                <ComboBox
+                  key={c._id}
+                  uri={c.photoUrls[0]}
+                  onPress={() =>
+                    navigation.navigate('Combo', {
+                      id: c._id,
+                      category: c.category,
+                      photoUrls: c.photoUrls,
+                    })
+                  }
+                />
+              ))}
           </Scroll>
         </Box>
         <Box row>
           {exploreData.map(item => (
-            <ExploreBox
+            <FoodBox
               key={item.id}
               onPress={() => console.log(item.navigateScreen)}
               title={item.title}
